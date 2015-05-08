@@ -29,14 +29,18 @@ namespace Mailer
 		void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
 
-			using (var db = new mailerEntities())
+			using (var db = new MailerEntities())
 			{
-				var message = new Message
+				db.Addresses.Add(new Address()
 				{
-					body = "Test",
-					subject = "testsub"
-				};
-				db.Messages.Add(message);
+					FirstName = "Andrew",
+					LastName = "Scott",
+					Email = "test@google.com",
+					RecievedMails = new List<RecievedMail>()
+					{
+						new RecievedMail(){Year = 1}
+					}
+				});
 				db.SaveChanges();
 			}
 		}

@@ -68,6 +68,11 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     {
         foreach (var edmProperty in simpleProperties)
         {
+           if (edmProperty.Documentation != null) {
+#>
+    ///<summary><#=edmProperty.Documentation.Summary #></summary>
+<#
+           }
 #>
     <#=codeStringGenerator.Property(edmProperty)#>
 <#
@@ -81,6 +86,11 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 <#
         foreach(var complexProperty in complexProperties)
         {
+           if (complexProperty.Documentation != null) {
+#>
+    ///<summary><#=complexProperty.Documentation.Summary #></summary>
+<#
+           }
 #>
     <#=codeStringGenerator.Property(complexProperty)#>
 <#
@@ -95,6 +105,11 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 <#
         foreach (var navigationProperty in navigationProperties)
         {
+           if (navigationProperty.Documentation != null) {
+#>
+    ///<summary><#=navigationProperty.Documentation.Summary #></summary>
+<#
+           }
 #>
     <#=codeStringGenerator.NavigationProperty(navigationProperty)#>
 <#

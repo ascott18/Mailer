@@ -19,9 +19,10 @@ namespace Mailer
             this.MailingListLines = new HashSet<MailingListLine>();
         }
     
-        public long listID { get; set; }
-        public string name { get; set; }
+        public long ListID { get; set; }
+        public string Name { get; set; }
     
+        ///<summary>A Collection of all MailingListLine entities that comprise this MailingList.</summary>
         public virtual ICollection<MailingListLine> MailingListLines { get; set; }
     }
 }

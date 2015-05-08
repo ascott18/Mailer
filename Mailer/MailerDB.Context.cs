@@ -13,10 +13,10 @@ namespace Mailer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class mailerEntities : DbContext
+    public partial class MailerEntities : DbContext
     {
-        public mailerEntities()
-            : base("name=mailerEntities")
+        public MailerEntities()
+            : base("name=MailerEntities")
         {
         }
     

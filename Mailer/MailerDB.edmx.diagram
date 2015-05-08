@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e689771716f740ba91d881c80dff3cf3" Name="Diagram1">
-        <EntityTypeShape EntityType="mailerModel.Address" Width="1.75" PointX="3.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mailerModel.MailingList" Width="1.75" PointX="1.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mailerModel.Message" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="mailerModel.RecievedMail" Width="1.5" PointX="6.375" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="mailerModel.MailingListLine" Width="2.125" PointX="2.625" PointY="0.625" IsExpanded="true" />
-        <AssociationConnector Association="mailerModel.RecipientMailingList" />
-        <AssociationConnector Association="mailerModel.AddressRecievedMail" />
-        <AssociationConnector Association="mailerModel.AddressRecipient" />
+        <EntityTypeShape EntityType="MailerModel.Address" Width="1.75" PointX="3.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MailerModel.MailingList" Width="1.75" PointX="1.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MailerModel.Message" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MailerModel.RecievedMail" Width="1.5" PointX="6.375" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MailerModel.MailingListLine" Width="2.125" PointX="2.625" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="MailerModel.RecipientMailingList" />
+        <AssociationConnector Association="MailerModel.AddressRecievedMail" />
+        <AssociationConnector Association="MailerModel.AddressRecipient" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

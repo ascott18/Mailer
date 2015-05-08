@@ -14,9 +14,10 @@ namespace Mailer
     
     public partial class RecievedMail
     {
-        public long addressID { get; set; }
-        public long year { get; set; }
+        public long AddressID { get; set; }
+        public long Year { get; set; }
     
+        ///<summary>The Address entity that sent the email.</summary>
         public virtual Address SenderAddress { get; set; }
     }
 }

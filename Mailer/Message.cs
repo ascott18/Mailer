@@ -14,8 +14,10 @@ namespace Mailer
     
     public partial class Message
     {
-        public string body { get; set; }
-        public string subject { get; set; }
-        public long mailID { get; set; }
+        ///<summary>The body of the email message.</summary>
+        public string Body { get; set; }
+        ///<summary>The subject of the email message.</summary>
+        public string Subject { get; set; }
+        public long MailID { get; set; }
     }
 }

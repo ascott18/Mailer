@@ -14,10 +14,12 @@ namespace Mailer
     
     public partial class MailingListLine
     {
-        public long listID { get; set; }
-        public long addressID { get; set; }
+        public long ListID { get; set; }
+        public long AddressID { get; set; }
     
+        ///<summary>The MailingList entity that this MailingListLine belongs to.</summary>
         public virtual MailingList MailingList { get; set; }
+        ///<summary>The Address entity belonging to this MailingListLine.</summary>
         public virtual Address Address { get; set; }
     }
 }
