@@ -5,6 +5,11 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailer", "Mailer\Mailer.csproj", "{4DA68819-1D01-415A-9DD7-413890CAA101}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{ED93F9CF-E179-4708-AF7E-5482A3E3C8D9}"
+	ProjectSection(SolutionItems) = preProject
+		mailer.db = mailer.db
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
