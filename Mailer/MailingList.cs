@@ -20,9 +20,10 @@ namespace Mailer
         }
     
         public long ListID { get; set; }
+        ///<summary>The name of this MailingList.</summary>
         public string Name { get; set; }
     
-        ///<summary>A Collection of all MailingListLine entities that comprise this MailingList.</summary>
+        ///<summary>A collection of MailingListLines representing the Address entities that are included in this MailingList.</summary>
         public virtual ICollection<MailingListLine> MailingListLines { get; set; }
     }
 }

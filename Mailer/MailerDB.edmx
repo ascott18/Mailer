@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mailerModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Andrew\Desktop\Mailer\mailer.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="mailerModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Andrew\Desktop\Mailer\mailer.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Addresses">
           <Key>
             <PropertyRef Name="addressID" />
@@ -13,6 +13,14 @@
           <Property Name="lastName" Type="varchar" MaxLength="30" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="addressID" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MailingListLines">
+          <Key>
+            <PropertyRef Name="listID" />
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="listID" Type="integer" Nullable="false" />
+          <Property Name="addressID" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="MailingLists">
           <Key>
@@ -29,121 +37,110 @@
           <Property Name="subject" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="mailID" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityType Name="RecievedMails">
+        <EntityType Name="ReceivedMails">
           <Key>
             <PropertyRef Name="addressID" />
             <PropertyRef Name="year" />
           </Key>
-          <Property Name="addressID" Type="integer" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="addressID" Type="integer" Nullable="false" />
           <Property Name="year" Type="integer" Nullable="false" />
         </EntityType>
-        <EntityType Name="Recipients">
-          <Key>
-            <PropertyRef Name="listID" />
-            <PropertyRef Name="addressID" />
-          </Key>
-          <Property Name="listID" Type="integer" Nullable="false" />
-          <Property Name="addressID" Type="integer" Nullable="false" />
-        </EntityType>
+        <Association Name="FK_MailingListLines_0_0">
+          <End Role="MailingLists" Type="Self.MailingLists" Multiplicity="1" />
+          <End Role="MailingListLines" Type="Self.MailingListLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MailingLists">
+              <PropertyRef Name="listID" />
+            </Principal>
+            <Dependent Role="MailingListLines">
+              <PropertyRef Name="listID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceivedMails_0_0">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="ReceivedMails" Type="Self.ReceivedMails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="addressID" />
+            </Principal>
+            <Dependent Role="ReceivedMails">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="mailerModelStoreContainer">
           <EntitySet Name="Addresses" EntityType="Self.Addresses" store:Type="Tables" />
+          <EntitySet Name="MailingListLines" EntityType="Self.MailingListLines" store:Type="Tables" />
           <EntitySet Name="MailingLists" EntityType="Self.MailingLists" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" store:Type="Tables" />
-          <EntitySet Name="RecievedMails" EntityType="Self.RecievedMails" store:Type="Tables" />
-          <EntitySet Name="Recipients" EntityType="Self.Recipients" store:Type="Tables" />
+          <EntitySet Name="ReceivedMails" EntityType="Self.ReceivedMails" store:Type="Tables" />
+          <AssociationSet Name="FK_MailingListLines_0_0" Association="Self.FK_MailingListLines_0_0">
+            <End Role="MailingLists" EntitySet="MailingLists" />
+            <End Role="MailingListLines" EntitySet="MailingListLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceivedMails_0_0" Association="Self.FK_ReceivedMails_0_0">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="ReceivedMails" EntitySet="ReceivedMails" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MailerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MailerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="MailerModel.Address" />
+          <EntitySet Name="MailingListLines" EntityType="MailerModel.MailingListLine" />
+          <EntitySet Name="MailingLists" EntityType="MailerModel.MailingList" />
+          <EntitySet Name="Messages" EntityType="MailerModel.Message" />
+          <EntitySet Name="ReceivedMails" EntityType="MailerModel.ReceivedMail" />
+          <AssociationSet Name="FK_ReceivedMails_0_0" Association="MailerModel.FK_ReceivedMails_0_0">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="ReceivedMail" EntitySet="ReceivedMails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailingListLines_0_0" Association="MailerModel.FK_MailingListLines_0_0">
+            <End Role="MailingList" EntitySet="MailingLists" />
+            <End Role="MailingListLine" EntitySet="MailingListLines" />
+          </AssociationSet>
+          <AssociationSet Name="MailingListLineAddress" Association="MailerModel.MailingListLineAddress">
+            <End Role="MailingListLine" EntitySet="MailingListLines" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Address">
-          <Documentation>
-            <Summary>Represents a third party that the user is interested in sending mail to.</Summary>
-          </Documentation>
           <Key>
             <PropertyRef Name="AddressID" />
           </Key>
-          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" >
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" >
             <Documentation>
-              <Summary>The first name of the email address's owner.</Summary>
+              <Summary>The first name of the person represented by this Address.</Summary>
             </Documentation>
           </Property>
           <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" >
             <Documentation>
-              <Summary>The last name of the email address's owner.</Summary>
+              <Summary>The last name of the person represented by this Address.</Summary>
             </Documentation>
           </Property>
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" >
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" >
             <Documentation>
-              <Summary>The email address of this Address entity.</Summary>
+              <Summary>The email address of the person represented by this Address.</Summary>
             </Documentation>
           </Property>
           <Property Name="AddressID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RecievedMails" Relationship="MailerModel.AddressRecievedMail" FromRole="Address" ToRole="RecievedMail" >
+          <NavigationProperty Name="ReceivedMails" Relationship="MailerModel.FK_ReceivedMails_0_0" FromRole="Address" ToRole="ReceivedMail" >
             <Documentation>
-              <Summary>A Collection of RecievedMail entities which represent years in which this address sent the user an email.</Summary>
+              <Summary>A collection  of RecievedMail entities representing years that this Address sent the user an email.</Summary>
             </Documentation>
           </NavigationProperty>
-          <NavigationProperty Name="MailingListLines" Relationship="MailerModel.AddressRecipient" FromRole="Address" ToRole="Recipient" >
+          <NavigationProperty Name="MailingListLines" Relationship="MailerModel.MailingListLineAddress" FromRole="Address" ToRole="MailingListLine" >
             <Documentation>
-              <Summary>A Collection of all MailingListLine entities to which this Address belongs.</Summary>
-            </Documentation>
-          </NavigationProperty>
-        </EntityType>
-        <EntityType Name="MailingList">
-          <Documentation>
-            <Summary>Represents a list of addresses to which the user can easily send mail to.</Summary>
-          </Documentation>
-          <Key>
-            <PropertyRef Name="ListID" />
-          </Key>
-          <Property Name="ListID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="MailingListLines" Relationship="MailerModel.RecipientMailingList" FromRole="MailingList" ToRole="Recipient" >
-            <Documentation>
-              <Summary>A Collection of all MailingListLine entities that comprise this MailingList.</Summary>
-            </Documentation>
-          </NavigationProperty>
-        </EntityType>
-        <EntityType Name="Message">
-          <Documentation>
-            <Summary>Represents an email message template</Summary>
-          </Documentation>
-          <Key>
-            <PropertyRef Name="MailID" />
-          </Key>
-          <Property Name="Body" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" >
-            <Documentation>
-              <Summary>The body of the email message.</Summary>
-            </Documentation>
-          </Property>
-          <Property Name="Subject" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" >
-            <Documentation>
-              <Summary>The subject of the email message.</Summary>
-            </Documentation>
-          </Property>
-          <Property Name="MailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="RecievedMail">
-          <Documentation>
-            <Summary>Maps an address to a year when that address sent the user an email.</Summary>
-          </Documentation>
-          <Key>
-            <PropertyRef Name="AddressID" />
-            <PropertyRef Name="Year" />
-          </Key>
-          <Property Name="AddressID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="Year" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="SenderAddress" Relationship="MailerModel.AddressRecievedMail" FromRole="RecievedMail" ToRole="Address" >
-            <Documentation>
-              <Summary>The Address entity that sent the email.</Summary>
+              <Summary>A collection of MailingListLine entities that represent the MailingLists that this Address belongs to.</Summary>
             </Documentation>
           </NavigationProperty>
         </EntityType>
         <EntityType Name="MailingListLine">
           <Documentation>
-            <Summary>Represents a single address belonging to a mailing list.</Summary>
+            <Summary>Represents an Address belonging to a MailingList.</Summary>
           </Documentation>
           <Key>
             <PropertyRef Name="ListID" />
@@ -151,69 +148,104 @@
           </Key>
           <Property Name="ListID" Type="Int64" Nullable="false" />
           <Property Name="AddressID" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="MailingList" Relationship="MailerModel.RecipientMailingList" FromRole="Recipient" ToRole="MailingList" >
+          <NavigationProperty Name="MailingList" Relationship="MailerModel.FK_MailingListLines_0_0" FromRole="MailingListLine" ToRole="MailingList" >
             <Documentation>
-              <Summary>The MailingList entity that this MailingListLine belongs to.</Summary>
-              <LongDescription>test</LongDescription>
+              <Summary>The MailingList entity that owns this MailingListLine.</Summary>
             </Documentation>
           </NavigationProperty>
-          <NavigationProperty Name="Address" Relationship="MailerModel.AddressRecipient" FromRole="Recipient" ToRole="Address" >
+          <NavigationProperty Name="Address" Relationship="MailerModel.MailingListLineAddress" FromRole="MailingListLine" ToRole="Address" >
             <Documentation>
-              <Summary>The Address entity belonging to this MailingListLine.</Summary>
+              <Summary>The Address entity represented by this MailingListLine.</Summary>
             </Documentation>
           </NavigationProperty>
         </EntityType>
-        <EntityContainer Name="MailerEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Addresses" EntityType="Self.Address" />
-          <EntitySet Name="MailingLists" EntityType="Self.MailingList" />
-          <EntitySet Name="Messages" EntityType="Self.Message" />
-          <EntitySet Name="RecievedMails" EntityType="Self.RecievedMail" />
-          <EntitySet Name="MailingListLines" EntityType="MailerModel.MailingListLine" />
-          <AssociationSet Name="RecipientMailingList" Association="MailerModel.RecipientMailingList">
-            <End Role="Recipient" EntitySet="MailingListLines" />
-            <End Role="MailingList" EntitySet="MailingLists" />
-          </AssociationSet>
-          <AssociationSet Name="AddressRecievedMail" Association="MailerModel.AddressRecievedMail">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="RecievedMail" EntitySet="RecievedMails" />
-          </AssociationSet>
-          <AssociationSet Name="AddressRecipient" Association="MailerModel.AddressRecipient">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="Recipient" EntitySet="MailingListLines" />
-          </AssociationSet>
-        </EntityContainer>
-        <Association Name="RecipientMailingList">
-          <End Type="MailerModel.MailingListLine" Role="Recipient" Multiplicity="*" />
+        <EntityType Name="MailingList">
+          <Key>
+            <PropertyRef Name="ListID" />
+          </Key>
+          <Property Name="ListID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" >
+            <Documentation>
+              <Summary>The name of this MailingList.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="MailingListLines" Relationship="MailerModel.FK_MailingListLines_0_0" FromRole="MailingList" ToRole="MailingListLine" >
+            <Documentation>
+              <Summary>A collection of MailingListLines representing the Address entities that are included in this MailingList.</Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="Message">
+          <Documentation>
+            <Summary>Represents an email message template that the user may send to one or more Address.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" >
+            <Documentation>
+              <Summary>The body of the email message.</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" >
+            <Documentation>
+              <Summary>The subject of the email message.</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="MailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ReceivedMail">
+          <Documentation>
+            <Summary>Represents a year that a user sent an email to the user.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="Year" />
+          </Key>
+          <Property Name="AddressID" Type="Int64" Nullable="false" />
+          <Property Name="Year" Type="Int64" Nullable="false" >
+            <Documentation>
+              <Summary>The year in which the corresponding Address of this RecievedMail sent the user an email.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Address" Relationship="MailerModel.FK_ReceivedMails_0_0" FromRole="ReceivedMail" ToRole="Address" >
+            <Documentation>
+              <Summary>The Address of the person who sent an email to the user in this year.</Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <Association Name="FK_ReceivedMails_0_0">
+          <End Type="MailerModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="MailerModel.ReceivedMail" Role="ReceivedMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="ReceivedMail">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailingListLines_0_0">
           <End Type="MailerModel.MailingList" Role="MailingList" Multiplicity="1" />
+          <End Type="MailerModel.MailingListLine" Role="MailingListLine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MailingList">
               <PropertyRef Name="ListID" />
             </Principal>
-            <Dependent Role="Recipient">
+            <Dependent Role="MailingListLine">
               <PropertyRef Name="ListID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AddressRecievedMail">
+        <Association Name="MailingListLineAddress">
+          <End Type="MailerModel.MailingListLine" Role="MailingListLine" Multiplicity="*" />
           <End Type="MailerModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="MailerModel.RecievedMail" Role="RecievedMail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Address">
               <PropertyRef Name="AddressID" />
             </Principal>
-            <Dependent Role="RecievedMail">
-              <PropertyRef Name="AddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AddressRecipient">
-          <End Type="MailerModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="MailerModel.MailingListLine" Role="Recipient" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="Recipient">
+            <Dependent Role="MailingListLine">
               <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
@@ -227,42 +259,42 @@
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="MailerModel.Address">
               <MappingFragment StoreEntitySet="Addresses">
-                <ScalarProperty Name="FirstName" ColumnName="firstName" />
-                <ScalarProperty Name="LastName" ColumnName="lastName" />
-                <ScalarProperty Name="Email" ColumnName="email" />
                 <ScalarProperty Name="AddressID" ColumnName="addressID" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="LastName" ColumnName="lastName" />
+                <ScalarProperty Name="FirstName" ColumnName="firstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailingListLines">
+            <EntityTypeMapping TypeName="MailerModel.MailingListLine">
+              <MappingFragment StoreEntitySet="MailingListLines">
+                <ScalarProperty Name="AddressID" ColumnName="addressID" />
+                <ScalarProperty Name="ListID" ColumnName="listID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MailingLists">
             <EntityTypeMapping TypeName="MailerModel.MailingList">
               <MappingFragment StoreEntitySet="MailingLists">
-                <ScalarProperty Name="ListID" ColumnName="listID" />
                 <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="ListID" ColumnName="listID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="MailerModel.Message">
               <MappingFragment StoreEntitySet="Messages">
-                <ScalarProperty Name="Body" ColumnName="body" />
-                <ScalarProperty Name="Subject" ColumnName="subject" />
                 <ScalarProperty Name="MailID" ColumnName="mailID" />
+                <ScalarProperty Name="Subject" ColumnName="subject" />
+                <ScalarProperty Name="Body" ColumnName="body" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RecievedMails">
-            <EntityTypeMapping TypeName="MailerModel.RecievedMail">
-              <MappingFragment StoreEntitySet="RecievedMails">
-                <ScalarProperty Name="AddressID" ColumnName="addressID" />
+          <EntitySetMapping Name="ReceivedMails">
+            <EntityTypeMapping TypeName="MailerModel.ReceivedMail">
+              <MappingFragment StoreEntitySet="ReceivedMails">
                 <ScalarProperty Name="Year" ColumnName="year" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MailingListLines">
-            <EntityTypeMapping TypeName="MailerModel.MailingListLine">
-              <MappingFragment StoreEntitySet="Recipients">
-                <ScalarProperty Name="ListID" ColumnName="listID" />
                 <ScalarProperty Name="AddressID" ColumnName="addressID" />
               </MappingFragment>
             </EntityTypeMapping>

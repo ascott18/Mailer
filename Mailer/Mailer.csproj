@@ -94,7 +94,7 @@
     <Compile Include="Message.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="RecievedMail.cs">
+    <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">

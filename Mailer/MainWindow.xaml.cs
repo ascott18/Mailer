@@ -36,9 +36,9 @@ namespace Mailer
 					FirstName = "Andrew",
 					LastName = "Scott",
 					Email = "test@google.com",
-					RecievedMails = new List<RecievedMail>()
+					ReceivedMails = new List<ReceivedMail>()
 					{
-						new RecievedMail(){Year = 1}
+						new ReceivedMail(){Year = 1}
 					}
 				});
 				db.SaveChanges();

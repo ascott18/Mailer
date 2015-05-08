@@ -12,12 +12,13 @@ namespace Mailer
     using System;
     using System.Collections.Generic;
     
-    public partial class RecievedMail
+    public partial class ReceivedMail
     {
         public long AddressID { get; set; }
+        ///<summary>The year in which the corresponding Address of this RecievedMail sent the user an email.</summary>
         public long Year { get; set; }
     
-        ///<summary>The Address entity that sent the email.</summary>
-        public virtual Address SenderAddress { get; set; }
+        ///<summary>The Address of the person who sent an email to the user in this year.</summary>
+        public virtual Address Address { get; set; }
     }
 }

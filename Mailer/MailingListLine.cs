@@ -17,9 +17,9 @@ namespace Mailer
         public long ListID { get; set; }
         public long AddressID { get; set; }
     
-        ///<summary>The MailingList entity that this MailingListLine belongs to.</summary>
+        ///<summary>The MailingList entity that owns this MailingListLine.</summary>
         public virtual MailingList MailingList { get; set; }
-        ///<summary>The Address entity belonging to this MailingListLine.</summary>
+        ///<summary>The Address entity represented by this MailingListLine.</summary>
         public virtual Address Address { get; set; }
     }
 }

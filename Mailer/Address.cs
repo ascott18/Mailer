@@ -16,21 +16,21 @@ namespace Mailer
     {
         public Address()
         {
-            this.RecievedMails = new HashSet<RecievedMail>();
+            this.ReceivedMails = new HashSet<ReceivedMail>();
             this.MailingListLines = new HashSet<MailingListLine>();
         }
     
-        ///<summary>The first name of the email address's owner.</summary>
+        ///<summary>The first name of the person represented by this Address.</summary>
         public string FirstName { get; set; }
-        ///<summary>The last name of the email address's owner.</summary>
+        ///<summary>The last name of the person represented by this Address.</summary>
         public string LastName { get; set; }
-        ///<summary>The email address of this Address entity.</summary>
+        ///<summary>The email address of the person represented by this Address.</summary>
         public string Email { get; set; }
         public long AddressID { get; set; }
     
-        ///<summary>A Collection of RecievedMail entities which represent years in which this address sent the user an email.</summary>
-        public virtual ICollection<RecievedMail> RecievedMails { get; set; }
-        ///<summary>A Collection of all MailingListLine entities to which this Address belongs.</summary>
+        ///<summary>A collection  of RecievedMail entities representing years that this Address sent the user an email.</summary>
+        public virtual ICollection<ReceivedMail> ReceivedMails { get; set; }
+        ///<summary>A collection of MailingListLine entities that represent the MailingLists that this Address belongs to.</summary>
         public virtual ICollection<MailingListLine> MailingListLines { get; set; }
     }
 }
