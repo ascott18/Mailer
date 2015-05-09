@@ -12,6 +12,7 @@ namespace Mailer
     using System;
     using System.Collections.Generic;
     
+    ///<summary>Represents an email message template that the user may send to one or more Address.</summary>
     public partial class Message
     {
         ///<summary>The body of the email message.</summary>

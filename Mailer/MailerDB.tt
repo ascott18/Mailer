@@ -24,6 +24,13 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     BeginNamespace(code);
 #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
+<#
+if (entity.Documentation != null) {
+#>
+///<summary><#=entity.Documentation.Summary #></summary>
+<#
+}
+#>
 <#=codeStringGenerator.EntityClassOpening(entity)#>
 {
 <#

@@ -12,6 +12,7 @@ namespace Mailer
     using System;
     using System.Collections.Generic;
     
+    ///<summary>Represents an Address belonging to a MailingList.</summary>
     public partial class MailingListLine
     {
         public long ListID { get; set; }

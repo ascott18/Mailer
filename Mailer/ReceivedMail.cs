@@ -12,6 +12,7 @@ namespace Mailer
     using System;
     using System.Collections.Generic;
     
+    ///<summary>Represents a year that a user sent an email to the user.</summary>
     public partial class ReceivedMail
     {
         public long AddressID { get; set; }
