@@ -31,14 +31,14 @@ namespace Mailer
 
 			using (var db = new MailerEntities())
 			{
-				db.Addresses.Add(new Address()
+				db.Addresses.Add(new Address
 				{
 					FirstName = "Andrew",
 					LastName = "Scott",
 					Email = "test@google.com",
-					ReceivedMails = new List<ReceivedMail>()
+					ReceivedMails = new List<ReceivedMail>
 					{
-						new ReceivedMail(){Year = 1}
+						new ReceivedMail {Year = 1}
 					}
 				});
 				db.SaveChanges();

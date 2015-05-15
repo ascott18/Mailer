@@ -83,6 +83,7 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddressBinding.cs" />
     <Compile Include="MailerDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,6 +173,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_delete_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_check_circle_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_create_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_cancel_16px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
