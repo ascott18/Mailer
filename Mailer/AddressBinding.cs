@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Mailer
 {
-	class AddressBinding
+	internal class AddressBinding
 	{
 		public Address BaseAddress { get; set; }
 
 		public bool Editing { get; set; }
 
-		public bool NotEditing { get { return !Editing; } }
-		
+		public bool NotEditing
+		{
+			get { return !Editing; }
+		}
 	}
 }

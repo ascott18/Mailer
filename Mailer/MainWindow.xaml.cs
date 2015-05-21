@@ -26,9 +26,8 @@ namespace Mailer
 			Loaded += MainWindow_Loaded;
 		}
 
-		void MainWindow_Loaded(object sender, RoutedEventArgs e)
+		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-
 			using (var db = new MailerEntities())
 			{
 				db.Addresses.Add(new Address
