@@ -7,16 +7,9 @@
 	xmlns:mailer="clr-namespace:Mailer"
 	mc:Ignorable="d"
 	d:DesignWidth="300"
-	d:DataContext="{Binding Source={StaticResource DesignData}}"
+	
+	d:DataContext="{d:DesignData Source=./DesignData/SampleAddress.xaml}"
 	Background="White">
-
-	<UserControl.Resources>
-		<mailer:Address
-			FirstName="Andrew"
-			LastName="Scott"
-			Email="test@google.com"
-			x:Key="DesignData" />
-	</UserControl.Resources>
 
 	<Border
 		BorderThickness="0,1"

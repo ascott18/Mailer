@@ -7,22 +7,20 @@
 	xmlns:mailer="clr-namespace:Mailer"
 	mc:Ignorable="d"
 	d:DesignWidth="300"
-	d:DataContext="{Binding Source={StaticResource DesignData}}"
+	
+	d:DataContext="{d:DesignData Source=./DesignData/SampleAddressBinding1.xaml}"
 	Background="White">
 
 	<UserControl.Resources>
 		<BooleanToVisibilityConverter
 			x:Key="BoolToVis" />
-		<mailer:AddressBinding
-			Editing="True"
-			x:Key="DesignData">
-			<mailer:AddressBinding.BaseAddress>
-				<mailer:Address
-					FirstName="Andrew"
-					LastName="Scott"
-					Email="test@google.com" />
-			</mailer:AddressBinding.BaseAddress>
-		</mailer:AddressBinding>
+
+		<mailer:ValueConverterGroup 
+			x:Key="InverseBoolToVis">
+			<mailer:InverseBooleanConverter/>
+			<BooleanToVisibilityConverter/>
+		</mailer:ValueConverterGroup>
+		
 	</UserControl.Resources>
 
 	<Border
@@ -43,19 +41,19 @@
 					Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
-				Visibility="{Binding NotEditing, Converter={StaticResource BoolToVis}}"
+				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Text="{Binding BaseAddress.FirstName}"
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<TextBlock
-				Visibility="{Binding NotEditing, Converter={StaticResource BoolToVis}}"
+				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Text="{Binding BaseAddress.LastName}"
 				Grid.Row="0"
 				Grid.Column="1"
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<TextBlock
-				Visibility="{Binding NotEditing, Converter={StaticResource BoolToVis}}"
+				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Text="{Binding BaseAddress.Email}"
 				Grid.Row="1"
 				Grid.ColumnSpan="2"
@@ -63,7 +61,7 @@
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<Button
-				Visibility="{Binding NotEditing, Converter={StaticResource BoolToVis}}"
+				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Grid.Row="0"
 				Grid.Column="2"
 				Background="{x:Null}"
@@ -77,7 +75,7 @@
 
 			</Button>
 			<Button
-				Visibility="{Binding NotEditing, Converter={StaticResource BoolToVis}}"
+				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Grid.Row="1"
 				Grid.Column="2"
 				Background="{x:Null}"

@@ -14,133 +14,178 @@
 	SnapsToDevicePixels="True"
 	UseLayoutRounding="True">
 
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition
-				Width="2*"
-				MinWidth="100" />
-			<ColumnDefinition
-				Width="5" />
-			<ColumnDefinition
-				Width="*"
-				MaxWidth="500"
-				MinWidth="100" />
-		</Grid.ColumnDefinitions>
-		<GridSplitter
-			HorizontalAlignment="Stretch"
-			Margin="0"
-			Grid.Column="1" />
 
-		<!--Right panel-->
-		<Grid
-			Grid.Column="2">
-			<Grid.RowDefinitions>
-				<RowDefinition
-					MinHeight="50" />
-				<RowDefinition
-					Height="5" />
-				<RowDefinition
-					MinHeight="50" />
-			</Grid.RowDefinitions>
+
+	<DockPanel>
+		<Menu
+			DockPanel.Dock="Top">
+			<Menu.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFEAE8E8"/>
+					<GradientStop Color="#FFDCD9D9" Offset="1"/>
+				</LinearGradientBrush>
+			</Menu.Background>
+			<MenuItem Header="_File">
+				<MenuItem Header="_Open"/>
+				<MenuItem Header="_Close"/>
+				<MenuItem Header="_Save"/>
+			</MenuItem>
+		</Menu>
+
+
+	
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="2*"
+					MinWidth="100" />
+				<ColumnDefinition
+					Width="4" />
+				<ColumnDefinition
+					Width="*"
+					MaxWidth="500"
+					MinWidth="100" />
+			</Grid.ColumnDefinitions>
 			<GridSplitter
-				VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch"
 				Margin="0"
-				Grid.Row="1"
-				HorizontalAlignment="Stretch" />
+				Grid.Column="1"
+				Background="#FFAAAAAA" >
+			</GridSplitter>
 
-
-			<!--Addresses-->
-			<ScrollViewer
-				Grid.Row="0"
-				Margin="0,2,0,0"
-				VerticalScrollBarVisibility="Auto">
-				<DockPanel
-					Margin="4">
-					<ItemsControl
-						Margin="0,0,0,0"
-						DockPanel.Dock="Bottom"
-						BorderThickness="1"
-						BorderBrush="#FFA2A2A2">
-
-						<ItemsControl.ItemTemplate>
-							<DataTemplate
-								DataType="local:AddressBinding">
-								<local:AddressControl />
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-
-					</ItemsControl>
-				</DockPanel>
-			</ScrollViewer>
-
-			<!--Mailing Lists-->
+			<!--Compose panel-->
 			<DockPanel
-				Grid.Row="2"
-				Margin="4">
-				<ComboBox
-					SelectedIndex="0"
-					Height="22"
-					DockPanel.Dock="Top">
-					<ComboBoxItem
-						Content="SELECTED LIST" />
-				</ComboBox>
-				<Grid
-					DockPanel.Dock="Top"
-					Height="22"
-					Margin="0,5,0,0">
-
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition
-							Width="Auto" />
-					</Grid.ColumnDefinitions>
-
-					<TextBox
-						Text="RENAME LIST" />
-					<Button
-						Background="{x:Null}"
-						BorderBrush="{x:Null}"
-						VerticalContentAlignment="Center"
-						Grid.Column="1"
-						Margin="3,0,0,0">
-						<Image
-							Margin="-1"
-							Height="16"
-							Width="16"
-							Source="pack://application:,,,/Images/ic_delete_16px.png" />
-					</Button>
-				</Grid>
-				<ScrollViewer
-					Margin="0,5,0,0"
-					VerticalScrollBarVisibility="Auto">
-					<ItemsControl
-						Margin="0,0,0,0"
-						DockPanel.Dock="Bottom"
-						BorderThickness="1"
-						BorderBrush="#FFA2A2A2">
-
-						<ItemsControl.ItemTemplate>
-							<DataTemplate
-								DataType="local:Address">
-								<local:MailingListAddressControl />
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-						<local:Address
-							FirstName="Andrew"
-							LastName="Scott"
-							Email="test@google.com" />
-						<local:Address
-							FirstName="Maria"
-							LastName="McCauley"
-							Email="test@google.com" />
-						<local:Address
-							FirstName="Alex"
-							LastName="North"
-							Email="test@google.com" />
-
-					</ItemsControl>
-				</ScrollViewer>
+				Grid.Column="0"
+				Margin="8">
+				<TextBlock DockPanel.Dock="Top">To:</TextBlock>
+				<TextBox DockPanel.Dock="Top"></TextBox>
+				<TextBlock DockPanel.Dock="Top">Subject:</TextBlock>
+				<TextBox DockPanel.Dock="Top"></TextBox>
+				<TextBlock DockPanel.Dock="Top">Compose:</TextBlock>
+				<TextBox ></TextBox>
 			</DockPanel>
+			<!--Right panel-->
+			<Grid
+				Grid.Column="2">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						MinHeight="50" />
+					<RowDefinition
+						Height="4" />
+					<RowDefinition
+						MinHeight="50" />
+				</Grid.RowDefinitions>
+				<GridSplitter
+					VerticalAlignment="Stretch"
+					Margin="0"
+					Grid.Row="1"
+					HorizontalAlignment="Stretch"
+					Background="#FFAAAAAA" />
+
+
+				<!--Addresses-->
+				<ScrollViewer
+					Grid.Row="0"
+					Margin="0,2,0,0"
+					VerticalScrollBarVisibility="Auto">
+					<DockPanel
+						Margin="4">
+
+						<TextBlock DockPanel.Dock="Top" Margin="0,0,0,2">Addresses:</TextBlock>
+
+						<!--For design-time mock data, remove "d:" from ItemsSource below
+							Put it back when you're done, because it won't compile without it.-->
+						<ItemsControl
+							d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddressBindings.xaml}"
+							Margin="0,0,0,0"
+							DockPanel.Dock="Bottom"
+							BorderThickness="1"
+							BorderBrush="#FFA2A2A2">
+
+
+							<ItemsControl.ItemTemplate>
+								<DataTemplate
+									DataType="local:AddressBinding">
+									<local:AddressControl />
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+
+						</ItemsControl>
+					</DockPanel>
+				</ScrollViewer>
+
+				<!--Mailing Lists-->
+				<DockPanel
+					Grid.Row="2"
+					Margin="4">
+
+					<TextBlock DockPanel.Dock="Top" Margin="0,0,0,2">Mailing Lists:</TextBlock>
+
+					<!--Select Mailing List-->
+					<ComboBox
+						SelectedIndex="0"
+						Height="22"
+						DockPanel.Dock="Top">
+						<ComboBoxItem
+							Content="SELECTED LIST" />
+					</ComboBox>
+
+					<!--Rename/Delete Mailing List-->
+					<Grid
+						DockPanel.Dock="Top"
+						Height="22"
+						Margin="0,5,0,0">
+
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition
+								Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBox
+							Text="RENAME LIST" />
+						<Button
+							Background="{x:Null}"
+							BorderBrush="{x:Null}"
+							VerticalContentAlignment="Center"
+							Grid.Column="1"
+							Margin="3,0,0,0">
+							<Image
+								Margin="-1"
+								Height="16"
+								Width="16"
+								Source="pack://application:,,,/Images/ic_delete_16px.png" />
+						</Button>
+					</Grid>
+
+					<!--Mailing List Members-->
+					<ScrollViewer
+						Margin="0,5,0,0"
+						VerticalScrollBarVisibility="Auto">
+
+
+						<!--For design-time mock data, remove "d:" from ItemsSource below
+							Put it back when you're done, because it won't compile without it.-->
+						<ItemsControl
+							d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}"
+						
+							Margin="0,0,0,0"
+							DockPanel.Dock="Bottom"
+							BorderThickness="1"
+							BorderBrush="#FFA2A2A2">
+
+							<ItemsControl.ItemTemplate>
+								<DataTemplate
+									DataType="local:Address">
+									<local:MailingListAddressControl />
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</ScrollViewer>
+				</DockPanel>
+			</Grid>
 		</Grid>
-	</Grid>
+
+
+	</DockPanel>
 </Window>
