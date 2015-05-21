@@ -84,6 +84,9 @@
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AddressBinding.cs" />
+    <Compile Include="AddressControl.xaml.cs">
+      <DependentUpon>AddressControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MailerDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +94,9 @@
     </Compile>
     <Compile Include="MailingList.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MailingListAddressControl.xaml.cs">
+      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MailingListLine.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
@@ -101,6 +107,14 @@
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Page Include="AddressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MailingListAddressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -8,18 +8,11 @@ namespace Mailer
 {
 	class AddressBinding
 	{
-		public Address BaseAddress { get; private set; }
+		public Address BaseAddress { get; set; }
 
 		public bool Editing { get; set; }
 
 		public bool NotEditing { get { return !Editing; } }
-
-		public string FirstName { get; set; }
-
-		public string LastName { get; set; }
-
-		public string Email { get; set; }
-
-		public long AddressID { get; set; }
+		
 	}
 }
