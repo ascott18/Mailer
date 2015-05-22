@@ -8,7 +8,7 @@
 	mc:Ignorable="d"
 	d:DesignWidth="300"
 	
-	d:DataContext="{d:DesignData Source=./DesignData/SampleAddressBinding1.xaml}"
+	d:DataContext="{d:DesignData Source=./DesignData/SampleAddress.xaml}"
 	Background="White">
 
 	<UserControl.Resources>
@@ -41,27 +41,23 @@
 					Width="Auto" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
-				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
-				Text="{Binding BaseAddress.FirstName}"
+				Text="{Binding FirstName}"
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<TextBlock
-				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
-				Text="{Binding BaseAddress.LastName}"
+				Text="{Binding LastName}"
 				Grid.Row="0"
 				Grid.Column="1"
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<TextBlock
-				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
-				Text="{Binding BaseAddress.Email}"
+				Text="{Binding Email}"
 				Grid.Row="1"
 				Grid.ColumnSpan="2"
 				Grid.Column="0"
 				Margin="5,0,0,0"
 				VerticalAlignment="Center" />
 			<Button
-				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Grid.Row="0"
 				Grid.Column="2"
 				Background="{x:Null}"
@@ -75,7 +71,6 @@
 
 			</Button>
 			<Button
-				Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVis}}"
 				Grid.Row="1"
 				Grid.Column="2"
 				Background="{x:Null}"
@@ -87,52 +82,6 @@
 					Height="16"
 					Width="16"
 					Source="pack://application:,,,/Images/ic_delete_16px.png" />
-			</Button>
-
-			<TextBox
-				Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}"
-				Text="{Binding BaseAddress.FirstName}"
-				Grid.Row="0"
-				Grid.Column="0"
-				Margin="0" />
-			<TextBox
-				Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}"
-				Text="{Binding BaseAddress.LastName}"
-				Grid.Row="0"
-				Grid.Column="1"
-				Margin="0" />
-			<TextBox
-				Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}"
-				Text="{Binding BaseAddress.Email}"
-				Grid.Row="1"
-				Grid.ColumnSpan="2"
-				Grid.Column="0"
-				Margin="0" />
-			<Button
-				Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}"
-				Grid.Row="0"
-				Grid.Column="2"
-				Background="{x:Null}"
-				BorderBrush="{x:Null}">
-				<Image
-					Margin="-1"
-					Height="16"
-					Width="16"
-					Source="pack://application:,,,/Images/ic_check_circle_16px.png" />
-
-			</Button>
-			<Button
-				Visibility="{Binding Editing, Converter={StaticResource BoolToVis}}"
-				Grid.Row="1"
-				Grid.Column="2"
-				Background="{x:Null}"
-				BorderBrush="{x:Null}">
-				<Image
-					Margin="-1"
-					Height="16"
-					Width="16"
-					Source="pack://application:,,,/Images/ic_cancel_16px.png" />
-
 			</Button>
 
 		</Grid>

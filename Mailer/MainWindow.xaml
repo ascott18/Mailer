@@ -96,7 +96,7 @@
 						<!--For design-time mock data, remove "d:" from ItemsSource below
 							Put it back when you're done, because it won't compile without it.-->
 						<ItemsControl
-							d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddressBindings.xaml}"
+							d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}"
 							Margin="0,0,0,0"
 							DockPanel.Dock="Bottom"
 							BorderThickness="1"
