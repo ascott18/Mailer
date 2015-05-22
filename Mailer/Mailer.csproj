@@ -93,6 +93,12 @@
     <Compile Include="AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditAddress.xaml.cs">
+      <DependentUpon>EditAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditMailingList.xaml.cs">
+      <DependentUpon>EditMailingList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="MailerDB.cs">
       <AutoGen>True</AutoGen>
@@ -132,6 +138,14 @@
     </DesignData>
     <Page Include="DesignData\SampleAddresses.xaml">
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditAddress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditMailingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MailingListAddressControl.xaml">
       <SubType>Designer</SubType>
