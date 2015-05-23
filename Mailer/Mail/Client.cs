@@ -16,7 +16,7 @@ namespace Mailer.Mail
     class Client
     {
 
-        private SmtpClient mailer;
+        public SmtpClient Mailer { get; set; }
         private NetworkCredential credentials;
        
         public string UserName
@@ -31,18 +31,20 @@ namespace Mailer.Mail
             set { credentials.Password = value; }
         }
 
-        public SmtpClient Mailer { get; set; }
         
 
         public Client(string host, int port)
         {
-            mailer = new SmtpClient(host, port);
-            mailer.EnableSsl = true;
+            Mailer = new SmtpClient(host, port);
+            credentials = new NetworkCredential();
+            Mailer.EnableSsl = true;
+
+            Mailer.Credentials = credentials;
         }
 
         public void Dispose()
         {
-            mailer.Dispose();
+            Mailer.Dispose();
         }
 
         

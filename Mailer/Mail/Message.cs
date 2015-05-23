@@ -50,6 +50,8 @@ namespace Mailer.Mail
             //save reference to the sender of the message 
             this.client = client;
 
+            addresses = new List<Address>();
+
             //set the from of the message to the client's username
             message = new MailMessage();
             message.From = new MailAddress(client.UserName);
@@ -74,8 +76,11 @@ namespace Mailer.Mail
             {
                 message.To.Add(address.Email);
             }
-
-            client.Mailer.Send(message);
+            if (client.Mailer != null)
+            {
+                client.Mailer.Send(message);
+            }
+            
         }
 
         private void AddAttachment(string attachmentFilename, string mediaTypeName)

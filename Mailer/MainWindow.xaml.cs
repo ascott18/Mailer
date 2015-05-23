@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mailer.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -46,6 +47,24 @@ namespace Mailer
                 });
                 db.SaveChanges();
             }
+            
+            
+            Client client = new Client("smtp.gmail.com", 587);
+            client.UserName = "youremail@gmail.com";
+            client.Password = "yourpassword";
+
+            Mail.Message message = new Mail.Message(client);
+            message.Subject = "Test message";
+            message.Body = "Here is the body of my test email";
+            Address address = new Address();
+            address.Email = "recipient@example.com";
+            message.AddSingleRecipient(address);
+            message.Send();
+            
+
+
+
+
            
         }
 
