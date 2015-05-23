@@ -10,11 +10,11 @@ namespace Mailer
 {
 	public class EditAddressViewModel : BaseViewModel
 	{
-		public EditAddressViewModel(int addressID)
+		public EditAddressViewModel(Address address)
 		{
 			using (var db = new MailerEntities())
 			{
-				Address = db.Addresses.Single(addr => addr.AddressID == addressID);
+				Address = db.Addresses.Find(address.AddressID);
 				ReceivedMails = new ObservableCollection<ReceivedMail>(Address.ReceivedMails);
 			}
 		}

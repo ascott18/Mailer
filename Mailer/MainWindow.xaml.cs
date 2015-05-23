@@ -28,8 +28,12 @@ namespace Mailer
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			var addrWind = new EditAddress(new EditAddressViewModel(1));
-			addrWind.ShowDialog();
+			AddressesItemsControl.DataContext = new AddressListViewModel();
+		}
+
+		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			((AddressListViewModel)AddressesItemsControl.DataContext).Add();
 		}
 	}
 }
