@@ -46,7 +46,10 @@ namespace Mailer
 			using (var db = new MailerEntities())
 			{
 				db.Addresses.Attach(Address);
-				Address.ReceivedMails.Remove(ReceivedMails.First(rm => rm.Year == year));
+
+				var rmToRemove = ReceivedMails.First(rm => rm.Year == year);
+				Address.ReceivedMails.Remove(rmToRemove);
+				ReceivedMails.Remove(rmToRemove);
 				db.SaveChangesAsync();
 			}
 		}

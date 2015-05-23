@@ -51,10 +51,10 @@ namespace Mailer
 
 		private void RemoveYear_OnClick(object sender, RoutedEventArgs e)
 		{
-			foreach (var selectedItem in YearsListBox.SelectedItems)
-			{
+			var selectedItem = YearsListBox.SelectedItem;
+
+			if (selectedItem != null)
 				viewModel.RemoveYear((int)((ReceivedMail)selectedItem).Year);
-			}
 		}
 
 		private void Okay_Click(object sender, RoutedEventArgs e)
