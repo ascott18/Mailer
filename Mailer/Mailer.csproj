@@ -93,6 +93,8 @@
     <Compile Include="AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddressViewModel.cs" />
+    <Compile Include="BaseViewModel.cs" />
     <Compile Include="EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
     </Compile>

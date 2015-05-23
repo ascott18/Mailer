@@ -28,20 +28,14 @@ namespace Mailer
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
+			Address addr;
 			using (var db = new MailerEntities())
 			{
-				db.Addresses.Add(new Address
-				{
-					FirstName = "Andrew",
-					LastName = "Scott",
-					Email = "test@google.com",
-					ReceivedMails = new List<ReceivedMail>
-					{
-						new ReceivedMail {Year = 1}
-					}
-				});
-				db.SaveChanges();
+				addr = db.Addresses.First();
 			}
+
+			var addrWind = new EditAddress(new AddressViewModel(addr));
+			addrWind.ShowDialog();
 		}
 	}
 }

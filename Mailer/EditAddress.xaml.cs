@@ -19,9 +19,11 @@ namespace Mailer
 	/// </summary>
 	public partial class EditAddress : Window
 	{
-		public EditAddress()
+		public EditAddress(AddressViewModel vm)
 		{
 			InitializeComponent();
+
+			DataContext = vm;
 		}
 	}
 }

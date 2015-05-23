@@ -36,7 +36,7 @@
 		<ListBox HorizontalContentAlignment="Stretch"
 		         Grid.Row="3"
 		         Grid.Column="0"
-		         ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}">
+		         d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}">
 			<ListBox.ItemContainerStyle>
 				<Style TargetType="ListBoxItem">
 					<Setter Property="Padding"
@@ -87,7 +87,7 @@
 		<ListBox HorizontalContentAlignment="Stretch"
 		         Grid.Row="3"
 		         Grid.Column="2"
-		         ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}">
+		         d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}">
 			<ListBox.ItemContainerStyle>
 				<Style TargetType="ListBoxItem">
 					<Setter Property="Padding"
