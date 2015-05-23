@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
+using System.IO;
 
 namespace Mailer.Mail
 {
@@ -17,10 +19,8 @@ namespace Mailer.Mail
     {
         private Client client;
         private MailMessage message;
-        
-
-
-        //not functional
+       
+        //the addresses in the mailing lists are not currently being added to the message.To
         private List<MailingList> mailingLists;
         private List<Address> addresses;
 
@@ -70,15 +70,19 @@ namespace Mailer.Mail
         public void Send()
         {
 
-           //TODO: Add all of the addresses from the mailing lists to the message.To list
-            //add all individually added addresses if exitst to the message.To
+            foreach (Address address in addresses)
+            {
+                message.To.Add(address.Email);
+            }
 
             client.Mailer.Send(message);
         }
 
-
-
-
+        private void AddAttachment(string attachmentFilename, string mediaTypeName)
+        {
+            Attachment attachment = new Attachment(attachmentFilename, mediaTypeName);
+            message.Attachments.Add(attachment);
+        }
       
     }
 }
