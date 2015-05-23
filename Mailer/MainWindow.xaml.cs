@@ -28,13 +28,7 @@ namespace Mailer
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			Address addr;
-			using (var db = new MailerEntities())
-			{
-				addr = db.Addresses.First();
-			}
-
-			var addrWind = new EditAddress(new AddressViewModel(addr));
+			var addrWind = new EditAddress(new EditAddressViewModel(1));
 			addrWind.ShowDialog();
 		}
 	}

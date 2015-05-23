@@ -19,11 +19,53 @@ namespace Mailer
 	/// </summary>
 	public partial class EditAddress : Window
 	{
-		public EditAddress(AddressViewModel vm)
+		private EditAddressViewModel viewModel;
+
+		public EditAddress(EditAddressViewModel vm)
 		{
 			InitializeComponent();
 
+			viewModel = vm;
 			DataContext = vm;
+
+			YearsListBox.SelectionChanged += YearsListBox_SelectionChanged;
+		}
+
+		void YearsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			RemoveButton.IsEnabled = YearsListBox.SelectedIndex >= 0;
+		}
+
+		private void AddYear_OnClick(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				var year = int.Parse(AddYearTextBox.Text);
+				viewModel.AddYear(year);
+			}
+			catch (Exception)
+			{
+				MessageBox.Show(this, "Invalid year!");
+			}
+		}
+
+		private void RemoveYear_OnClick(object sender, RoutedEventArgs e)
+		{
+			foreach (var selectedItem in YearsListBox.SelectedItems)
+			{
+				viewModel.RemoveYear((int)((ReceivedMail)selectedItem).Year);
+			}
+		}
+
+		private void Okay_Click(object sender, RoutedEventArgs e)
+		{
+			viewModel.Save();
+			Close();
+		}
+
+		private void Cancel_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
 		}
 	}
 }
