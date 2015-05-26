@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace Mailer
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for MailingListAddressControl.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MailingListAddressControl : UserControl
 	{
-		public MainWindow()
+		public MailingListAddressControl()
 		{
 			InitializeComponent();
-			Loaded += MainWindow_Loaded;
-		}
-
-		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-		{
-			AddressesItemsControl.DataContext = new AddressListViewModel();
-		}
-
-		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			((AddressListViewModel)AddressesItemsControl.DataContext).Add();
 		}
 	}
 }
