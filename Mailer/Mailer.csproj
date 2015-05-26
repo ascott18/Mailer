@@ -83,6 +83,7 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic.cs" />
     <Compile Include="MailerDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
