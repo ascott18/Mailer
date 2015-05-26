@@ -89,6 +89,7 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic.cs" />
     <Compile Include="AddressBinding.cs" />
     <Compile Include="AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
