@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CalcBinding">
+      <HintPath>..\packages\CalcBinding.2.2.2.0\lib\net45\CalcBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicExpresso.Core">
+      <HintPath>..\packages\DynamicExpresso.Core.1.1.0.0\lib\net40\DynamicExpresso.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
@@ -83,6 +89,20 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddressBinding.cs" />
+    <Compile Include="AddressControl.xaml.cs">
+      <DependentUpon>AddressControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddressListViewModel.cs" />
+    <Compile Include="EditAddressViewModel.cs" />
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="EditAddress.xaml.cs">
+      <DependentUpon>EditAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditMailingList.xaml.cs">
+      <DependentUpon>EditMailingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InverseBooleanConverter.cs" />
     <Compile Include="MailerDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +110,9 @@
     </Compile>
     <Compile Include="MailingList.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MailingListAddressControl.xaml.cs">
+      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MailingListLine.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
@@ -100,6 +123,37 @@
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Page Include="AddressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <DesignData Include="DesignData\SampleAddressBinding2.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="DesignData\SampleAddressBinding1.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="DesignData\SampleAddress.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="DesignData\SampleAddressBindings.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="DesignData\SampleAddresses.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditAddress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditMailingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MailingListAddressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,6 +226,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_delete_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_check_circle_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_create_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_cancel_16px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
