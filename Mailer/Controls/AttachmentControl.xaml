@@ -6,7 +6,7 @@
              xmlns:designData="clr-namespace:Mailer.DesignData"
              mc:Ignorable="d" 
              d:DesignHeight="25" 
-			 d:DataContext="{d:DesignInstance designData:SampleAttachmentViewModel, IsDesignTimeCreatable=True}"
+			 d:DataContext="{d:DesignInstance designData:MockAttachmentViewModel, IsDesignTimeCreatable=True}"
 			 Padding="1,1,1,1">
     <Grid>
 		<Grid.ColumnDefinitions>
