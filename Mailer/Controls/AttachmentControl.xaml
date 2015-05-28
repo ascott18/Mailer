@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:designData="clr-namespace:Mailer.DesignData"
              mc:Ignorable="d" 
-			 Background="White"
-             d:DesignHeight="25" d:DesignWidth="200"
-			 d:DataContext="{d:DesignInstance designData:SampleAttachmentViewModel, IsDesignTimeCreatable=True}">
+             d:DesignHeight="25" 
+			 d:DataContext="{d:DesignInstance designData:SampleAttachmentViewModel, IsDesignTimeCreatable=True}"
+			 Padding="1,1,1,1">
     <Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
+			<ColumnDefinition Width="Auto"/>
 			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
 		

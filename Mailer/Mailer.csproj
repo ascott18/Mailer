@@ -89,6 +89,9 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MailingListControl.xaml.cs">
+      <DependentUpon>MailingListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RecipientControl.xaml.cs">
       <DependentUpon>RecipientControl.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AttachmentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MailingListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

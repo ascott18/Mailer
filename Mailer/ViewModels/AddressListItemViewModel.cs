@@ -4,27 +4,56 @@ using Mailer.Windows;
 
 namespace Mailer.ViewModels
 {
+	/// <summary>
+	///     A ViewModel that represents an Address belonging to an AddressListViewModel.
+	/// </summary>
 	public class AddressListItemViewModel : BaseViewModel
 	{
 		public AddressListItemViewModel()
 		{
-			
 		}
 
+		/// <summary>
+		///     Creates a new AddressListItemViewModel for the specified Address entity.
+		/// </summary>
+		/// <param name="address">The Address entity to create for.</param>
 		public AddressListItemViewModel(Address address)
 		{
 			Address = address;
-			FirstName = address.FirstName;
-			LastName = address.LastName;
-			Email = address.Email;
 		}
 
+		/// <summary>
+		///     The Address entity that is the basis for this AddressListItemViewModel.
+		/// </summary>
 		public Address Address { get; private set; }
 
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Email { get; set; }
+		/// <summary>
+		///     A mirror of the FirstName property on the address. Works with INotifyPropertyChanged.
+		/// </summary>
+		public string FirstName
+		{
+			get { return Address.FirstName; }
+		}
 
+		/// <summary>
+		///     A mirror of the LastName property on the address. Works with INotifyPropertyChanged.
+		/// </summary>
+		public string LastName
+		{
+			get { return Address.LastName; }
+		}
+
+		/// <summary>
+		///     A mirror of the Email property on the address. Works with INotifyPropertyChanged.
+		/// </summary>
+		public string Email
+		{
+			get { return Address.Email; }
+		}
+
+		/// <summary>
+		///     Open an EditAddress dialog for editing this address.
+		/// </summary>
 		public void Edit()
 		{
 			var addrWind = new EditAddress(new EditAddressViewModel(Address));
@@ -35,17 +64,14 @@ namespace Mailer.ViewModels
 				Address = db.Addresses.Find(Address.AddressID);
 			}
 
-			FirstName = Address.FirstName;
 			OnPropertyChanged("FirstName");
-
-			LastName = Address.LastName;
 			OnPropertyChanged("LastName");
-
-			Email = Address.Email;
 			OnPropertyChanged("Email");
-
 		}
 
+		/// <summary>
+		///     Delete this address from the database, and fire the Deleted event.
+		/// </summary>
 		public void Delete()
 		{
 			using (var db = new MailerEntities())
@@ -61,7 +87,7 @@ namespace Mailer.ViewModels
 		}
 
 		/// <summary>
-		/// Fired when the address represented by the ViewModel is deleted by the ViewModel.
+		///     Fired when the address is deleted by calling Delete().
 		/// </summary>
 		public event EventHandler Deleted;
 

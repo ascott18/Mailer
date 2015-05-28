@@ -19,7 +19,8 @@
 	</Window.Resources>
 
 	<DockPanel>
-		<Menu DockPanel.Dock="Top"  Padding="3,3">
+		<Menu DockPanel.Dock="Top"
+		      Padding="3,3">
 			<Menu.Background>
 				<LinearGradientBrush EndPoint="0,1"
 				                     StartPoint="0,0">
@@ -55,30 +56,76 @@
 			           Margin="8"
 			           x:Name="ComposePanel"
 			           d:DataContext="{d:DesignInstance designData:SampleMessageViewModel, IsDesignTimeCreatable=True}">
+
+				<!--Recipients-->
 				<TextBlock DockPanel.Dock="Top">To:</TextBlock>
-				<TextBox DockPanel.Dock="Top" />
-
-				<TextBlock DockPanel.Dock="Top" Margin="0,5,0,0">Subject:</TextBlock>
-				<TextBox DockPanel.Dock="Top"
-				         Text="{Binding Subject}" />
-
-				<TextBlock DockPanel.Dock="Top" Margin="0,5,0,0">Attachments:</TextBlock>
-
 				<ItemsControl DockPanel.Dock="Top"
-				              ItemsSource="{Binding Attachments}"
-				              Visibility="{Binding HasAttachments, Converter={StaticResource BoolToVis}}"
-				              BorderThickness="1"
-				              BorderBrush="#FFA2A2A2">
+				              ItemsSource="{Binding Recipients}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate DataType="viewModels:AttachmentViewModel">
-							<controls:AttachmentControl Margin="1" />
+							<controls:RecipientControl Margin="1,1,5,1"
+							                           Background="#FFE6E6E6"
+							                           BorderBrush="#FFA2A2A2"
+							                           BorderThickness="1" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
-				<Button DockPanel.Dock="Top" Margin="0,5,0,0" HorizontalAlignment="Right" Padding="7,2">Add Attachment...</Button>
 
+				<!--Subject-->
+				<TextBlock DockPanel.Dock="Top"
+				           Margin="0,5,0,0">
+					Subject:
+				</TextBlock>
+				<TextBox DockPanel.Dock="Top"
+				         Text="{Binding Subject}" />
+
+				<!--Attachments-->
+				<TextBlock DockPanel.Dock="Top"
+				           Margin="0,5,0,0">
+					Attachments:
+				</TextBlock>
+				<ItemsControl DockPanel.Dock="Top"
+				              ItemsSource="{Binding Attachments}"
+				              Visibility="{Binding HasAttachments, Converter={StaticResource BoolToVis}}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate DataType="viewModels:AttachmentViewModel">
+							<controls:AttachmentControl 
+				               Margin="1,1,5,1"
+							   Background="#FFE6E6E6"
+							   BorderBrush="#FFA2A2A2"
+							   BorderThickness="1" />
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				<Button DockPanel.Dock="Top"
+				        Margin="0,5,0,0"
+				        HorizontalAlignment="Right"
+				        Padding="7,2">
+					Add Attachment...
+				</Button>
+
+				<!--Body-->
 				<TextBlock DockPanel.Dock="Top">Compose:</TextBlock>
-				<TextBox />
+
+				<Button DockPanel.Dock="Bottom"
+				        Margin="0,5,0,0"
+				        HorizontalAlignment="Right"
+				        Padding="7,2">
+					Send
+				</Button>
+
+				<TextBox Text="{Binding Body}" />
+
 			</DockPanel>
 			<!--Right panel-->
 			<Grid Grid.Column="2">
@@ -110,14 +157,14 @@
 						        HorizontalAlignment="Right"
 						        VerticalAlignment="Bottom"
 						        Padding="7,2">
-							Add Address
+							New
 						</Button>
 					</DockPanel>
 
 
 					<ScrollViewer Margin="0,2,0,0"
 					              VerticalScrollBarVisibility="Auto">
-						<ItemsControl ItemsSource="{Binding AddressViewModels}"
+						<ItemsControl ItemsSource="{Binding AddressListItemViewModels}"
 						              Margin="0,0,0,0"
 						              DockPanel.Dock="Bottom"
 						              BorderThickness="1"
@@ -141,62 +188,46 @@
 				<!--Mailing Lists-->
 				<DockPanel Grid.Row="2"
 				           Margin="4">
+					<!--TODO: d:DataContext="{d:DesignInstance designData:SampleMailingListListViewModel, IsDesignTimeCreatable=True}"-->
 
-					<TextBlock DockPanel.Dock="Top"
-					           Margin="0,0,0,2">
-						Mailing Lists:
-					</TextBlock>
-
-					<!--Select Mailing List-->
-					<ComboBox SelectedIndex="0"
-					          Height="22"
-					          DockPanel.Dock="Top">
-						<ComboBoxItem Content="SELECTED LIST" />
-					</ComboBox>
-
-					<!--Rename/Delete Mailing List-->
-					<Grid DockPanel.Dock="Top"
-					      Height="22"
-					      Margin="0,5,0,0">
-
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition />
-							<ColumnDefinition Width="Auto" />
-						</Grid.ColumnDefinitions>
-
-						<TextBox Text="RENAME LIST" />
-						<Button Background="{x:Null}"
-						        BorderBrush="{x:Null}"
-						        VerticalContentAlignment="Center"
-						        Grid.Column="1"
-						        Margin="3,0,0,0">
-							<Image Margin="-1"
-							       Height="16"
-							       Width="16"
-							       Source="Images/ic_delete_16px.png" />
+					<DockPanel DockPanel.Dock="Top">
+						<TextBlock Margin="0,0,0,2"
+						           VerticalAlignment="Bottom">
+							Mailing Lists:
+						</TextBlock>
+						<Button Click="AddAddressButton_OnClick"
+						        DockPanel.Dock="Right"
+						        HorizontalAlignment="Right"
+						        VerticalAlignment="Bottom"
+						        Padding="7,2">
+							New
 						</Button>
-					</Grid>
+					</DockPanel>
+
 
 					<!--Mailing List Members-->
-					<!--<ScrollViewer Margin="0,5,0,0"
+					<ScrollViewer Margin="0,2,0,0"
 					              VerticalScrollBarVisibility="Auto">
-
-
-						--><!--For design-time mock data, remove "d:" from ItemsSource below
-							Put it back when you're done, because it won't compile without it.--><!--
-						<ItemsControl d:ItemsSource="{d:DesignData Source=./DesignData/SampleAddresses.xaml}"
+						<ItemsControl ItemsSource="{Binding MailingListViewModels}"
 						              Margin="0,0,0,0"
 						              DockPanel.Dock="Bottom"
 						              BorderThickness="1"
 						              BorderBrush="#FFA2A2A2">
 
+
 							<ItemsControl.ItemTemplate>
-								<DataTemplate DataType="local:Address">
-									<local:MailingListAddressControl />
+								<DataTemplate>
+									<!--TODO: DataType="viewModels:MailingListItemViewModel"-->
+									<Border BorderBrush="#FFC9C9C9"
+									        BorderThickness="0,0,0,1">
+										<controls:AddressControl />
+									</Border>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
+
+
 						</ItemsControl>
-					</ScrollViewer>-->
+					</ScrollViewer>
 				</DockPanel>
 			</Grid>
 		</Grid>

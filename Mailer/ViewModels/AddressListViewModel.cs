@@ -4,29 +4,43 @@ using System.Linq;
 
 namespace Mailer.ViewModels
 {
-	class AddressListViewModel : BaseViewModel
+	/// <summary>
+	///     A ViewModel that represents a collection of Addresses and their associated
+	///     AddressListItemViewModels.
+	///     Provides behavior for creating new addresses.
+	/// </summary>
+	internal class AddressListViewModel : BaseViewModel
 	{
 		public AddressListViewModel()
 		{
-			AddressViewModels = new ObservableCollection<AddressListItemViewModel>();
+			AddressListItemViewModels = new ObservableCollection<AddressListItemViewModel>();
 		}
 
-		public AddressListItemViewModel AddAddressListItemViewModel(AddressListItemViewModel vm)
+		/// <summary>
+		///     The collection of AddressListItemViewModels that this AddressListViewModel represents.
+		/// </summary>
+		public ObservableCollection<AddressListItemViewModel> AddressListItemViewModels { get; protected set; }
+
+		/// <summary>
+		///     Add the specified AddressListItemViewModel to this AddressListViewModel.
+		/// </summary>
+		/// <param name="vm">The AddressListItemViewModel to add.</param>
+		public void AddAddressListItemViewModel(AddressListItemViewModel vm)
 		{
 			vm.Deleted += vm_Deleted;
-			AddressViewModels.Add(vm);
-			return vm;
+			AddressListItemViewModels.Add(vm);
 		}
 
-		void vm_Deleted(object sender, EventArgs e)
+		private void vm_Deleted(object sender, EventArgs e)
 		{
 			var alivm = sender as AddressListItemViewModel;
 
-			AddressViewModels.Remove(alivm);
+			AddressListItemViewModels.Remove(alivm);
 		}
 
-		public ObservableCollection<AddressListItemViewModel> AddressViewModels { get; protected set; }
-
+		/// <summary>
+		///     Add a new Address to the database, and opens a dialog to edit that new address.
+		/// </summary>
 		public void Add()
 		{
 			using (var db = new MailerEntities())
@@ -41,11 +55,10 @@ namespace Mailer.ViewModels
 				db.SaveChangesAsync();
 
 
-				var vm = AddAddressListItemViewModel(new AddressListItemViewModel(address));
+				var vm = new AddressListItemViewModel(address);
+				AddAddressListItemViewModel(vm);
 				vm.Edit();
 			}
 		}
 	}
-
-	
 }

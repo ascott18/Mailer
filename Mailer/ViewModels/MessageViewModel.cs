@@ -5,16 +5,11 @@ using System.Linq;
 
 namespace Mailer.ViewModels
 {
+	/// <summary>
+	///     A ViewModel that represents an email message.
+	/// </summary>
 	internal class MessageViewModel : BaseViewModel
 	{
-		public String Subject { get; set; }
-
-		public bool HasAttachments { get { return Attachments.Count > 0; } }
-
-		public ObservableCollection<RecipientViewModel> Recipients { get; protected set; }
-
-		public ObservableCollection<AttachmentViewModel> Attachments { get; protected set; }
-
 		public MessageViewModel()
 		{
 			Recipients = new ObservableCollection<RecipientViewModel>();
@@ -22,11 +17,44 @@ namespace Mailer.ViewModels
 			Attachments.CollectionChanged += Attachments_CollectionChanged;
 		}
 
-		void Attachments_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		/// <summary>
+		///     The subject line of the email message.
+		/// </summary>
+		public String Subject { get; set; }
+
+		/// <summary>
+		///     The body text of the email message.
+		/// </summary>
+		public String Body { get; set; }
+
+		/// <summary>
+		///     Returns whether the Attachments collection is empty or not. Functions with
+		///     INotifyPropertyChange.
+		/// </summary>
+		public bool HasAttachments
+		{
+			get { return Attachments.Count > 0; }
+		}
+
+		/// <summary>
+		///     The collection of RecipientViewModels that represent the recipients of this message.
+		/// </summary>
+		public ObservableCollection<RecipientViewModel> Recipients { get; protected set; }
+
+		/// <summary>
+		///     The collection of AttachmentViewModels that represent the attachments of this message.
+		/// </summary>
+		public ObservableCollection<AttachmentViewModel> Attachments { get; protected set; }
+
+		private void Attachments_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			OnPropertyChanged("HasAttachments");
 		}
 
+		/// <summary>
+		///     Add an attachment with the specified fileName to the message.
+		/// </summary>
+		/// <param name="fileName"></param>
 		public void AddAttachment(string fileName)
 		{
 			Attachments.Add(new AttachmentViewModel(this)
@@ -35,21 +63,37 @@ namespace Mailer.ViewModels
 			});
 		}
 
+		/// <summary>
+		///     Removes the specified AttachmentViewModel from the message.
+		/// </summary>
+		/// <param name="attachmentViewModel">The AttachmentViewModel to remove.</param>
 		public void RemoveAttachment(AttachmentViewModel attachmentViewModel)
 		{
 			Attachments.Remove(attachmentViewModel);
 		}
 
-		public void Remove(RecipientViewModel vm)
+		/// <summary>
+		///     Remove the specified RecipientViewModel from the message.
+		/// </summary>
+		/// <param name="vm">The RecipientViewModel to remove.</param>
+		public void RemoveRecipient(RecipientViewModel vm)
 		{
 			Recipients.Remove(vm);
 		}
 
+		/// <summary>
+		///     Add the specified Address entity as a recpient of this message.
+		/// </summary>
+		/// <param name="address">The Address entity to add as a recpient.</param>
 		public void AddRecipient(Address address)
 		{
 			Recipients.Add(new AddressRecipientViewModel(this, address));
 		}
 
+		/// <summary>
+		///     Add the specified MailingList entity as a recipient of this message.
+		/// </summary>
+		/// <param name="list">The MailingList entity to add as a recipient.</param>
 		public void AddRecipient(MailingList list)
 		{
 			Recipients.Add(new MailingListRecipientViewModel(this, list));

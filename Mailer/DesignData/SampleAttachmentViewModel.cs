@@ -9,7 +9,6 @@ namespace Mailer.DesignData
 {
 	class SampleAttachmentViewModel : AttachmentViewModel
 	{
-
 		public SampleAttachmentViewModel()
 		{
 			FileName = "CoolFile.png";

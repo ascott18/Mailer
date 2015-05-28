@@ -12,30 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Mailer.ViewModels;
 
 namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for RecipientControl.xaml
-	/// 
-	/// DataContext should be a subclass of RecipientViewModel
+	/// Interaction logic for MailingListControl.xaml
 	/// </summary>
-	public partial class RecipientControl : UserControl
+	public partial class MailingListControl : UserControl
 	{
-		public RecipientControl()
+		public MailingListControl()
 		{
 			InitializeComponent();
 		}
 
+		private void Edit_OnClick(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
 		private void Delete_OnClick(object sender, RoutedEventArgs e)
 		{
-			var vm = DataContext as RecipientViewModel;
-
-			if (vm != null)
-			{
-				vm.Remove();
-			}
+			throw new NotImplementedException();
 		}
 	}
 }
