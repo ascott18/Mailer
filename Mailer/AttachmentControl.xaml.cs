@@ -24,5 +24,14 @@ namespace Mailer
 		{
 			InitializeComponent();
 		}
+
+		private void Delete_OnClick(object sender, RoutedEventArgs e)
+		{
+			var vm = DataContext as AttachmentViewModel;
+			if (vm != null)
+			{
+				vm.Delete();
+			}
+		}
 	}
 }

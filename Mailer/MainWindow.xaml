@@ -4,8 +4,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:local="clr-namespace:Mailer"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         xmlns:designData="clr-namespace:Mailer.DesignData"
         x:Class="Mailer.MainWindow"
         Title="MainWindow"
@@ -14,9 +12,12 @@
         SnapsToDevicePixels="True"
         UseLayoutRounding="True">
 
+	<Window.Resources>
+		<BooleanToVisibilityConverter x:Key="BoolToVis" />
+	</Window.Resources>
 
 	<DockPanel>
-		<Menu DockPanel.Dock="Top">
+		<Menu DockPanel.Dock="Top"  Padding="3,3">
 			<Menu.Background>
 				<LinearGradientBrush EndPoint="0,1"
 				                     StartPoint="0,0">
@@ -25,7 +26,7 @@
 					              Offset="1" />
 				</LinearGradientBrush>
 			</Menu.Background>
-			<MenuItem Header="_File">
+			<MenuItem Header="_FILE">
 				<MenuItem Header="_Open" />
 				<MenuItem Header="_Close" />
 				<MenuItem Header="_Save" />
@@ -55,22 +56,24 @@
 				<TextBlock DockPanel.Dock="Top">To:</TextBlock>
 				<TextBox DockPanel.Dock="Top" />
 
-				<TextBlock DockPanel.Dock="Top">Subject:</TextBlock>
+				<TextBlock DockPanel.Dock="Top" Margin="0,5,0,0">Subject:</TextBlock>
 				<TextBox DockPanel.Dock="Top"
 				         Text="{Binding Subject}" />
 
-				<TextBlock DockPanel.Dock="Top">Attachments:</TextBlock>
+				<TextBlock DockPanel.Dock="Top" Margin="0,5,0,0">Attachments:</TextBlock>
 
 				<ItemsControl DockPanel.Dock="Top"
-							  ItemsSource="{Binding Attachments}"
-						      BorderThickness="1"
-						      BorderBrush="#FFA2A2A2">
+				              ItemsSource="{Binding Attachments}"
+				              Visibility="{Binding HasAttachments, Converter={StaticResource BoolToVis}}"
+				              BorderThickness="1"
+				              BorderBrush="#FFA2A2A2">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate DataType="local:AttachmentViewModel">
-							<local:AttachmentControl />
+							<local:AttachmentControl Margin="2" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
+				<Button DockPanel.Dock="Top" Margin="0,5,0,0" HorizontalAlignment="Right" Padding="7,2">Add Attachment...</Button>
 
 				<TextBlock DockPanel.Dock="Top">Compose:</TextBlock>
 				<TextBox />
@@ -92,7 +95,8 @@
 				<!--Addresses-->
 				<DockPanel x:Name="AddressesItemsControl"
 				           Grid.Row="0"
-				           Margin="4">
+				           Margin="4"
+				           d:DataContext="{d:DesignInstance designData:SampleAddressListViewModel, IsDesignTimeCreatable=True}">
 
 					<DockPanel DockPanel.Dock="Top">
 						<TextBlock Margin="0,0,0,2"
@@ -103,7 +107,7 @@
 						        DockPanel.Dock="Right"
 						        HorizontalAlignment="Right"
 						        VerticalAlignment="Bottom"
-						        Padding="7,1,7,1">
+						        Padding="7,2">
 							Add Address
 						</Button>
 					</DockPanel>
@@ -120,9 +124,13 @@
 
 							<ItemsControl.ItemTemplate>
 								<DataTemplate DataType="local:AddressListItemViewModel">
-									<local:AddressControl />
+									<Border BorderBrush="#FFC9C9C9"
+									        BorderThickness="0,0,0,1">
+										<local:AddressControl />
+									</Border>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
+
 
 						</ItemsControl>
 					</ScrollViewer>

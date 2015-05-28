@@ -12,7 +12,18 @@ namespace Mailer.DesignData
 		{
 			Subject = "subjectLine";
 			AddAttachment("tpsReport-5-27-2015.pdf");
-			AddAttachment("C00lSCreensaver.exe");
+			AddAttachment("C00LSCreensaver.exe");
+
+			AddRecipient(new Address
+			{
+				FirstName = "Bob",
+				LastName = "Newbie",
+				Email = "Bob@zombo.com"
+			});
+			AddRecipient(new MailingList
+			{
+				Name = "Bob's cool friends",
+			});
 		}
 	}
 }
