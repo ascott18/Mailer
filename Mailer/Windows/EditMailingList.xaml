@@ -1,4 +1,4 @@
-﻿<Window x:Class="Mailer.EditMailingList"
+﻿<Window x:Class="Mailer.Windows.EditMailingList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         xmlns:mailer="clr-namespace:Mailer"
         xmlns:designData="clr-namespace:Mailer.DesignData"
+        xmlns:controls="clr-namespace:Mailer.Controls"
         Title="Edit Mailing List"
         Height="374"
         Width="414">
@@ -49,7 +50,7 @@
 					        Padding="0"
 					        Margin="0,0,0,-0"
 					        BorderBrush="#FFDEDEDE">
-						<mailer:AddressControl />
+						<controls:AddressControl />
 					</Border>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
@@ -98,7 +99,7 @@
 					        Padding="0"
 					        Margin="0,0,0,-0"
 					        BorderBrush="#FFDEDEDE">
-						<mailer:AddressControl />
+						<controls:AddressControl />
 					</Border>
 				</DataTemplate>
 			</ListBox.ItemTemplate>

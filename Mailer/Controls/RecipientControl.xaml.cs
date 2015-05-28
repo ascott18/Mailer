@@ -10,18 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Mailer
+namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for EditMailingList.xaml
+	/// Interaction logic for RecipientControl.xaml
 	/// </summary>
-	public partial class EditMailingList : Window
+	public partial class RecipientControl : UserControl
 	{
-		public EditMailingList()
+		public RecipientControl()
 		{
 			InitializeComponent();
+		}
+
+		private void Delete_OnClick(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

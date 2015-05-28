@@ -89,27 +89,32 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AddressListItemViewModel.cs" />
-    <Compile Include="AttachmentControl.xaml.cs">
+    <Compile Include="Controls\RecipientControl.xaml.cs">
+      <DependentUpon>RecipientControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignData\SampleRecipientViewModel.cs" />
+    <Compile Include="ViewModels\AddressListItemViewModel.cs" />
+    <Compile Include="Controls\AttachmentControl.xaml.cs">
       <DependentUpon>AttachmentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AttachmentViewModel.cs" />
+    <Compile Include="ViewModels\AddressRecipientViewModel.cs" />
+    <Compile Include="ViewModels\AttachmentViewModel.cs" />
     <Compile Include="DesignData\SampleAddressListItemViewModel.cs" />
     <Compile Include="DesignData\SampleAddressListViewModel.cs" />
     <Compile Include="DesignData\SampleAttachmentViewModel.cs" />
     <Compile Include="DesignData\SampleMessageViewModel.cs" />
     <Compile Include="Logic.cs" />
-    <Compile Include="AddressBinding.cs" />
-    <Compile Include="AddressControl.xaml.cs">
+    <Compile Include="Controls\AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddressListViewModel.cs" />
-    <Compile Include="EditAddressViewModel.cs" />
-    <Compile Include="BaseViewModel.cs" />
-    <Compile Include="EditAddress.xaml.cs">
+    <Compile Include="ViewModels\AddressListViewModel.cs" />
+    <Compile Include="ViewModels\EditAddressViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MailingListRecipientViewModel.cs" />
+    <Compile Include="Windows\EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditMailingList.xaml.cs">
+    <Compile Include="Windows\EditMailingList.xaml.cs">
       <DependentUpon>EditMailingList.xaml</DependentUpon>
     </Compile>
     <Compile Include="InverseBooleanConverter.cs" />
@@ -129,28 +134,32 @@
     <Compile Include="Message.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="MessageViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="RecipientViewModel.cs" />
-    <Page Include="AddressControl.xaml">
+    <Compile Include="ViewModels\RecipientViewModel.cs" />
+    <Page Include="Controls\AddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AttachmentControl.xaml">
+    <Page Include="Controls\AttachmentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditAddress.xaml">
+    <Page Include="Controls\RecipientControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditMailingList.xaml">
+    <Page Include="Windows\EditAddress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\EditMailingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -168,7 +177,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MailerDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

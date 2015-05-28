@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Mailer
+namespace Mailer.ViewModels
 {
 	class AttachmentViewModel
 	{
 		public MessageViewModel Parent { get; set; }
 
 		public String FileName { get; set; }
+
+		public String FullPath { get; set; }
 
 		public AttachmentViewModel()
 		{

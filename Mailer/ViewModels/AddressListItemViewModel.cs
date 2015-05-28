@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Mailer.Windows;
 
-namespace Mailer
+namespace Mailer.ViewModels
 {
 	public class AddressListItemViewModel : BaseViewModel
 	{

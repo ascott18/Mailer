@@ -5,7 +5,9 @@
         mc:Ignorable="d"
         xmlns:local="clr-namespace:Mailer"
         xmlns:designData="clr-namespace:Mailer.DesignData"
-        x:Class="Mailer.MainWindow"
+        xmlns:controls="clr-namespace:Mailer.Controls"
+        xmlns:viewModels="clr-namespace:Mailer.ViewModels"
+        x:Class="Mailer.Windows.MainWindow"
         Title="MainWindow"
         Height="546"
         Width="567"
@@ -68,8 +70,8 @@
 				              BorderThickness="1"
 				              BorderBrush="#FFA2A2A2">
 					<ItemsControl.ItemTemplate>
-						<DataTemplate DataType="local:AttachmentViewModel">
-							<local:AttachmentControl Margin="2" />
+						<DataTemplate DataType="viewModels:AttachmentViewModel">
+							<controls:AttachmentControl Margin="1" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
@@ -123,10 +125,10 @@
 
 
 							<ItemsControl.ItemTemplate>
-								<DataTemplate DataType="local:AddressListItemViewModel">
+								<DataTemplate DataType="viewModels:AddressListItemViewModel">
 									<Border BorderBrush="#FFC9C9C9"
 									        BorderThickness="0,0,0,1">
-										<local:AddressControl />
+										<controls:AddressControl />
 									</Border>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
