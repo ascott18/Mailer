@@ -20,11 +20,19 @@ namespace Mailer.ViewModels
 			}
 		}
 
-		public MailingList MailingList { get; private set; }
+	    protected EditMailingViewModel()
+	    {
+	        MailingListLines = new ObservableCollection<MailingListLine>();
+            AvailAddresses = new ObservableCollection<Address>();
+	    }
 
-		public ObservableCollection<MailingListLine> MailingListLines { get; private set; }
 
-        public ObservableCollection<Address> AvailAddresses { get; private set; } 
+
+		public MailingList MailingList { get; protected set; }
+
+		public ObservableCollection<MailingListLine> MailingListLines { get; protected set; }
+
+        public ObservableCollection<Address> AvailAddresses { get; protected set; } 
 
 
         public void AddAddressId(int aid)
@@ -44,6 +52,7 @@ namespace Mailer.ViewModels
                 db.SaveChangesAsync();
             }
         }
+
 
         public void RemoveAddressId(int aid)
         {

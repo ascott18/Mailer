@@ -13,7 +13,7 @@ namespace Mailer.ViewModels
     {
 
         
-        public ObservableCollection<MailingListItemViewModel> MailingViewModels { get; private set; }
+        public ObservableCollection<MailingListItemViewModel> MailingViewModels { get; protected set; }
 
 
         public MailingListViewModel()
@@ -29,7 +29,9 @@ namespace Mailer.ViewModels
             }
         }
 
-        private MailingListItemViewModel AddMailingListItemViewModel(MailingList mlist)
+	
+
+	    private MailingListItemViewModel AddMailingListItemViewModel(MailingList mlist)
         {
             var vm = new MailingListItemViewModel(mlist);
             vm.Deleted += vm_Deleted;
