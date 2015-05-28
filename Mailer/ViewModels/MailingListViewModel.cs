@@ -62,6 +62,25 @@ namespace Mailer.ViewModels
                 vm.Edit();
             }
         }
+
+        public void Clone(int id)
+        {
+            using (var db = new MailerEntities())
+            {
+                var oldList = db.MailingLists.Single(ml => ml.ListID == id);
+
+                var newList = new MailingList
+                {
+                    Name = oldList.Name,
+                    MailingListLines =
+                        new HashSet<MailingListLine>(
+                            oldList.MailingListLines.Select(mll => new MailingListLine { Address = mll.Address }))
+                };
+
+                db.MailingLists.Add(newList);
+                db.SaveChanges();
+            }
+        }
     }
 
 
