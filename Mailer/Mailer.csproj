@@ -89,7 +89,9 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddressListItemViewModel.cs" />
     <Compile Include="ViewModels\EditMailingViewModel.cs" />
+    <Compile Include="ViewModels\MailingListItemViewModel.cs" />
     <Compile Include="ViewModels\MailingListViewModel.cs" />
     <Compile Include="AddressBinding.cs" />
     <Compile Include="AddressControl.xaml.cs">

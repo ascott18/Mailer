@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Mailer.ViewModels;
 
 namespace Mailer
 {
@@ -19,9 +20,10 @@ namespace Mailer
 	/// </summary>
 	public partial class EditMailingList : Window
 	{
-		public EditMailingList()
+		public EditMailingList(EditMailingViewModel editMailingViewModel)
 		{
 			InitializeComponent();
+		    DataContext = editMailingViewModel;
 		}
 	}
 }
