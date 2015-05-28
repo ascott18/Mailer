@@ -21,7 +21,7 @@ namespace Mailer.Controls
 			var vm = DataContext as AttachmentViewModel;
 			if (vm != null)
 			{
-				vm.Delete();
+				vm.Remove();
 			}
 		}
 	}

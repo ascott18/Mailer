@@ -8,15 +8,15 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	internal class SampleAddressListViewModel : AddressListViewModel
+	internal class MockAddressListViewModel : AddressListViewModel
 	{
-		public SampleAddressListViewModel()
+		public MockAddressListViewModel()
 		{
 			AddressListItemViewModels = new ObservableCollection<AddressListItemViewModel>
 			{
-				new SampleAddressListItemViewModel(),
-				new SampleAddressListItemViewModel(),
-				new SampleAddressListItemViewModel()
+				new MockAddressListItemViewModel(),
+				new MockAddressListItemViewModel(),
+				new MockAddressListItemViewModel()
 			};
 		}
 	}

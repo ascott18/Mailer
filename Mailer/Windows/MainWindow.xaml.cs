@@ -35,7 +35,7 @@ namespace Mailer.Windows
 
 
 
-			var mvm = new SampleMessageViewModel();
+			var mvm = new MockMessageViewModel();
 			ComposePanel.DataContext = mvm;
 		}
 

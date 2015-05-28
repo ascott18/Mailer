@@ -7,11 +7,11 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class SampleAttachmentViewModel : AttachmentViewModel
+	class MockRecipientViewModel : RecipientViewModel
 	{
-		public SampleAttachmentViewModel()
+		public MockRecipientViewModel() : base(null)
 		{
-			FileName = "CoolFile.png";
+			Display = "Amazing Recipient";
 		}
 	}
 }

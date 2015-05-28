@@ -7,9 +7,9 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class SampleAddressListItemViewModel : AddressListItemViewModel
+	class MockAddressListItemViewModel : AddressListItemViewModel
 	{
-		public SampleAddressListItemViewModel()
+		public MockAddressListItemViewModel()
 			: base(new Address
 			{
 				Email = "test@google.com",

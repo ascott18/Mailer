@@ -95,17 +95,17 @@
     <Compile Include="Controls\RecipientControl.xaml.cs">
       <DependentUpon>RecipientControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DesignData\SampleRecipientViewModel.cs" />
+    <Compile Include="DesignData\MockRecipientViewModel.cs" />
     <Compile Include="ViewModels\AddressListItemViewModel.cs" />
     <Compile Include="Controls\AttachmentControl.xaml.cs">
       <DependentUpon>AttachmentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddressRecipientViewModel.cs" />
     <Compile Include="ViewModels\AttachmentViewModel.cs" />
-    <Compile Include="DesignData\SampleAddressListItemViewModel.cs" />
-    <Compile Include="DesignData\SampleAddressListViewModel.cs" />
-    <Compile Include="DesignData\SampleAttachmentViewModel.cs" />
-    <Compile Include="DesignData\SampleMessageViewModel.cs" />
+    <Compile Include="DesignData\MockAddressListItemViewModel.cs" />
+    <Compile Include="DesignData\MockAddressListViewModel.cs" />
+    <Compile Include="DesignData\MockAttachmentViewModel.cs" />
+    <Compile Include="DesignData\MockMessageViewModel.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Controls\AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>

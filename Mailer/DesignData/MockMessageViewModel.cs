@@ -7,9 +7,9 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class SampleMessageViewModel : MessageViewModel
+	class MockMessageViewModel : MessageViewModel
 	{
-		public SampleMessageViewModel()
+		public MockMessageViewModel()
 		{
 			Subject = "subjectLine";
 			AddAttachment("tpsReport-5-27-2015.pdf");
