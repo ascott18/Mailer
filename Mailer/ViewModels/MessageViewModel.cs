@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using Mailer.Mail;
 
 namespace Mailer.ViewModels
 {
@@ -97,6 +98,31 @@ namespace Mailer.ViewModels
 		public void AddRecipient(MailingList list)
 		{
 			Recipients.Add(new MailingListRecipientViewModel(this, list));
+		}
+
+		public void Send()
+		{
+			var client = new Client("smtp.gmail.com", 587)
+			{
+				UserName = "0xdeadc0detest@gmail.com",
+				Password = "incrediblepassword"
+			};
+
+			var message = new Mail.Message(client)
+			{
+				Subject = Subject,
+				Body = Body
+			};
+
+			foreach (var rvm in Recipients)
+			{
+				if (rvm is AddressRecipientViewModel)
+					message.AddRecipient((rvm as AddressRecipientViewModel).Address);
+				else if (rvm is MailingListRecipientViewModel)
+					message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
+			}
+
+			message.Send();
 		}
 	}
 }

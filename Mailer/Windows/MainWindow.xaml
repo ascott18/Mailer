@@ -55,7 +55,7 @@
 			<DockPanel Grid.Column="0"
 			           Margin="8"
 			           x:Name="ComposePanel"
-			           d:DataContext="{d:DesignInstance designData:SampleMessageViewModel, IsDesignTimeCreatable=True}">
+			           d:DataContext="{d:DesignInstance designData:MockMessageViewModel, IsDesignTimeCreatable=True}">
 
 				<!--Recipients-->
 				<TextBlock DockPanel.Dock="Top">To:</TextBlock>
@@ -117,7 +117,8 @@
 				<!--Body-->
 				<TextBlock DockPanel.Dock="Top">Compose:</TextBlock>
 
-				<Button DockPanel.Dock="Bottom"
+				<Button Click="Send_OnClick"
+						DockPanel.Dock="Bottom"
 				        Margin="0,5,0,0"
 				        HorizontalAlignment="Right"
 				        Padding="7,2">
@@ -145,7 +146,7 @@
 				<DockPanel x:Name="AddressesItemsControl"
 				           Grid.Row="0"
 				           Margin="4"
-				           d:DataContext="{d:DesignInstance designData:SampleAddressListViewModel, IsDesignTimeCreatable=True}">
+				           d:DataContext="{d:DesignInstance designData:MockAddressListViewModel, IsDesignTimeCreatable=True}">
 
 					<DockPanel DockPanel.Dock="Top">
 						<TextBlock Margin="0,0,0,2"
@@ -188,7 +189,7 @@
 				<!--Mailing Lists-->
 				<DockPanel Grid.Row="2"
 				           Margin="4">
-					<!--TODO: d:DataContext="{d:DesignInstance designData:SampleMailingListListViewModel, IsDesignTimeCreatable=True}"-->
+					<!--TODO: d:DataContext="{d:DesignInstance designData:MockMailingListListViewModel, IsDesignTimeCreatable=True}"-->
 
 					<DockPanel DockPanel.Dock="Top">
 						<TextBlock Margin="0,0,0,2"

@@ -21,8 +21,7 @@ namespace Mailer.Mail
         private MailMessage message;
        
         //the addresses in the mailing lists are not currently being added to the message.To
-        private List<MailingList> mailingLists;
-        private List<Address> addresses;
+        private readonly List<Address> recipients = new List<Address>();
 
         public MailMessage MailMessage { get; set; }
 
@@ -56,21 +55,29 @@ namespace Mailer.Mail
 
         }
 
-        public void AddMailingList(MailingList list)
+        public void AddRecipient(Address address) 
         {
-            mailingLists.Add(list);
+			recipients.Add(address);
         }
 
-        public void AddSingleRecipient(Address address) 
+        public void AddRecipient(MailingList list) 
         {
-            addresses.Add(address);
+	        using (var db = new MailerEntities())
+	        {
+		        list = db.MailingLists.Find(list.ListID);
+
+		        foreach (var line in list.MailingListLines)
+				{
+					recipients.Add(line.Address);
+		        }
+	        }
         }
 
 
         public void Send()
         {
 
-            foreach (Address address in addresses)
+			foreach (var address in recipients)
             {
                 message.To.Add(address.Email);
             }
@@ -78,9 +85,9 @@ namespace Mailer.Mail
             client.Mailer.Send(message);
         }
 
-        private void AddAttachment(string attachmentFilename, string mediaTypeName)
+        private void AddAttachment(string attachmentFilename)
         {
-            Attachment attachment = new Attachment(attachmentFilename, mediaTypeName);
+            var attachment = new Attachment(attachmentFilename);
             message.Attachments.Add(attachment);
         }
       

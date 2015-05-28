@@ -21,6 +21,12 @@ namespace Mailer.DesignData
 				LastName = "Newbie",
 				Email = "Bob@zombo.com"
 			});
+			AddRecipient(new Address
+			{
+				FirstName = "Andrew",
+				LastName = "Scott",
+				Email = "ascott18@gmail.com"
+			});
 			AddRecipient(new MailingList
 			{
 				Name = "Bob's cool friends",

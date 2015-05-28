@@ -43,5 +43,15 @@ namespace Mailer.Windows
 		{
 			((AddressListViewModel)AddressesItemsControl.DataContext).Add();
 		}
+
+		private void Send_OnClick(object sender, RoutedEventArgs e)
+		{
+			var mvm = ComposePanel.DataContext as MockMessageViewModel;
+
+			if (mvm != null)
+			{
+				mvm.Send();
+			}
+		}
 	}
 }
