@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mailer.ViewModels;
+using Mailer.Windows;
 
 namespace Mailer.ViewModels
 {
-
-
-    class MailingListViewModel : BaseViewModel
+	public class MailingListViewModel : BaseViewModel
     {
 
         
@@ -66,8 +65,7 @@ namespace Mailer.ViewModels
     }
 
 
-   
-    internal class MailingListItemViewModel : BaseViewModel
+	public class MailingListItemViewModel : BaseViewModel
     {
         public MailingListItemViewModel(MailingList mlist)
         {

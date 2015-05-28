@@ -108,7 +108,6 @@
     <Compile Include="DesignData\MockAddressListViewModel.cs" />
     <Compile Include="DesignData\MockAttachmentViewModel.cs" />
     <Compile Include="DesignData\MockMessageViewModel.cs" />
-    <Compile Include="Logic.cs" />
     <Compile Include="Controls\AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>

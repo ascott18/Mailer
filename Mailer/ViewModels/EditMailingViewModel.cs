@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Mailer.ViewModels
 {
-    class EditMailingViewModel
+	public class EditMailingViewModel
     {
         public EditMailingViewModel(MailingList mlist)
 		{
 			using (var db = new MailerEntities())
 			{
 				MailingList = db.MailingLists.Find(mlist.ListID);
-				ReceivedMails = new ObservableCollection<ReceivedMail>(Address.ReceivedMails);
 			}
 		}
 

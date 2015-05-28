@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using Mailer.ViewModels;
 
 namespace Mailer.Windows
 {
@@ -9,9 +10,10 @@ namespace Mailer.Windows
 	/// </summary>
 	public partial class EditMailingList : Window
 	{
-		public EditMailingList()
+		public EditMailingList(EditMailingViewModel editMailingViewModel)
 		{
 			InitializeComponent();
+			DataContext = editMailingViewModel;
 		}
 	}
 }
