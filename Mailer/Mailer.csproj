@@ -89,6 +89,8 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\EditMailingViewModel.cs" />
+    <Compile Include="ViewModels\MailingListViewModel.cs" />
     <Compile Include="Controls\MailingListControl.xaml.cs">
       <DependentUpon>MailingListControl.xaml</DependentUpon>
     </Compile>
