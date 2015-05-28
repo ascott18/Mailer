@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mailer="clr-namespace:Mailer"
+             xmlns:designData="clr-namespace:Mailer.DesignData"
              mc:Ignorable="d"
              d:DesignWidth="300"
-             d:DataContext="{d:DesignData Source=./DesignData/SampleAddress.xaml}"
+             d:DataContext="{d:DesignInstance designData:SampleAddressListItemViewModel, IsDesignTimeCreatable=True}"
              Background="White">
 
 	<UserControl.Resources>
@@ -52,7 +53,7 @@
 			<Image Margin="-1"
 			       Height="16"
 			       Width="16"
-			       Source="pack://application:,,,/Images/ic_create_16px.png" />
+			       Source="Images/ic_create_16px.png" />
 
 		</Button>
 		<Button Click="Delete_OnClick"
@@ -65,7 +66,7 @@
 			<Image Margin="-1"
 			       Height="16"
 			       Width="16"
-			       Source="pack://application:,,,/Images/ic_delete_16px.png" />
+			       Source="Images/ic_delete_16px.png" />
 		</Button>
 
 	</Grid>

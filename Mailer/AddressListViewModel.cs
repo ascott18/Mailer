@@ -12,19 +12,10 @@ namespace Mailer
 		public AddressListViewModel()
 		{
 			AddressViewModels = new ObservableCollection<AddressListItemViewModel>();
-
-			using (var db = new MailerEntities())
-			{
-				foreach (var address in db.Addresses)
-				{
-					AddAddressListItemViewModel(address);
-				}
-			}
 		}
 
-		private AddressListItemViewModel AddAddressListItemViewModel(Address address)
+		public AddressListItemViewModel AddAddressListItemViewModel(AddressListItemViewModel vm)
 		{
-			var vm = new AddressListItemViewModel(address);
 			vm.Deleted += vm_Deleted;
 			AddressViewModels.Add(vm);
 			return vm;
@@ -37,7 +28,7 @@ namespace Mailer
 			AddressViewModels.Remove(alivm);
 		}
 
-		public ObservableCollection<AddressListItemViewModel> AddressViewModels { get; private set; }
+		public ObservableCollection<AddressListItemViewModel> AddressViewModels { get; protected set; }
 
 		public void Add()
 		{
@@ -53,72 +44,11 @@ namespace Mailer
 				db.SaveChangesAsync();
 
 
-				var vm = AddAddressListItemViewModel(address);
+				var vm = AddAddressListItemViewModel(new AddressListItemViewModel(address));
 				vm.Edit();
 			}
 		}
 	}
 
-	internal class AddressListItemViewModel : BaseViewModel
-	{
-		public AddressListItemViewModel(Address address)
-		{
-			Address = address;
-			FirstName = address.FirstName;
-			LastName = address.LastName;
-			Email = address.Email;
-		}
-
-		public Address Address { get; private set; }
-		
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Email { get; set; }
-
-		public void Edit()
-		{
-			var addrWind = new EditAddress(new EditAddressViewModel(Address));
-			addrWind.ShowDialog();
-
-			using (var db = new MailerEntities())
-			{
-				Address = db.Addresses.Find(Address.AddressID);
-			}
-
-			FirstName = Address.FirstName;
-			OnPropertyChanged("FirstName");
-
-			LastName = Address.LastName;
-			OnPropertyChanged("LastName");
-
-			Email = Address.Email;
-			OnPropertyChanged("Email");
-
-		}
-
-		public void Delete()
-		{
-			using (var db = new MailerEntities())
-			{
-				db.Addresses.Attach(Address);
-				db.MailingListLines.RemoveRange(Address.MailingListLines);
-				db.ReceivedMails.RemoveRange(Address.ReceivedMails);
-				db.Addresses.Remove(Address);
-				db.SaveChanges();
-			}
-
-			OnDeleted();
-		}
-
-		/// <summary>
-		/// Fired when the address represented by the ViewModel is deleted by the ViewModel.
-		/// </summary>
-		public event EventHandler Deleted;
-
-		protected virtual void OnDeleted()
-		{
-			EventHandler handler = Deleted;
-			if (handler != null) handler(this, EventArgs.Empty);
-		}
-	}
+	
 }

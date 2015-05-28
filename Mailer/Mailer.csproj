@@ -89,6 +89,14 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddressListItemViewModel.cs" />
+    <Compile Include="AttachmentControl.xaml.cs">
+      <DependentUpon>AttachmentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttachmentViewModel.cs" />
+    <Compile Include="DesignData\SampleAddressListItemViewModel.cs" />
+    <Compile Include="DesignData\SampleAddressListViewModel.cs" />
+    <Compile Include="DesignData\SampleMessageViewModel.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="AddressBinding.cs" />
     <Compile Include="AddressControl.xaml.cs">
@@ -112,9 +120,6 @@
     <Compile Include="MailingList.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="MailingListAddressControl.xaml.cs">
-      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MailingListLine.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
@@ -123,37 +128,24 @@
     <Compile Include="Message.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="MessageViewModel.cs" />
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="RecipientViewModel.cs" />
     <Page Include="AddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <DesignData Include="DesignData\SampleAddressBinding2.xaml">
+    <Page Include="AttachmentControl.xaml">
       <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="DesignData\SampleAddressBinding1.xaml">
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="DesignData\SampleAddress.xaml">
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="DesignData\SampleAddressBindings.xaml">
-      <SubType>Designer</SubType>
-    </DesignData>
-    <Page Include="DesignData\SampleAddresses.xaml">
-      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditAddress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditMailingList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MailingListAddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

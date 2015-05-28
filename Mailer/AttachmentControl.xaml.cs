@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Mailer
 {
 	/// <summary>
-	/// Interaction logic for MailingListAddressControl.xaml
+	/// Interaction logic for AttachmentControl.xaml
 	/// </summary>
-	public partial class MailingListAddressControl : UserControl
+	public partial class AttachmentControl : UserControl
 	{
-		public MailingListAddressControl()
+		public AttachmentControl()
 		{
 			InitializeComponent();
 		}

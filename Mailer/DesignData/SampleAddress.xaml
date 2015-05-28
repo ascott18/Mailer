@@ -1,5 +1,0 @@
-﻿<mailer:Address
-	xmlns:mailer="clr-namespace:Mailer"
-	FirstName="Andrew"
-	LastName="Scott"
-	Email="test@google.com" />
