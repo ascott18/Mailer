@@ -16,7 +16,7 @@ namespace LogicTesting
         {
             int id = 1;
 
-            Logic testClone = new Logic();
+            MailingListViewModel testClone = new MailingListViewModel();
 
             testClone.Clone(id);
 

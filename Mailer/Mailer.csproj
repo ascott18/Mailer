@@ -89,14 +89,15 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Logic.cs" />
+    <Compile Include="ViewModels\EditMailingViewModel.cs" />
+    <Compile Include="ViewModels\MailingListViewModel.cs" />
     <Compile Include="AddressBinding.cs" />
     <Compile Include="AddressControl.xaml.cs">
       <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddressListViewModel.cs" />
-    <Compile Include="EditAddressViewModel.cs" />
-    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="ViewModels\AddressListViewModel.cs" />
+    <Compile Include="ViewModels\EditAddressViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
     </Compile>

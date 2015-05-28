@@ -5,10 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mailer
+namespace Mailer.ViewModels
 {
+
+
 	class AddressListViewModel : BaseViewModel
 	{
+
+        public ObservableCollection<AddressListItemViewModel> AddressViewModels { get; private set; }
+
+
 		public AddressListViewModel()
 		{
 			AddressViewModels = new ObservableCollection<AddressListItemViewModel>();
@@ -37,7 +43,7 @@ namespace Mailer
 			AddressViewModels.Remove(alivm);
 		}
 
-		public ObservableCollection<AddressListItemViewModel> AddressViewModels { get; private set; }
+		
 
 		public void Add()
 		{
