@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using Mailer.Mail;
 
 namespace Mailer.ViewModels
@@ -27,6 +29,12 @@ namespace Mailer.ViewModels
 		///     The body text of the email message.
 		/// </summary>
 		public String Body { get; set; }
+
+
+		/// <summary>
+		///     The email address to put at the sender of the message.
+		/// </summary>
+		public String From { get; set; }
 
 		/// <summary>
 		///     Returns whether the Attachments collection is empty or not. Functions with
@@ -102,16 +110,17 @@ namespace Mailer.ViewModels
 
 		public void Send()
 		{
-			var client = new Client("smtp.gmail.com", 587)
+			var client = new Client("smtp.mailgun.org", 587)
 			{
-				UserName = "0xdeadc0detest@gmail.com",
-				Password = "incrediblepassword"
+				UserName = "mailer@mg.scotta.me",
+				Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
 			};
 
 			var message = new Mail.Message(client)
 			{
 				Subject = Subject,
-				Body = Body
+				Body = Body,
+				From = new MailAddress(From)
 			};
 
 			foreach (var rvm in Recipients)

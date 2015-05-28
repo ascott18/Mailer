@@ -57,8 +57,21 @@
 			           x:Name="ComposePanel"
 			           d:DataContext="{d:DesignInstance designData:MockMessageViewModel, IsDesignTimeCreatable=True}">
 
+
+				<!--From-->
+				<TextBlock DockPanel.Dock="Top"
+				           Margin="0,5,0,0">
+					From:
+				</TextBlock>
+				<TextBox DockPanel.Dock="Top"
+				         Text="{Binding From}" />
+
+
 				<!--Recipients-->
-				<TextBlock DockPanel.Dock="Top">To:</TextBlock>
+				<TextBlock DockPanel.Dock="Top"
+				           Margin="0,5,0,0">
+					To:
+				</TextBlock>
 				<ItemsControl DockPanel.Dock="Top"
 				              ItemsSource="{Binding Recipients}">
 					<ItemsControl.ItemsPanel>
@@ -99,11 +112,10 @@
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate DataType="viewModels:AttachmentViewModel">
-							<controls:AttachmentControl 
-				               Margin="1,1,5,1"
-							   Background="#FFE6E6E6"
-							   BorderBrush="#FFA2A2A2"
-							   BorderThickness="1" />
+							<controls:AttachmentControl Margin="1,1,5,1"
+							                            Background="#FFE6E6E6"
+							                            BorderBrush="#FFA2A2A2"
+							                            BorderThickness="1" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
@@ -118,7 +130,7 @@
 				<TextBlock DockPanel.Dock="Top">Compose:</TextBlock>
 
 				<Button Click="Send_OnClick"
-						DockPanel.Dock="Bottom"
+				        DockPanel.Dock="Bottom"
 				        Margin="0,5,0,0"
 				        HorizontalAlignment="Right"
 				        Padding="7,2">

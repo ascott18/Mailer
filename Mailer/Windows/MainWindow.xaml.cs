@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Windows;
 using Mailer.DesignData;
 using Mailer.ViewModels;
@@ -19,6 +21,8 @@ namespace Mailer.Windows
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
+			
+
 			var vm = new AddressListViewModel();
 
 			using (var db = new MailerEntities())

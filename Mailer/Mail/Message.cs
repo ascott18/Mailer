@@ -22,9 +22,7 @@ namespace Mailer.Mail
        
         //the addresses in the mailing lists are not currently being added to the message.To
         private readonly List<Address> recipients = new List<Address>();
-
-        public MailMessage MailMessage { get; set; }
-
+		
         public string Body
         {
             get { return message.Body; }
@@ -34,14 +32,23 @@ namespace Mailer.Mail
             }
         }
 
-        public string Subject
-        {
-            get { return message.Subject; }
-            set
-            {
-                message.Subject = value;
-            }
-        }
+		public string Subject
+		{
+			get { return message.Subject; }
+			set
+			{
+				message.Subject = value;
+			}
+		}
+
+		public MailAddress From
+		{
+			get { return message.From; }
+			set
+			{
+				message.From = value;
+			}
+		}
 
         public Message(Client client)
         {

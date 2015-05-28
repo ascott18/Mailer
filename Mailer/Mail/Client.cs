@@ -37,7 +37,8 @@ namespace Mailer.Mail
         {
 			Mailer = new SmtpClient(host, port)
 			{
-				EnableSsl = true
+				EnableSsl = true,
+				Credentials = credentials
 			};
         }
 
