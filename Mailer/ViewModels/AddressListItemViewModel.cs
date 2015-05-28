@@ -9,7 +9,7 @@ namespace Mailer.ViewModels
 	/// </summary>
 	public class AddressListItemViewModel : BaseViewModel
 	{
-		public AddressListItemViewModel()
+		protected AddressListItemViewModel()
 		{
 		}
 

@@ -83,10 +83,9 @@ namespace Mailer.Mail
 
         public void Send()
         {
-
 			foreach (var address in recipients)
             {
-                message.To.Add(address.Email);
+                message.To.Add(new MailAddress(address.Email, address.FirstName + " " + address.LastName));
             }
 
             client.Mailer.Send(message);
