@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,31 +15,59 @@ namespace Mailer.ViewModels
 			using (var db = new MailerEntities())
 			{
 				MailingList = db.MailingLists.Find(mlist.ListID);
+			    MailingListLines = new ObservableCollection<MailingListLine>(mlist.MailingListLines);
+                AvailAddresses = new ObservableCollection<Address>(db.Addresses.Where(addr => MailingList.MailingListLines.All(mll => mll.AddressID != addr.AddressID)));
 			}
 		}
 
 		public MailingList MailingList { get; private set; }
 
-		public ObservableCollection<ReceivedMail> ReceivedMails { get; private set; }
+		public ObservableCollection<MailingListLine> MailingListLines { get; private set; }
+
+        public ObservableCollection<Address> AvailAddresses { get; private set; } 
 
 
-        public void Clone(int id)
+        public void AddAddressId(int aid)
+        {
+            if (MailingListLines.Any(rm => rm.AddressID == aid))
+                throw new InvalidOperationException("Address ID already exists!");
+
+            using (var db = new MailerEntities())
+            {
+                db.MailingLists.Attach(MailingList);
+                var newRm = new MailingListLine
+                {
+                    AddressID = aid
+                };
+                MailingList.MailingListLines.Add(newRm);
+                MailingListLines.Add(newRm);
+                db.SaveChangesAsync();
+            }
+        }
+
+        public void RemoveAddressId(int aid)
         {
             using (var db = new MailerEntities())
             {
-                var oldList = db.MailingLists.Single(ml => ml.ListID == id);
+                db.MailingLists.Attach(MailingList);
 
-                var newList = new MailingList
-                {
-                    Name = oldList.Name,
-                    MailingListLines =
-                        new HashSet<MailingListLine>(
-                            oldList.MailingListLines.Select(mll => new MailingListLine { Address = mll.Address }))
-                };
+                var rmToRemove = MailingListLines.First(rm => rm.AddressID == aid);
+                MailingList.MailingListLines.Remove(rmToRemove);
+                MailingListLines.Remove(rmToRemove);
+                db.SaveChangesAsync();
+            }
+        }
 
-                db.MailingLists.Add(newList);
+        public void Save()
+        {
+            using (var db = new MailerEntities())
+            {
+                db.MailingLists.Attach(MailingList);
+                db.Entry(MailingList).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
+
+       
     }
 }
