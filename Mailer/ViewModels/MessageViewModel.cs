@@ -136,13 +136,13 @@ namespace Mailer.ViewModels
                         message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
                 }
 
+                if (Body == null)
+                    throw new ArgumentException();
+
                 foreach (var attachment in Attachments)
                 {
                     message.AddAttachment(attachment.FullPath);
                 }
-
-                if (Body == null)
-                    throw new ArgumentException();
 
                 message.Send();
             }
@@ -151,7 +151,7 @@ namespace Mailer.ViewModels
                 if (Body == null)
                     throw new ArgumentException("Body can not be empty.");
                 else 
-                    throw new ArgumentException("Must input a From address");
+                    throw new ArgumentException("Must input a From address.");
             }
             catch (NullReferenceException)
             {

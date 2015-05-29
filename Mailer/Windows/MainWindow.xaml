@@ -139,7 +139,7 @@
 				</Button>
 
 				<TextBox Text="{Binding Body}" />
-                <controls:AttachmentControl Height="213" VerticalAlignment="Top"/>
+               
 
             </DockPanel>
 			<!--Right panel-->
