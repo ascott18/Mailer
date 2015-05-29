@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Mailer.ViewModels;
 
 namespace Mailer.Controls
 {
@@ -25,14 +26,25 @@ namespace Mailer.Controls
 			InitializeComponent();
 		}
 
-		private void Edit_OnClick(object sender, RoutedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
+        private void Edit_OnClick(object sender, RoutedEventArgs e)
+        {
+            var vm = (MailingListItemViewModel)DataContext;
+            vm.Edit();
+        }
 
-		private void Delete_OnClick(object sender, RoutedEventArgs e)
-		{
-			throw new NotImplementedException();
-		}
+        private void Delete_OnClick(object sender, RoutedEventArgs e)
+        {
+            var vm = (MailingListItemViewModel)DataContext;
+
+            var res = MessageBox.Show(
+                "Are you sure you wish to delete the mailing list " + vm.Name + "?",
+                "Are you sure?",
+                MessageBoxButton.YesNo);
+
+            if (res != MessageBoxResult.Yes)
+                return;
+
+            vm.Delete();
+        }
 	}
 }

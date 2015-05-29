@@ -21,21 +21,26 @@ namespace Mailer.Windows
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			
 
-			var vm = new AddressListViewModel();
+
+            var alvm = new AddressListViewModel();
+            var mlvm = new MailingListViewModel();
 
 			using (var db = new MailerEntities())
 			{
 				foreach (var address in db.Addresses)
 				{
-					vm.AddAddressListItemViewModel(new AddressListItemViewModel(address));
-				}
+					alvm.AddAddressListItemViewModel(new AddressListItemViewModel(address));
+                }
+
+                foreach (var mlist in db.MailingLists)
+                {
+                    mlvm.AddMailingListItemViewModel(new MailingListItemViewModel(mlist));
+                }
 			}
 
-			AddressesItemsControl.DataContext = vm;
-
-
+            AddressDockPanel.DataContext = alvm;
+            MailingListDockPanel.DataContext = mlvm;
 
 
 
@@ -45,7 +50,7 @@ namespace Mailer.Windows
 
 		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			((AddressListViewModel)AddressesItemsControl.DataContext).Add();
+			((AddressListViewModel)AddressDockPanel.DataContext).Add();
 		}
 
 		private void Send_OnClick(object sender, RoutedEventArgs e)
@@ -57,5 +62,10 @@ namespace Mailer.Windows
 				mvm.Send();
 			}
 		}
+
+	    private void AddMailingListButton_OnClick(object sender, RoutedEventArgs e)
+	    {
+            ((MailingListViewModel)MailingListDockPanel.DataContext).Add();
+	    }
 	}
 }

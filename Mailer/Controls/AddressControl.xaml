@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Mailer.Controls.AddressControl"
+﻿<UserControl x:Class="Mailer.Controls.MailingListAddressControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,18 +7,10 @@
              xmlns:designData="clr-namespace:Mailer.DesignData"
              mc:Ignorable="d"
              d:DesignWidth="300"
+             
              d:DataContext="{d:DesignInstance designData:MockAddressListItemViewModel, IsDesignTimeCreatable=True}"
 			 Padding="1">
 
-	<UserControl.Resources>
-		<BooleanToVisibilityConverter x:Key="BoolToVis" />
-
-		<mailer:ValueConverterGroup x:Key="InverseBoolToVis">
-			<mailer:InverseBooleanConverter />
-			<BooleanToVisibilityConverter />
-		</mailer:ValueConverterGroup>
-
-	</UserControl.Resources>
 
 	<Grid Margin="0,3">
 		<Grid.RowDefinitions>
@@ -27,9 +19,8 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
-			<ColumnDefinition />
-			<ColumnDefinition Width="Auto" />
-		</Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 		<TextBlock Text="{Binding FirstName}"
 		           Margin="5,0,0,0"
 		           VerticalAlignment="Center" />
@@ -38,36 +29,12 @@
 		           Grid.Column="1"
 		           Margin="5,0,0,0"
 		           VerticalAlignment="Center" />
-		<TextBlock Text="{Binding Email}"
+        <TextBlock Text="{Binding Email}"
 		           Grid.Row="1"
 		           Grid.ColumnSpan="2"
 		           Grid.Column="0"
 		           Margin="5,0,0,0"
 		           VerticalAlignment="Center" />
-		<Button Click="Edit_OnClick"
-				Grid.Row="0"
-		        Grid.Column="2"
-		        Background="{x:Null}"
-		        BorderBrush="{x:Null}"
-		        VerticalAlignment="Center">
-			<Image Margin="-1"
-			       Height="16"
-			       Width="16"
-			       Source="../Images/ic_create_16px.png" />
 
-		</Button>
-		<Button Click="Delete_OnClick"
-				Grid.Row="1"
-		        Grid.Column="2"
-		        Background="{x:Null}"
-		        BorderBrush="{x:Null}"
-		        VerticalContentAlignment="Center"
-		        VerticalAlignment="Center">
-			<Image Margin="-1"
-			       Height="16"
-			       Width="16"
-			       Source="../Images/ic_delete_16px.png" />
-		</Button>
-
-	</Grid>
+    </Grid>
 </UserControl>
