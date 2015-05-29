@@ -76,7 +76,7 @@ namespace Mailer.Windows
 	    private void AddMailingListButton_OnClick(object sender, RoutedEventArgs e)
 	    {
             ((MailingListViewModel)MailingListDockPanel.DataContext).Add();
-	    }\
+	    }
 
 
         private void AddAttachment_OnClick(object sender, RoutedEventArgs e)
