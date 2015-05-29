@@ -49,7 +49,7 @@ namespace Mailer.Windows
 				viewModel.RemoveYear((int)((ReceivedMail)selectedItem).Year);
 		}
 
-		private void Okay_Click(object sender, RoutedEventArgs e)
+		private void Okay_OnClick(object sender, RoutedEventArgs e)
 		{
             try
             {
@@ -61,11 +61,6 @@ namespace Mailer.Windows
                 MessageBox.Show(ex.Message);
             }
 			
-		}
-
-		private void Cancel_Click(object sender, RoutedEventArgs e)
-		{
-			Close();
 		}
 	}
 }

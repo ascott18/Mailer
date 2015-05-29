@@ -157,7 +157,7 @@
 
 
 				<!--Addresses-->
-				<DockPanel x:Name="AddressesItemsControl"
+				<DockPanel x:Name="AddressDockPanel"
 				           Grid.Row="0"
 				           Margin="4"
 				           d:DataContext="{d:DesignInstance designData:MockAddressListViewModel, IsDesignTimeCreatable=True}">
@@ -201,16 +201,16 @@
 				</DockPanel>
 
 				<!--Mailing Lists-->
-				<DockPanel Grid.Row="2"
-				           Margin="4">
-					<!--TODO: d:DataContext="{d:DesignInstance designData:MockMailingListListViewModel, IsDesignTimeCreatable=True}"-->
-
-					<DockPanel DockPanel.Dock="Top">
+                <DockPanel Grid.Row="2" x:Name="MailingListDockPanel"
+				           Margin="4"
+					    d:DataContext="{d:DesignInstance designData:MockMailingListViewModel, IsDesignTimeCreatable=True}"
+>
+                    <DockPanel DockPanel.Dock="Top">
 						<TextBlock Margin="0,0,0,2"
 						           VerticalAlignment="Bottom">
 							Mailing Lists:
 						</TextBlock>
-						<Button Click="AddAddressButton_OnClick"
+						<Button Click="AddMailingListButton_OnClick"
 						        DockPanel.Dock="Right"
 						        HorizontalAlignment="Right"
 						        VerticalAlignment="Bottom"
@@ -231,11 +231,11 @@
 
 
 							<ItemsControl.ItemTemplate>
-								<DataTemplate>
-									<!--TODO: DataType="viewModels:MailingListItemViewModel"-->
-									<Border BorderBrush="#FFC9C9C9"
+                                <DataTemplate
+									DataType="viewModels:MailingListItemViewModel">
+                                    <Border BorderBrush="#FFC9C9C9"
 									        BorderThickness="0,0,0,1">
-										<controls:AddressControl />
+										<controls:MailingListControl />
 									</Border>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
