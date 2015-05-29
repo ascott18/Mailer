@@ -58,7 +58,6 @@ namespace Mailer.Mail
 
             //set the from of the message to the client's username
             message = new MailMessage();
-            message.From = new MailAddress(client.UserName);
 
         }
 
@@ -91,7 +90,7 @@ namespace Mailer.Mail
             client.Mailer.Send(message);
         }
 
-        private void AddAttachment(string attachmentFilename)
+        public void AddAttachment(string attachmentFilename)
         {
             var attachment = new Attachment(attachmentFilename);
             message.Attachments.Add(attachment);

@@ -32,6 +32,8 @@ namespace Mailer.ViewModels
 		/// </summary>
 		public String FileName { get; set; }
 
+        public String FullPath { get; set; }
+
 		/// <summary>
 		///     Remove this AttachmentViewModel from its parent MessageViewModel.
 		/// </summary>

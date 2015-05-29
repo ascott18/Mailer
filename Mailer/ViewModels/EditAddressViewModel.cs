@@ -85,11 +85,18 @@ namespace Mailer.ViewModels
 		/// </summary>
 		public void Save()
 		{
+            if (Address.FirstName == "")
+                throw new ArgumentException("First name must not be empty");
+            else if (Address.Email == "")
+                throw new ArgumentException("Email address must not be empty");
+
 			using (var db = new MailerEntities())
 			{
 				db.Addresses.Attach(Address);
 				db.Entry(Address).State = EntityState.Modified;
 				db.SaveChanges();
+
+               
 			}
 		}
 	}
