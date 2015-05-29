@@ -51,8 +51,16 @@ namespace Mailer.Windows
 
 		private void Okay_Click(object sender, RoutedEventArgs e)
 		{
-			viewModel.Save();
-			Close();
+            try
+            {
+                viewModel.Save();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+			
 		}
 
 		private void Cancel_Click(object sender, RoutedEventArgs e)

@@ -122,7 +122,8 @@
 				<Button DockPanel.Dock="Top"
 				        Margin="0,5,0,0"
 				        HorizontalAlignment="Right"
-				        Padding="7,2">
+				        Padding="7,2"
+                        Click="AddAttachment_OnClick">
 					Add Attachment...
 				</Button>
 
@@ -138,8 +139,9 @@
 				</Button>
 
 				<TextBox Text="{Binding Body}" />
+                <controls:AttachmentControl Height="213" VerticalAlignment="Top"/>
 
-			</DockPanel>
+            </DockPanel>
 			<!--Right panel-->
 			<Grid Grid.Column="2">
 				<Grid.RowDefinitions>

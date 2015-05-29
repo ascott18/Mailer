@@ -5,6 +5,9 @@ using System.Net.Mail;
 using System.Windows;
 using Mailer.DesignData;
 using Mailer.ViewModels;
+using Microsoft.Win32;
+using Mailer.Controls;
+using System.IO;
 
 namespace Mailer.Windows
 {
@@ -50,12 +53,45 @@ namespace Mailer.Windows
 
 		private void Send_OnClick(object sender, RoutedEventArgs e)
 		{
-			var mvm = ComposePanel.DataContext as MockMessageViewModel;
+            try
+            {
+                var mvm = ComposePanel.DataContext as MockMessageViewModel;
 
-			if (mvm != null)
-			{
-				mvm.Send();
-			}
+                if (mvm != null)
+                {
+                    mvm.Send();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+			
 		}
+
+        private void AddAttachment_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {
+                var mvm = ComposePanel.DataContext as MockMessageViewModel;
+
+                if (mvm != null)
+                {
+                    OpenFileDialog ofd = new OpenFileDialog();
+
+                    if (ofd.ShowDialog() == true)
+                    {
+                        mvm.AddAttachment(ofd.FileName);
+                    }
+                }
+                    
+            }
+            catch (Exception exc) 
+            {
+                MessageBox.Show(exc.Message);
+            }
+             
+        }
 	}
 }

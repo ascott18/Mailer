@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using Mailer.Mail;
+using System.IO;
 
 namespace Mailer.ViewModels
 {
@@ -68,7 +69,8 @@ namespace Mailer.ViewModels
 		{
 			Attachments.Add(new AttachmentViewModel(this)
 			{
-				FileName = fileName
+				FileName = Path.GetFileName(fileName),
+                FullPath = fileName
 			});
 		}
 
@@ -110,28 +112,53 @@ namespace Mailer.ViewModels
 
 		public void Send()
 		{
-			var client = new Client("smtp.mailgun.org", 587)
-			{
-				UserName = "mailer@mg.scotta.me",
-				Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
-			};
+            
+            try
+            {
+                var client = new Client("smtp.mailgun.org", 587)
+                {
+                    UserName = "mailer@mg.scotta.me",
+                    Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
+                };
 
-			var message = new Mail.Message(client)
-			{
-				Subject = Subject,
-				Body = Body,
-				From = new MailAddress(From)
-			};
+                var message = new Mail.Message(client)
+                {
+                    Subject = Subject,
+                    Body = Body,
+                    From = new MailAddress(From)
+                };
 
-			foreach (var rvm in Recipients)
-			{
-				if (rvm is AddressRecipientViewModel)
-					message.AddRecipient((rvm as AddressRecipientViewModel).Address);
-				else if (rvm is MailingListRecipientViewModel)
-					message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
-			}
+                foreach (var rvm in Recipients)
+                {
+                    if (rvm is AddressRecipientViewModel)
+                        message.AddRecipient((rvm as AddressRecipientViewModel).Address);
+                    else if (rvm is MailingListRecipientViewModel)
+                        message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
+                }
 
-			message.Send();
+                foreach (var attachment in Attachments)
+                {
+                    message.AddAttachment(attachment.FullPath);
+                }
+
+                if (Body == null)
+                    throw new ArgumentException();
+
+                message.Send();
+            }
+            catch (ArgumentException)
+            {
+                if (Body == null)
+                    throw new ArgumentException("Body can not be empty.");
+                else 
+                    throw new ArgumentException("Must input a From address");
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Invalid recipient address");
+            }
+            
+			
 		}
 	}
 }
