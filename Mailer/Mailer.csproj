@@ -89,9 +89,14 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MailingListAddressControl.xaml.cs">
+      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignData\MockAddress.cs" />
     <Compile Include="DesignData\MockMailingListItemViewModel.cs" />
     <Compile Include="DesignData\MockMailingListViewModel.cs" />
     <Compile Include="ViewModels\EditMailingViewModel.cs" />
+    <Compile Include="ViewModels\MailingListItemViewModel.cs" />
     <Compile Include="ViewModels\MailingListViewModel.cs" />
     <Compile Include="Controls\MailingListControl.xaml.cs">
       <DependentUpon>MailingListControl.xaml</DependentUpon>
@@ -145,6 +150,10 @@
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RecipientViewModel.cs" />
+    <Page Include="Controls\MailingListAddressControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\AddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

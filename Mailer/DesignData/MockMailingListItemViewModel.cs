@@ -13,7 +13,7 @@ namespace Mailer.DesignData
         public MockMailingListItemViewModel()
             : base(new MailingList()
             {
-                Name = "stupid list"
+                Name = "Test MailingList"
             })
         {
 
