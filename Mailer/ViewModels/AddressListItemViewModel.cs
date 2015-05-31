@@ -85,20 +85,7 @@ namespace Mailer.ViewModels
 				db.SaveChanges();
 			}
 
-			OnDeleted();
-
 			MessagePump.Dispatch(this, "AddressDeleted");
-		}
-
-		/// <summary>
-		///     Fired when the address is deleted by calling Delete().
-		/// </summary>
-		public event EventHandler Deleted;
-
-		protected virtual void OnDeleted()
-		{
-			EventHandler handler = Deleted;
-			if (handler != null) handler(this, EventArgs.Empty);
 		}
 	}
 }

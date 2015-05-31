@@ -27,15 +27,7 @@ namespace Mailer.ViewModels
 		/// <param name="vm">The AddressListItemViewModel to add.</param>
 		public void AddAddressListItemViewModel(AddressListItemViewModel vm)
 		{
-			vm.Deleted += vm_Deleted;
 			AddressListItemViewModels.Add(vm);
-		}
-
-		private void vm_Deleted(object sender, EventArgs e)
-		{
-			var alivm = sender as AddressListItemViewModel;
-
-			AddressListItemViewModels.Remove(alivm);
 		}
 
 		/// <summary>
