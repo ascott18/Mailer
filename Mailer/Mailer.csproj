@@ -89,8 +89,9 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MailingListAddressControl.xaml.cs">
-      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
+    <Compile Include="Controls\AbstractRecipientSourceControl.cs" />
+    <Compile Include="Controls\AddressControl.xaml.cs">
+      <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="DesignData\MockAddress.cs" />
     <Compile Include="DesignData\MockMailingListItemViewModel.cs" />
@@ -117,8 +118,8 @@
     <Compile Include="DesignData\MockAddressListViewModel.cs" />
     <Compile Include="DesignData\MockAttachmentViewModel.cs" />
     <Compile Include="DesignData\MockMessageViewModel.cs" />
-    <Compile Include="Controls\AddressControl.xaml.cs">
-      <DependentUpon>AddressControl.xaml</DependentUpon>
+    <Compile Include="Controls\MailingListAddressControl.xaml.cs">
+      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddressListViewModel.cs" />
     <Compile Include="ViewModels\EditAddressViewModel.cs" />
@@ -152,11 +153,11 @@
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RecipientViewModel.cs" />
-    <Page Include="Controls\MailingListAddressControl.xaml">
+    <Page Include="Controls\AddressControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\AddressControl.xaml">
+    <Page Include="Controls\MailingListAddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

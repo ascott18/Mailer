@@ -19,7 +19,6 @@ namespace LogicTesting
 
             MailingListViewModel testClone = new MailingListViewModel();
 
-            testClone.Clone(id);
 
             using (var db = new MailerEntities())
             {
