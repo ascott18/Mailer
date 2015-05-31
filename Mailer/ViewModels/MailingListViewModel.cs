@@ -9,9 +9,16 @@ using Mailer.ViewModels;
 
 namespace Mailer.ViewModels
 {
+	/// <summary>
+	///     A ViewModel that represents a collection of MailingLists and their associated
+	///     MailingListItemViewModels.
+	///     Provides behavior for creating new mailing lists.
+	/// </summary>
 	public class MailingListViewModel : BaseViewModel
     {
-
+		/// <summary>
+		/// The collection of MailingListItemViewModels that this MailingListViewModel represents
+		/// </summary>
         public ObservableCollection<MailingListItemViewModel> MailingListItemViewModels { get; protected set; }
 
 
@@ -20,13 +27,18 @@ namespace Mailer.ViewModels
            MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
         }
 
-
+		/// <summary>
+		///     Add the specified MailingListItemViewModel to this MailingListViewModel.
+		/// </summary>
+		/// <param name="vm">The MailingListItemViewModel to add.</param>
 	    public void AddMailingListItemViewModel(MailingListItemViewModel vm)
         {
             MailingListItemViewModels.Add(vm);
         }
 
-
+		/// <summary>
+		///     Add a new MailingList to the database, and opens a dialog to edit that new address.
+		/// </summary>
         public void Add()
         {
             using (var db = new MailerEntities())
@@ -44,27 +56,6 @@ namespace Mailer.ViewModels
                 vm.Edit();
             }
         }
-
-        public void Clone(int id)
-        {
-            using (var db = new MailerEntities())
-            {
-                var oldList = db.MailingLists.Single(ml => ml.ListID == id);
-
-                var newList = new MailingList
-                {
-                    Name = oldList.Name,
-                    MailingListLines =
-                        new HashSet<MailingListLine>(
-                            oldList.MailingListLines.Select(mll => new MailingListLine { Address = mll.Address }))
-                };
-
-                db.MailingLists.Add(newList);
-                db.SaveChanges();
-            }
-        }
-
-
 
 
 		/// <summary>

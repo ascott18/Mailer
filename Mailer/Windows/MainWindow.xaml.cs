@@ -34,9 +34,7 @@ namespace Mailer.Windows
 			AddressDockPanel.DataContext = alvm;
 
 
-			var mvm = new MockMessageViewModel();
-			ComposePanel.DataContext = mvm;
-
+			ComposePanel.DataContext = new MessageViewModel();
 		}
 
 		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
@@ -55,9 +53,9 @@ namespace Mailer.Windows
                     mvm.Send();
                 }
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(ex.Message);
             }
 		}
 
@@ -85,9 +83,9 @@ namespace Mailer.Windows
                 }
                     
             }
-            catch (Exception exc) 
+            catch (Exception ex) 
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(ex.Message);
             }
              
         }
