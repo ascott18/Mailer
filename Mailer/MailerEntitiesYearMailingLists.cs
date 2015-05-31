@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mailer.Mail;
 
 namespace Mailer
 {
@@ -15,7 +16,7 @@ namespace Mailer
 
 			foreach (var receivedMailsInYear in db.ReceivedMails.GroupBy(rm => rm.Year))
 			{
-				var mailingList = new MailingList
+				var mailingList = new DynamicMailingList
 				{
 					ListID = -1,
 					Name = "Recieved in " + receivedMailsInYear.Key,

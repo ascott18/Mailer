@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Windows;
 using Mailer.Mail;
 using System.IO;
 
@@ -127,49 +128,63 @@ namespace Mailer.ViewModels
 
 		public void Send()
 		{
+			if (From == "")
+				throw new ArgumentException("Must input a From address.");
+
+			if (Subject == "")
+				throw new ArgumentException("Subject cannot be empty.");
+
+			if (Body == "")
+				throw new ArgumentException("Body cannot be empty.");
+
+			MailAddress fromAddress;
 			try
 			{
-				var client = new Client("smtp.mailgun.org", 587)
-				{
-					UserName = "mailer@mg.scotta.me",
-					Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
-				};
-
-				var message = new Mail.Message(client)
-				{
-					Subject = Subject,
-					Body = Body,
-					From = new MailAddress(From)
-				};
-
-				foreach (var rvm in Recipients)
-				{
-					if (rvm is AddressRecipientViewModel)
-						message.AddRecipient((rvm as AddressRecipientViewModel).Address);
-					else if (rvm is MailingListRecipientViewModel)
-						message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
-				}
-
-				if (Body == null)
-					throw new ArgumentException();
-
-				foreach (var attachment in Attachments)
-				{
-					message.AddAttachment(attachment.FullPath);
-				}
-
-				message.Send();
+				fromAddress = new MailAddress(From);
 			}
-			catch (ArgumentException)
+			catch (Exception)
 			{
-				if (Body == null)
-					throw new ArgumentException("Body can not be empty.");
-				throw new ArgumentException("Must input a From address.");
+				throw new ArgumentException("From address is not valid.");
 			}
-			catch (NullReferenceException)
+
+			var client = new Client("smtp.mailgun.org", 587)
 			{
-				throw new NullReferenceException("Invalid recipient address");
+				UserName = "mailer@mg.scotta.me",
+				Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
+			};
+
+			var message = new Mail.Message(client)
+			{
+				Subject = Subject,
+				Body = Body,
+				From = fromAddress
+			};
+
+			foreach (var rvm in Recipients)
+			{
+				if (rvm is AddressRecipientViewModel)
+				{
+					message.AddRecipient((rvm as AddressRecipientViewModel).Address);
+				}
+				else if (rvm is MailingListRecipientViewModel)
+				{
+					var mailingList = (rvm as MailingListRecipientViewModel).MailingList;
+
+					if (mailingList is DynamicMailingList)
+						message.AddRecipient(mailingList as DynamicMailingList);
+					else
+						message.AddRecipient(mailingList);
+				}
 			}
+
+			foreach (var attachment in Attachments)
+			{
+				message.AddAttachment(attachment.FullPath);
+			}
+
+			message.Send();
+			MessageBox.Show("Sent!");
+			MessagePump.Dispatch(this, "MessageSent");
 		}
 	}
 }

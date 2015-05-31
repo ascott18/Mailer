@@ -66,6 +66,14 @@ namespace Mailer.Mail
 			recipients.Add(address);
         }
 
+		public void AddRecipient(DynamicMailingList list) 
+        {
+		    foreach (var line in list.MailingListLines)
+			{
+				recipients.Add(line.Address);
+		    }
+        }
+
         public void AddRecipient(MailingList list) 
         {
 	        using (var db = new MailerEntities())

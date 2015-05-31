@@ -21,6 +21,13 @@ namespace Mailer.Windows
 		{
 			InitializeComponent();
 			Loaded += MainWindow_Loaded;
+			MessagePump.OnMessage += MessagePump_OnMessage;
+		}
+
+		void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg == "MessageSent")
+				ComposePanel.DataContext = new MessageViewModel();
 		}
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
