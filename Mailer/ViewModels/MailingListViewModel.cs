@@ -37,7 +37,7 @@ namespace Mailer.ViewModels
         }
 
 		/// <summary>
-		///     Add a new MailingList to the database, and opens a dialog to edit that new address.
+		///     Add a new MailingList to the database, and opens a dialog to edit it.
 		/// </summary>
         public void Add()
         {
@@ -45,7 +45,7 @@ namespace Mailer.ViewModels
             {
                 var mlist = new MailingList
                 {
-                    Name = ""
+                    Name = "New Mailing List"
                 };
                 db.MailingLists.Add(mlist);
                 db.SaveChangesAsync();

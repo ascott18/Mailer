@@ -56,7 +56,8 @@ namespace Mailer.ViewModels
 		/// <summary>
 		///     Open an EditAddress dialog for editing this address.
 		/// </summary>
-		public void Edit()
+		/// <returns>The DialogResult of the underlying EditAddress window.</returns>
+		public bool? Edit()
 		{
 			var addrWind = new EditAddress(new EditAddressViewModel(Address));
 			addrWind.ShowDialog();
@@ -71,6 +72,8 @@ namespace Mailer.ViewModels
 			OnPropertyChanged("Email");
 
 			MessagePump.Dispatch(this, "AddressChanged");
+
+			return addrWind.DialogResult;
 		}
 
 		/// <summary>

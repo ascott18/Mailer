@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Mailer.ViewModels;
 
 namespace Mailer.Windows
@@ -11,7 +12,7 @@ namespace Mailer.Windows
 	/// </summary>
 	public partial class EditAddress : Window
 	{
-		private EditAddressViewModel viewModel;
+		private readonly EditAddressViewModel viewModel;
 
 		public EditAddress(EditAddressViewModel vm)
 		{
@@ -34,10 +35,12 @@ namespace Mailer.Windows
 			{
 				var year = int.Parse(AddYearTextBox.Text);
 				viewModel.AddYear(year);
+				AddYearTextBox.Text = "";
+				AddYearTextBox.Focus();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				MessageBox.Show(this, "Invalid year!");
+				MessageBox.Show(this, ex.Message);
 			}
 		}
 
@@ -54,6 +57,7 @@ namespace Mailer.Windows
             try
             {
                 viewModel.Save();
+	            DialogResult = true;
                 Close();
             }
             catch (Exception ex)
@@ -61,6 +65,14 @@ namespace Mailer.Windows
                 MessageBox.Show(ex.Message);
             }
 			
+		}
+
+		private void AddYearTextBox_OnKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Return)
+			{
+				AddYear_OnClick(this, e);
+			}
 		}
 	}
 }

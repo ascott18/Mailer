@@ -44,12 +44,19 @@ namespace Mailer.ViewModels
 					Email = "",
 				};
 				db.Addresses.Add(address);
-				db.SaveChangesAsync();
+				db.SaveChanges();
 
 
 				var vm = new AddressListItemViewModel(address);
-				AddAddressListItemViewModel(vm);
-				vm.Edit();
+				if (vm.Edit() == true)
+				{
+					AddAddressListItemViewModel(vm);
+				}
+				else
+				{
+					db.Addresses.Remove(address);
+					db.SaveChanges();
+				}
 			}
 		}
 

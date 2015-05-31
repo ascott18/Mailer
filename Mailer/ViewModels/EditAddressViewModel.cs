@@ -45,7 +45,13 @@ namespace Mailer.ViewModels
 		public void AddYear(int year)
 		{
 			if (ReceivedMails.Any(rm => rm.Year == year))
-				throw new InvalidOperationException("Year already exists!");
+				throw new ArgumentException("Year already exists!");
+
+			if (year <= 1970)
+				throw new ArgumentException("Year too old!");
+
+			if (year > DateTime.Now.Year)
+				throw new ArgumentException("Year can't be in the future!");
 
 			using (var db = new MailerEntities())
 			{
