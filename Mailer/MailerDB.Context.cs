@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+using System.Linq;
+
 namespace Mailer
 {
     using System;
@@ -29,6 +32,7 @@ namespace Mailer
         public virtual DbSet<MailingListLine> MailingListLines { get; set; }
         public virtual DbSet<MailingList> MailingLists { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<ReceivedMail> ReceivedMails { get; set; }
+		public virtual DbSet<ReceivedMail> ReceivedMails { get; set; }
+
     }
 }

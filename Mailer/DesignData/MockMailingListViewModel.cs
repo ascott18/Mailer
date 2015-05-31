@@ -12,7 +12,7 @@ namespace Mailer.DesignData
     {
         public MockMailingListViewModel()
         {
-            MailingListViewModels = new ObservableCollection<MailingListItemViewModel>
+            MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>
 			{
 				new MockMailingListItemViewModel(),
 				new MockMailingListItemViewModel(),

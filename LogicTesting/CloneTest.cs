@@ -1,4 +1,5 @@
 ﻿using System;
+using Mailer.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mailer;
 using System.Collections.Generic;

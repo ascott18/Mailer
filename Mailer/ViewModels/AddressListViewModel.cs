@@ -60,5 +60,38 @@ namespace Mailer.ViewModels
 				vm.Edit();
 			}
 		}
+
+
+		/// <summary>
+		/// Command the ViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
+		/// </summary>
+		public void StartAutoUpdating()
+		{
+			MessagePump.OnMessage -= MessagePump_OnMessage;
+			MessagePump.OnMessage += MessagePump_OnMessage;
+
+			using (var db = new MailerEntities())
+			{
+				foreach (var address in db.Addresses)
+				{
+					AddAddressListItemViewModel(new AddressListItemViewModel(address));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Handle messages from the message pump and trigger updates when appropriate
+		/// </summary>
+		private void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg == "AddressDeleted")
+			{
+				var alivm = sender as AddressListItemViewModel;
+				if (alivm == null)
+					throw new NullReferenceException("Expected AddressListItemViewModel from message AddressDeleted");
+
+				AddressListItemViewModels.Remove(alivm);
+			}
+		}
 	}
 }

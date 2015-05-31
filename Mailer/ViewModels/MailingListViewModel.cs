@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mailer.DesignData;
 using Mailer.ViewModels;
 
 namespace Mailer.ViewModels
@@ -11,30 +12,19 @@ namespace Mailer.ViewModels
 	public class MailingListViewModel : BaseViewModel
     {
 
-        
-        public ObservableCollection<MailingListItemViewModel> MailingListViewModels { get; protected set; }
+        public ObservableCollection<MailingListItemViewModel> MailingListItemViewModels { get; protected set; }
 
 
         public MailingListViewModel()
         {
-           MailingListViewModels = new ObservableCollection<MailingListItemViewModel>();
-
+           MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
         }
 
 
 	    public void AddMailingListItemViewModel(MailingListItemViewModel vm)
         {
-            vm.Deleted += vm_Deleted;
-            MailingListViewModels.Add(vm);
+            MailingListItemViewModels.Add(vm);
         }
-
-        void vm_Deleted(object sender, EventArgs e)
-        {
-            var alivm = sender as MailingListItemViewModel;
-
-            MailingListViewModels.Remove(alivm);
-        }
-
 
 
         public void Add()
@@ -49,7 +39,7 @@ namespace Mailer.ViewModels
                 db.SaveChangesAsync();
 
 
-                var vm = new MailingListItemViewModel(mlist);
+                var vm = new MailingListItemViewModel(mlist, true);
                 AddMailingListItemViewModel(vm);
                 vm.Edit();
             }
@@ -73,5 +63,54 @@ namespace Mailer.ViewModels
                 db.SaveChanges();
             }
         }
+
+
+
+
+		/// <summary>
+		/// Command the MailingListViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
+		/// </summary>
+		public void StartAutoUpdating()
+		{
+			MessagePump.OnMessage -= MessagePump_OnMessage;
+			MessagePump.OnMessage += MessagePump_OnMessage;
+
+			UpdateMailingLists();
+		}
+
+		/// <summary>
+		/// Handle messages from the message pump and trigger updates when appropriate
+		/// </summary>
+		private void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg.StartsWith("Address") || msg.StartsWith("MailingList"))
+			{
+				UpdateMailingLists();
+			}
+		}
+
+		/// <summary>
+		/// Update the ViewModel with data from MailerEntities.
+		/// </summary>
+		private void UpdateMailingLists()
+		{
+			using (var db = new MailerEntities())
+			{
+				MailingListItemViewModels.Clear();
+
+				// Add regular mailing lists.
+				foreach (var mlist in db.MailingLists)
+				{
+					AddMailingListItemViewModel(new MailingListItemViewModel(mlist, true));
+				}
+
+				// Add dynamic mailing lists
+				var yearMailingLists = db.GetYearMailingLists();
+				foreach (var mlist in yearMailingLists)
+				{
+					AddMailingListItemViewModel(new MailingListItemViewModel(mlist, false));
+				}
+			}
+		}
     }
 }

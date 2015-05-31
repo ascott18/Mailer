@@ -14,7 +14,7 @@ namespace Mailer.DesignData
             : base(new MailingList()
             {
                 Name = "Test MailingList"
-            })
+            }, true)
         {
 
         }

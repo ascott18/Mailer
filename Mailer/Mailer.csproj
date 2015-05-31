@@ -95,6 +95,8 @@
     <Compile Include="DesignData\MockAddress.cs" />
     <Compile Include="DesignData\MockMailingListItemViewModel.cs" />
     <Compile Include="DesignData\MockMailingListViewModel.cs" />
+    <Compile Include="MailerEntitiesYearMailingLists.cs" />
+    <Compile Include="MessagePump.cs" />
     <Compile Include="ViewModels\EditMailingViewModel.cs" />
     <Compile Include="ViewModels\MailingListItemViewModel.cs" />
     <Compile Include="ViewModels\MailingListViewModel.cs" />

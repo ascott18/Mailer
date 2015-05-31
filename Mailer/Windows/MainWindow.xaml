@@ -223,7 +223,7 @@
 					<!--Mailing List Members-->
 					<ScrollViewer Margin="0,2,0,0"
 					              VerticalScrollBarVisibility="Auto">
-						<ItemsControl ItemsSource="{Binding MailingListViewModels}"
+						<ItemsControl ItemsSource="{Binding MailingListItemViewModels}"
 						              Margin="0,0,0,0"
 						              DockPanel.Dock="Bottom"
 						              BorderThickness="1"

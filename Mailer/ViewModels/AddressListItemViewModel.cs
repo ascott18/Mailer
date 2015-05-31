@@ -67,6 +67,8 @@ namespace Mailer.ViewModels
 			OnPropertyChanged("FirstName");
 			OnPropertyChanged("LastName");
 			OnPropertyChanged("Email");
+
+			MessagePump.Dispatch(this, "AddressChanged");
 		}
 
 		/// <summary>
@@ -84,6 +86,8 @@ namespace Mailer.ViewModels
 			}
 
 			OnDeleted();
+
+			MessagePump.Dispatch(this, "AddressDeleted");
 		}
 
 		/// <summary>

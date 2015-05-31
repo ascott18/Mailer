@@ -24,31 +24,19 @@ namespace Mailer.Windows
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
+			var mlvm = new MailingListViewModel();
+			mlvm.StartAutoUpdating();
+			MailingListDockPanel.DataContext = mlvm;
 
 
-            var alvm = new AddressListViewModel();
-            var mlvm = new MailingListViewModel();
-
-			using (var db = new MailerEntities())
-			{
-				foreach (var address in db.Addresses)
-				{
-					alvm.AddAddressListItemViewModel(new AddressListItemViewModel(address));
-				}
-
-                foreach (var mlist in db.MailingLists)
-                {
-                    mlvm.AddMailingListItemViewModel(new MailingListItemViewModel(mlist));
-			}
-			}
-
-            AddressDockPanel.DataContext = alvm;
-            MailingListDockPanel.DataContext = mlvm;
-
+			var alvm = new AddressListViewModel();
+			alvm.StartAutoUpdating();
+			AddressDockPanel.DataContext = alvm;
 
 
 			var mvm = new MockMessageViewModel();
 			ComposePanel.DataContext = mvm;
+
 		}
 
 		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
