@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -46,7 +47,7 @@ namespace Mailer.Windows
 		{
             try
             {
-                var mvm = ComposePanel.DataContext as MockMessageViewModel;
+                var mvm = ComposePanel.DataContext as MessageViewModel;
 
                 if (mvm != null)
                 {
@@ -70,11 +71,11 @@ namespace Mailer.Windows
             
             try
             {
-                var mvm = ComposePanel.DataContext as MockMessageViewModel;
+                var mvm = ComposePanel.DataContext as MessageViewModel;
 
                 if (mvm != null)
                 {
-                    OpenFileDialog ofd = new OpenFileDialog();
+                    var ofd = new OpenFileDialog();
 
                     if (ofd.ShowDialog() == true)
                     {
@@ -89,5 +90,35 @@ namespace Mailer.Windows
             }
              
         }
+
+		private void ComposePanel_OnDragOver(object sender, DragEventArgs e)
+		{
+			var data = e.Data.GetData("Object");
+			if (data is Address || data is MailingList)
+			{
+				e.Effects = DragDropEffects.Link;
+				e.Handled = true;
+			}
+		}
+
+		private void ComposePanel_OnDrop(object sender, DragEventArgs e)
+		{
+			var data = e.Data.GetData("Object");
+
+			var mvm = ComposePanel.DataContext as MessageViewModel;
+			if (mvm == null)
+				return;
+
+			if (data is Address)
+			{
+				mvm.AddRecipient(data as Address);
+				e.Handled = true;
+			}
+			else if (data is MailingList)
+			{
+				mvm.AddRecipient(data as MailingList);
+				e.Handled = true;
+			}
+		}
 	}
 }

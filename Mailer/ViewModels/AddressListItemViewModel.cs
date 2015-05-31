@@ -7,7 +7,7 @@ namespace Mailer.ViewModels
 	/// <summary>
 	///     A ViewModel that represents an Address belonging to an AddressListViewModel.
 	/// </summary>
-	public class AddressListItemViewModel : BaseViewModel
+	public class AddressListItemViewModel : RecipientSourceViewModel
 	{
 		protected AddressListItemViewModel()
 		{
@@ -26,6 +26,8 @@ namespace Mailer.ViewModels
 		///     The Address entity that is the basis for this AddressListItemViewModel.
 		/// </summary>
 		public Address Address { get; private set; }
+
+		public override object Recipient { get { return Address; } }
 
 		/// <summary>
 		///     A mirror of the FirstName property on the address. Works with INotifyPropertyChanged.

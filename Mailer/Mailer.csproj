@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\EditAddressViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MailingListRecipientViewModel.cs" />
+    <Compile Include="ViewModels\RecipientSourceViewModel.cs" />
     <Compile Include="Windows\EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
     </Compile>

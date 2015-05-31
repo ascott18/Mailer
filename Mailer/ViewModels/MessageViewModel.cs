@@ -19,6 +19,7 @@ namespace Mailer.ViewModels
 			Recipients = new ObservableCollection<RecipientViewModel>();
 			Attachments = new ObservableCollection<AttachmentViewModel>();
 			Attachments.CollectionChanged += Attachments_CollectionChanged;
+			Recipients.CollectionChanged += Recipients_CollectionChanged;
 		}
 
 		/// <summary>
@@ -47,6 +48,15 @@ namespace Mailer.ViewModels
 		}
 
 		/// <summary>
+		///     Returns whether the Recipients collection is empty or not. Functions with
+		///     INotifyPropertyChange.
+		/// </summary>
+		public bool HasNoRecipients
+		{
+			get { return Recipients.Count == 0; }
+		}
+
+		/// <summary>
 		///     The collection of RecipientViewModels that represent the recipients of this message.
 		/// </summary>
 		public ObservableCollection<RecipientViewModel> Recipients { get; protected set; }
@@ -61,6 +71,11 @@ namespace Mailer.ViewModels
 			OnPropertyChanged("HasAttachments");
 		}
 
+		private void Recipients_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged("HasNoRecipients");
+		}
+
 		/// <summary>
 		///     Add an attachment with the specified fileName to the message.
 		/// </summary>
@@ -70,7 +85,7 @@ namespace Mailer.ViewModels
 			Attachments.Add(new AttachmentViewModel(this)
 			{
 				FileName = Path.GetFileName(fileName),
-                FullPath = fileName
+				FullPath = fileName
 			});
 		}
 
@@ -112,53 +127,49 @@ namespace Mailer.ViewModels
 
 		public void Send()
 		{
-            
-            try
-            {
-                var client = new Client("smtp.mailgun.org", 587)
-                {
-                    UserName = "mailer@mg.scotta.me",
-                    Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
-                };
+			try
+			{
+				var client = new Client("smtp.mailgun.org", 587)
+				{
+					UserName = "mailer@mg.scotta.me",
+					Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
+				};
 
-                var message = new Mail.Message(client)
-                {
-                    Subject = Subject,
-                    Body = Body,
-                    From = new MailAddress(From)
-                };
+				var message = new Mail.Message(client)
+				{
+					Subject = Subject,
+					Body = Body,
+					From = new MailAddress(From)
+				};
 
-                foreach (var rvm in Recipients)
-                {
-                    if (rvm is AddressRecipientViewModel)
-                        message.AddRecipient((rvm as AddressRecipientViewModel).Address);
-                    else if (rvm is MailingListRecipientViewModel)
-                        message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
-                }
+				foreach (var rvm in Recipients)
+				{
+					if (rvm is AddressRecipientViewModel)
+						message.AddRecipient((rvm as AddressRecipientViewModel).Address);
+					else if (rvm is MailingListRecipientViewModel)
+						message.AddRecipient((rvm as MailingListRecipientViewModel).MailingList);
+				}
 
-                if (Body == null)
-                    throw new ArgumentException();
+				if (Body == null)
+					throw new ArgumentException();
 
-                foreach (var attachment in Attachments)
-                {
-                    message.AddAttachment(attachment.FullPath);
-                }
+				foreach (var attachment in Attachments)
+				{
+					message.AddAttachment(attachment.FullPath);
+				}
 
-                message.Send();
-            }
-            catch (ArgumentException)
-            {
-                if (Body == null)
-                    throw new ArgumentException("Body can not be empty.");
-                else 
-                    throw new ArgumentException("Must input a From address.");
-            }
-            catch (NullReferenceException)
-            {
-                throw new NullReferenceException("Invalid recipient address");
-            }
-            
-			
+				message.Send();
+			}
+			catch (ArgumentException)
+			{
+				if (Body == null)
+					throw new ArgumentException("Body can not be empty.");
+				throw new ArgumentException("Must input a From address.");
+			}
+			catch (NullReferenceException)
+			{
+				throw new NullReferenceException("Invalid recipient address");
+			}
 		}
 	}
 }

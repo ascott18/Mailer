@@ -3,7 +3,7 @@ using Mailer.Windows;
 
 namespace Mailer.ViewModels
 {
-	public class MailingListItemViewModel : BaseViewModel
+	public class MailingListItemViewModel : RecipientSourceViewModel
 	{
 		/// <summary>
 		///     Create a new MailingListItemViewModel
@@ -21,6 +21,8 @@ namespace Mailer.ViewModels
 		///     Get the MailingList that this MailingListItemViewModel represents.
 		/// </summary>
 		public MailingList MailingList { get; private set; }
+
+		public override object Recipient { get { return MailingList; }}
 
 		/// <summary>
 		///     Get whether or not the mailing list is able to be edited or deleted from the database.
