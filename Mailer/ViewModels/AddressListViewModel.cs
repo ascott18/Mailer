@@ -11,23 +11,57 @@ namespace Mailer.ViewModels
 	/// </summary>
 	internal class AddressListViewModel : BaseViewModel
 	{
+		private string filter = "";
+
 		public AddressListViewModel()
 		{
 			AddressListItemViewModels = new ObservableCollection<AddressListItemViewModel>();
+			AddressListItemViewModelsUnfiltered = new ObservableCollection<AddressListItemViewModel>();
 		}
 
 		/// <summary>
-		///     The collection of AddressListItemViewModels that this AddressListViewModel represents.
+		///     The string to filter the addresses by.
+		/// </summary>
+		public string Filter
+		{
+			get { return filter; }
+			set
+			{
+				filter = value;
+				UpdateFilter();
+			}
+		}
+
+		/// <summary>
+		///     The collection of AddressListItemViewModels that this AddressListViewModel represents, after
+		///     filtering is applied
 		/// </summary>
 		public ObservableCollection<AddressListItemViewModel> AddressListItemViewModels { get; protected set; }
 
 		/// <summary>
+		///     The collection of AddressListItemViewModels that this AddressListViewModel represents, before
+		///     filtering is applied
+		/// </summary>
+		private ObservableCollection<AddressListItemViewModel> AddressListItemViewModelsUnfiltered { get; set; }
+
+		/// <summary>
 		///     Add the specified AddressListItemViewModel to this AddressListViewModel.
 		/// </summary>
-		/// <param name="vm">The AddressListItemViewModel to add.</param>
-		public void AddAddressListItemViewModel(AddressListItemViewModel vm)
+		/// <param name="alivm">The AddressListItemViewModel to add.</param>
+		public void AddAddressListItemViewModel(AddressListItemViewModel alivm)
 		{
-			AddressListItemViewModels.Add(vm);
+			AddressListItemViewModelsUnfiltered.Add(alivm);
+			UpdateFilter();
+		}
+
+		/// <summary>
+		///     Remove the specified AddressListItemViewModel from this AddressListViewModel.
+		/// </summary>
+		/// <param name="alivm">The AddressListItemViewModel to remove.</param>
+		public void RemoveAddressListItemViewModels(AddressListItemViewModel alivm)
+		{
+			AddressListItemViewModelsUnfiltered.Remove(alivm);
+			UpdateFilter();
 		}
 
 		/// <summary>
@@ -62,7 +96,8 @@ namespace Mailer.ViewModels
 
 
 		/// <summary>
-		/// Command the ViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
+		///     Command the ViewModel to listen to appropriate events in order to keep itself updated from
+		///     MailerEntities.
 		/// </summary>
 		public void StartAutoUpdating()
 		{
@@ -79,7 +114,7 @@ namespace Mailer.ViewModels
 		}
 
 		/// <summary>
-		/// Handle messages from the message pump and trigger updates when appropriate
+		///     Handle messages from the message pump and trigger updates when appropriate
 		/// </summary>
 		private void MessagePump_OnMessage(object sender, string msg)
 		{
@@ -89,8 +124,32 @@ namespace Mailer.ViewModels
 				if (alivm == null)
 					throw new NullReferenceException("Expected AddressListItemViewModel from message AddressDeleted");
 
-				AddressListItemViewModels.Remove(alivm);
+				RemoveAddressListItemViewModels(alivm);
 			}
+		}
+
+		private void UpdateFilter()
+		{
+			var newCollection = new ObservableCollection<AddressListItemViewModel>();
+
+			var filterLower = Filter.ToLower().Trim();
+
+			foreach (var unfiltered in AddressListItemViewModelsUnfiltered)
+			{
+				var addr = unfiltered.Address;
+
+				if (addr.FirstName.ToLower().Contains(filterLower) ||
+				    addr.LastName.ToLower().Contains(filterLower) ||
+				    (addr.FirstName + " " + addr.LastName).ToLower().Contains(filterLower))
+				{
+					newCollection.Add(unfiltered);
+				}
+			}
+
+			AddressListItemViewModels =
+				new ObservableCollection<AddressListItemViewModel>(
+					newCollection.OrderBy(alivm => alivm.Address.LastName.ToLower()));
+			OnPropertyChanged("AddressListItemViewModels");
 		}
 	}
 }
