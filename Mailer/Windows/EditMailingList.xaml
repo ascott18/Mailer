@@ -41,6 +41,7 @@
                  HorizontalContentAlignment="Stretch"
                  Grid.Row="3"
                  Grid.Column="0"
+				 SelectionMode="Multiple"
                  ItemsSource="{Binding CurrAddresses}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
@@ -93,6 +94,7 @@
                  HorizontalContentAlignment="Stretch"
                  Grid.Row="3"
                  Grid.Column="2"
+				 SelectionMode="Multiple"
                  ItemsSource="{Binding AvailAddresses}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
