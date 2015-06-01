@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mail.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalcBinding">
       <HintPath>..\packages\CalcBinding.2.2.2.0\lib\net45\CalcBinding.dll</HintPath>
@@ -267,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ic_cancel_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mail.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mail.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -8,9 +8,10 @@
         xmlns:controls="clr-namespace:Mailer.Controls"
         xmlns:viewModels="clr-namespace:Mailer.ViewModels"
         x:Class="Mailer.Windows.MainWindow"
-        Title="MainWindow"
+        Title="Mailer"
         Height="546"
         Width="567"
+		Icon="../Images/mail.ico"
         SnapsToDevicePixels="True"
         UseLayoutRounding="True">
 
