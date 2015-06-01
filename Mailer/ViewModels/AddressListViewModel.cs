@@ -27,15 +27,7 @@ namespace Mailer.ViewModels
 		/// <param name="vm">The AddressListItemViewModel to add.</param>
 		public void AddAddressListItemViewModel(AddressListItemViewModel vm)
 		{
-			vm.Deleted += vm_Deleted;
 			AddressListItemViewModels.Add(vm);
-		}
-
-		private void vm_Deleted(object sender, EventArgs e)
-		{
-			var alivm = sender as AddressListItemViewModel;
-
-			AddressListItemViewModels.Remove(alivm);
 		}
 
 		/// <summary>
@@ -52,12 +44,52 @@ namespace Mailer.ViewModels
 					Email = "",
 				};
 				db.Addresses.Add(address);
-				db.SaveChangesAsync();
+				db.SaveChanges();
 
 
 				var vm = new AddressListItemViewModel(address);
-				AddAddressListItemViewModel(vm);
-				vm.Edit();
+				if (vm.Edit() == true)
+				{
+					AddAddressListItemViewModel(vm);
+				}
+				else
+				{
+					db.Addresses.Remove(address);
+					db.SaveChanges();
+				}
+			}
+		}
+
+
+		/// <summary>
+		/// Command the ViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
+		/// </summary>
+		public void StartAutoUpdating()
+		{
+			MessagePump.OnMessage -= MessagePump_OnMessage;
+			MessagePump.OnMessage += MessagePump_OnMessage;
+
+			using (var db = new MailerEntities())
+			{
+				foreach (var address in db.Addresses)
+				{
+					AddAddressListItemViewModel(new AddressListItemViewModel(address));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Handle messages from the message pump and trigger updates when appropriate
+		/// </summary>
+		private void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg == "AddressDeleted")
+			{
+				var alivm = sender as AddressListItemViewModel;
+				if (alivm == null)
+					throw new NullReferenceException("Expected AddressListItemViewModel from message AddressDeleted");
+
+				AddressListItemViewModels.Remove(alivm);
 			}
 		}
 	}

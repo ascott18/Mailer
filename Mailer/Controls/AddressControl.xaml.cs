@@ -9,7 +9,7 @@ namespace Mailer.Controls
 	/// <summary>
 	/// Interaction logic for AddressControl.xaml
 	/// </summary>
-	public partial class AddressControl : UserControl
+	public partial class AddressControl : AbstractRecipientSourceControl
 	{
 		public AddressControl()
 		{

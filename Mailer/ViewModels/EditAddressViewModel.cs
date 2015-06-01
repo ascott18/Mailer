@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 
 namespace Mailer.ViewModels
 {
@@ -44,7 +45,13 @@ namespace Mailer.ViewModels
 		public void AddYear(int year)
 		{
 			if (ReceivedMails.Any(rm => rm.Year == year))
-				throw new InvalidOperationException("Year already exists!");
+				throw new ArgumentException("Year already exists!");
+
+			if (year <= 1970)
+				throw new ArgumentException("Year too old!");
+
+			if (year > DateTime.Now.Year)
+				throw new ArgumentException("Year can't be in the future!");
 
 			using (var db = new MailerEntities())
 			{
@@ -87,8 +94,17 @@ namespace Mailer.ViewModels
 		{
             if (Address.FirstName == "")
                 throw new ArgumentException("First name must not be empty");
-            else if (Address.Email == "")
+            if (Address.Email == "")
                 throw new ArgumentException("Email address must not be empty");
+
+			try
+			{
+				new MailAddress(Address.Email, Address.FirstName);
+			}
+			catch (Exception)
+			{
+				throw new ArgumentException("Email address is not in a valid format.");
+			}
 
 			using (var db = new MailerEntities())
 			{

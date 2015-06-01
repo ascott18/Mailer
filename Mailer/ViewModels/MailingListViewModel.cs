@@ -4,74 +4,104 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mailer.DesignData;
 using Mailer.ViewModels;
 
 namespace Mailer.ViewModels
 {
+	/// <summary>
+	///     A ViewModel that represents a collection of MailingLists and their associated
+	///     MailingListItemViewModels.
+	///     Provides behavior for creating new mailing lists.
+	/// </summary>
 	public class MailingListViewModel : BaseViewModel
     {
-
-        
-        public ObservableCollection<MailingListItemViewModel> MailingListViewModels { get; protected set; }
+		/// <summary>
+		/// The collection of MailingListItemViewModels that this MailingListViewModel represents
+		/// </summary>
+        public ObservableCollection<MailingListItemViewModel> MailingListItemViewModels { get; protected set; }
 
 
         public MailingListViewModel()
         {
-           MailingListViewModels = new ObservableCollection<MailingListItemViewModel>();
-
+           MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
         }
 
-
+		/// <summary>
+		///     Add the specified MailingListItemViewModel to this MailingListViewModel.
+		/// </summary>
+		/// <param name="vm">The MailingListItemViewModel to add.</param>
 	    public void AddMailingListItemViewModel(MailingListItemViewModel vm)
         {
-            vm.Deleted += vm_Deleted;
-            MailingListViewModels.Add(vm);
+            MailingListItemViewModels.Add(vm);
         }
 
-        void vm_Deleted(object sender, EventArgs e)
-        {
-            var alivm = sender as MailingListItemViewModel;
-
-            MailingListViewModels.Remove(alivm);
-        }
-
-
-
+		/// <summary>
+		///     Add a new MailingList to the database, and opens a dialog to edit it.
+		/// </summary>
         public void Add()
         {
             using (var db = new MailerEntities())
             {
                 var mlist = new MailingList
                 {
-                    Name = ""
+                    Name = "New Mailing List"
                 };
                 db.MailingLists.Add(mlist);
                 db.SaveChangesAsync();
 
 
-                var vm = new MailingListItemViewModel(mlist);
+                var vm = new MailingListItemViewModel(mlist, true);
                 AddMailingListItemViewModel(vm);
                 vm.Edit();
             }
         }
 
-        public void Clone(int id)
-        {
-            using (var db = new MailerEntities())
-            {
-                var oldList = db.MailingLists.Single(ml => ml.ListID == id);
 
-                var newList = new MailingList
-                {
-                    Name = oldList.Name,
-                    MailingListLines =
-                        new HashSet<MailingListLine>(
-                            oldList.MailingListLines.Select(mll => new MailingListLine { Address = mll.Address }))
-                };
+		/// <summary>
+		/// Command the MailingListViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
+		/// </summary>
+		public void StartAutoUpdating()
+		{
+			MessagePump.OnMessage -= MessagePump_OnMessage;
+			MessagePump.OnMessage += MessagePump_OnMessage;
 
-                db.MailingLists.Add(newList);
-                db.SaveChanges();
-            }
-        }
+			UpdateMailingLists();
+		}
+
+		/// <summary>
+		/// Handle messages from the message pump and trigger updates when appropriate
+		/// </summary>
+		private void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg.StartsWith("Address") || msg.StartsWith("MailingList"))
+			{
+				UpdateMailingLists();
+			}
+		}
+
+		/// <summary>
+		/// Update the ViewModel with data from MailerEntities.
+		/// </summary>
+		private void UpdateMailingLists()
+		{
+			using (var db = new MailerEntities())
+			{
+				MailingListItemViewModels.Clear();
+
+				// Add regular mailing lists.
+				foreach (var mlist in db.MailingLists)
+				{
+					AddMailingListItemViewModel(new MailingListItemViewModel(mlist, true));
+				}
+
+				// Add dynamic mailing lists
+				var yearMailingLists = db.GetYearMailingLists();
+				foreach (var mlist in yearMailingLists)
+				{
+					AddMailingListItemViewModel(new MailingListItemViewModel(mlist, false));
+				}
+			}
+		}
     }
 }

@@ -74,6 +74,7 @@
 				Add Year:
 			</Button>
 			<TextBox
+				KeyDown="AddYearTextBox_OnKeyDown"
 				x:Name="AddYearTextBox"
 				Width="70" />
 		</StackPanel>

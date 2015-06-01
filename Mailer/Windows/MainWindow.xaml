@@ -55,6 +55,11 @@
 			<DockPanel Grid.Column="0"
 			           Margin="8"
 			           x:Name="ComposePanel"
+					   AllowDrop="True"
+					   PreviewDragOver="ComposePanel_OnDragOver"
+					   PreviewDragEnter="ComposePanel_OnDragOver"
+					   Drop="ComposePanel_OnDrop"
+					   Background="Transparent"
 			           d:DataContext="{d:DesignInstance designData:MockMessageViewModel, IsDesignTimeCreatable=True}">
 
 
@@ -71,6 +76,11 @@
 				<TextBlock DockPanel.Dock="Top"
 				           Margin="0,5,0,0">
 					To:
+				</TextBlock>
+				<TextBlock DockPanel.Dock="Top"
+				           Margin="0,5,0,0"
+						   Visibility="{Binding HasNoRecipients, Converter={StaticResource BoolToVis}}">
+					&lt;Drag-and-drop addresses and mailing lists to add recipients.&gt;
 				</TextBlock>
 				<ItemsControl DockPanel.Dock="Top"
 				              ItemsSource="{Binding Recipients}">
@@ -223,7 +233,7 @@
 					<!--Mailing List Members-->
 					<ScrollViewer Margin="0,2,0,0"
 					              VerticalScrollBarVisibility="Auto">
-						<ItemsControl ItemsSource="{Binding MailingListViewModels}"
+						<ItemsControl ItemsSource="{Binding MailingListItemViewModels}"
 						              Margin="0,0,0,0"
 						              DockPanel.Dock="Bottom"
 						              BorderThickness="1"

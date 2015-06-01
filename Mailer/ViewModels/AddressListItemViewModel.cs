@@ -7,7 +7,7 @@ namespace Mailer.ViewModels
 	/// <summary>
 	///     A ViewModel that represents an Address belonging to an AddressListViewModel.
 	/// </summary>
-	public class AddressListItemViewModel : BaseViewModel
+	public class AddressListItemViewModel : RecipientSourceViewModel
 	{
 		protected AddressListItemViewModel()
 		{
@@ -26,6 +26,8 @@ namespace Mailer.ViewModels
 		///     The Address entity that is the basis for this AddressListItemViewModel.
 		/// </summary>
 		public Address Address { get; private set; }
+
+		public override object Recipient { get { return Address; } }
 
 		/// <summary>
 		///     A mirror of the FirstName property on the address. Works with INotifyPropertyChanged.
@@ -54,7 +56,8 @@ namespace Mailer.ViewModels
 		/// <summary>
 		///     Open an EditAddress dialog for editing this address.
 		/// </summary>
-		public void Edit()
+		/// <returns>The DialogResult of the underlying EditAddress window.</returns>
+		public bool? Edit()
 		{
 			var addrWind = new EditAddress(new EditAddressViewModel(Address));
 			addrWind.ShowDialog();
@@ -67,6 +70,10 @@ namespace Mailer.ViewModels
 			OnPropertyChanged("FirstName");
 			OnPropertyChanged("LastName");
 			OnPropertyChanged("Email");
+
+			MessagePump.Dispatch(this, "AddressChanged");
+
+			return addrWind.DialogResult;
 		}
 
 		/// <summary>
@@ -83,18 +90,7 @@ namespace Mailer.ViewModels
 				db.SaveChanges();
 			}
 
-			OnDeleted();
-		}
-
-		/// <summary>
-		///     Fired when the address is deleted by calling Delete().
-		/// </summary>
-		public event EventHandler Deleted;
-
-		protected virtual void OnDeleted()
-		{
-			EventHandler handler = Deleted;
-			if (handler != null) handler(this, EventArgs.Empty);
+			MessagePump.Dispatch(this, "AddressDeleted");
 		}
 	}
 }

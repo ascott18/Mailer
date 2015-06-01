@@ -19,7 +19,7 @@ namespace Mailer.Controls
 	/// <summary>
 	/// Interaction logic for MailingListControl.xaml
 	/// </summary>
-	public partial class MailingListControl : UserControl
+	public partial class MailingListControl : AbstractRecipientSourceControl
 	{
 		public MailingListControl()
 		{

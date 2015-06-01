@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -20,35 +21,28 @@ namespace Mailer.Windows
 		{
 			InitializeComponent();
 			Loaded += MainWindow_Loaded;
+			MessagePump.OnMessage += MessagePump_OnMessage;
+		}
+
+		void MessagePump_OnMessage(object sender, string msg)
+		{
+			if (msg == "MessageSent")
+				ComposePanel.DataContext = new MessageViewModel();
 		}
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
+			var mlvm = new MailingListViewModel();
+			mlvm.StartAutoUpdating();
+			MailingListDockPanel.DataContext = mlvm;
 
 
-            var alvm = new AddressListViewModel();
-            var mlvm = new MailingListViewModel();
-
-			using (var db = new MailerEntities())
-			{
-				foreach (var address in db.Addresses)
-				{
-					alvm.AddAddressListItemViewModel(new AddressListItemViewModel(address));
-				}
-
-                foreach (var mlist in db.MailingLists)
-                {
-                    mlvm.AddMailingListItemViewModel(new MailingListItemViewModel(mlist));
-			}
-			}
-
-            AddressDockPanel.DataContext = alvm;
-            MailingListDockPanel.DataContext = mlvm;
+			var alvm = new AddressListViewModel();
+			alvm.StartAutoUpdating();
+			AddressDockPanel.DataContext = alvm;
 
 
-
-			var mvm = new MockMessageViewModel();
-			ComposePanel.DataContext = mvm;
+			ComposePanel.DataContext = new MessageViewModel();
 		}
 
 		private void AddAddressButton_OnClick(object sender, RoutedEventArgs e)
@@ -60,16 +54,16 @@ namespace Mailer.Windows
 		{
             try
             {
-                var mvm = ComposePanel.DataContext as MockMessageViewModel;
+                var mvm = ComposePanel.DataContext as MessageViewModel;
 
                 if (mvm != null)
                 {
                     mvm.Send();
                 }
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(ex.Message);
             }
 		}
 
@@ -84,11 +78,11 @@ namespace Mailer.Windows
             
             try
             {
-                var mvm = ComposePanel.DataContext as MockMessageViewModel;
+                var mvm = ComposePanel.DataContext as MessageViewModel;
 
                 if (mvm != null)
                 {
-                    OpenFileDialog ofd = new OpenFileDialog();
+                    var ofd = new OpenFileDialog();
 
                     if (ofd.ShowDialog() == true)
                     {
@@ -97,11 +91,41 @@ namespace Mailer.Windows
                 }
                     
             }
-            catch (Exception exc) 
+            catch (Exception ex) 
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(ex.Message);
             }
              
         }
+
+		private void ComposePanel_OnDragOver(object sender, DragEventArgs e)
+		{
+			var data = e.Data.GetData("Object");
+			if (data is Address || data is MailingList)
+			{
+				e.Effects = DragDropEffects.Link;
+				e.Handled = true;
+			}
+		}
+
+		private void ComposePanel_OnDrop(object sender, DragEventArgs e)
+		{
+			var data = e.Data.GetData("Object");
+
+			var mvm = ComposePanel.DataContext as MessageViewModel;
+			if (mvm == null)
+				return;
+
+			if (data is Address)
+			{
+				mvm.AddRecipient(data as Address);
+				e.Handled = true;
+			}
+			else if (data is MailingList)
+			{
+				mvm.AddRecipient(data as MailingList);
+				e.Handled = true;
+			}
+		}
 	}
 }

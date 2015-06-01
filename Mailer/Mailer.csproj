@@ -89,12 +89,16 @@
     <Compile Include="Address.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MailingListAddressControl.xaml.cs">
-      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
+    <Compile Include="Controls\AbstractRecipientSourceControl.cs" />
+    <Compile Include="Controls\AddressControl.xaml.cs">
+      <DependentUpon>AddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="DesignData\MockAddress.cs" />
     <Compile Include="DesignData\MockMailingListItemViewModel.cs" />
     <Compile Include="DesignData\MockMailingListViewModel.cs" />
+    <Compile Include="MailerEntitiesYearMailingLists.cs" />
+    <Compile Include="Mail\DynamicMailingList.cs" />
+    <Compile Include="MessagePump.cs" />
     <Compile Include="ViewModels\EditMailingViewModel.cs" />
     <Compile Include="ViewModels\MailingListItemViewModel.cs" />
     <Compile Include="ViewModels\MailingListViewModel.cs" />
@@ -115,13 +119,14 @@
     <Compile Include="DesignData\MockAddressListViewModel.cs" />
     <Compile Include="DesignData\MockAttachmentViewModel.cs" />
     <Compile Include="DesignData\MockMessageViewModel.cs" />
-    <Compile Include="Controls\AddressControl.xaml.cs">
-      <DependentUpon>AddressControl.xaml</DependentUpon>
+    <Compile Include="Controls\MailingListAddressControl.xaml.cs">
+      <DependentUpon>MailingListAddressControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddressListViewModel.cs" />
     <Compile Include="ViewModels\EditAddressViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MailingListRecipientViewModel.cs" />
+    <Compile Include="ViewModels\RecipientSourceViewModel.cs" />
     <Compile Include="Windows\EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
     </Compile>
@@ -150,11 +155,11 @@
       <DependentUpon>MailerDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RecipientViewModel.cs" />
-    <Page Include="Controls\MailingListAddressControl.xaml">
+    <Page Include="Controls\AddressControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\AddressControl.xaml">
+    <Page Include="Controls\MailingListAddressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

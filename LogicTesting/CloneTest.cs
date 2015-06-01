@@ -1,4 +1,5 @@
 ﻿using System;
+using Mailer.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mailer;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ namespace LogicTesting
 
             MailingListViewModel testClone = new MailingListViewModel();
 
-            testClone.Clone(id);
 
             using (var db = new MailerEntities())
             {
