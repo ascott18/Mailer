@@ -7,6 +7,7 @@
         xmlns:designData="clr-namespace:Mailer.DesignData"
         xmlns:controls="clr-namespace:Mailer.Controls"
         xmlns:viewModels="clr-namespace:Mailer.ViewModels"
+        xmlns:properties="clr-namespace:Mailer.Properties"
         x:Class="Mailer.Windows.MainWindow"
         Title="Mailer"
         Height="600"
@@ -19,27 +20,10 @@
 
 	<Window.Resources>
 		<BooleanToVisibilityConverter x:Key="BoolToVis" />
+		<properties:Settings x:Key="Settings" />
 	</Window.Resources>
 
 	<DockPanel>
-		<Menu DockPanel.Dock="Top"
-		      Padding="3,3">
-			<Menu.Background>
-				<LinearGradientBrush EndPoint="0,1"
-				                     StartPoint="0,0">
-					<GradientStop Color="#FFEAE8E8" />
-					<GradientStop Color="#FFDCD9D9"
-					              Offset="1" />
-				</LinearGradientBrush>
-			</Menu.Background>
-			<MenuItem Header="_FILE">
-				<MenuItem Header="_Open" />
-				<MenuItem Header="_Close" />
-				<MenuItem Header="_Save" />
-			</MenuItem>
-		</Menu>
-
-
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="2*"
@@ -67,12 +51,37 @@
 
 
 				<!--From-->
-				<TextBlock DockPanel.Dock="Top"
+				<Grid DockPanel.Dock="Top">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+
+					<TextBlock DockPanel.Dock="Top"
 				           Margin="0,5,0,0">
-					From:
-				</TextBlock>
-				<TextBox DockPanel.Dock="Top"
-				         Text="{Binding From}" />
+					From Name:
+					</TextBlock>
+
+					<TextBlock Grid.Row="0"
+					           Grid.Column="1"
+					           DockPanel.Dock="Top"
+				           Margin="5,5,0,0">
+					From Email:
+					</TextBlock>
+					<TextBox Grid.Row="1"
+					         Grid.Column="0"
+					         DockPanel.Dock="Left"
+				         Text="{Binding Source={StaticResource Settings}, Path=Default.FromName}" />
+					<TextBox Grid.Row="1"
+					         Grid.Column="1"
+					         DockPanel.Dock="Right"
+							 Margin="5,0,0,0"
+				         Text="{Binding Source={StaticResource Settings}, Path=Default.FromEmail}" />
+				</Grid>
 
 
 				<!--Recipients-->

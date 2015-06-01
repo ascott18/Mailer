@@ -59,7 +59,8 @@ namespace Mailer.Windows
 
                 if (mvm != null)
                 {
-                    mvm.Send();
+					mvm.Send(Properties.Settings.Default["FromName"] as string,
+						Properties.Settings.Default["FromEmail"] as string);
                 }
             }
             catch (Exception ex)
