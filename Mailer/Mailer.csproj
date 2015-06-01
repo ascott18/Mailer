@@ -150,9 +150,6 @@
     </Compile>
     <Compile Include="Mail\Client.cs" />
     <Compile Include="Mail\Message.cs" />
-    <Compile Include="Message.cs">
-      <DependentUpon>MailerDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>

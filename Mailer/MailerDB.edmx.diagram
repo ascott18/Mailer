@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="MailerModel.Address" Width="1.5" PointX="2.5" PointY="3" />
         <EntityTypeShape EntityType="MailerModel.MailingListLine" Width="1.5" PointX="1.75" PointY="0.625" />
         <EntityTypeShape EntityType="MailerModel.MailingList" Width="1.5" PointX="0.625" PointY="3" />
-        <EntityTypeShape EntityType="MailerModel.Message" Width="1.5" PointX="4.375" PointY="0.625" />
         <EntityTypeShape EntityType="MailerModel.ReceivedMail" Width="1.5" PointX="5.25" PointY="3" />
         <AssociationConnector Association="MailerModel.FK_ReceivedMails_0_0" />
         <AssociationConnector Association="MailerModel.FK_MailingListLines_0_0" />
