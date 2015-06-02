@@ -9,12 +9,14 @@ namespace Mailer.ViewModels
 	///     AddressListItemViewModels.
 	///     Provides behavior for creating new addresses.
 	/// </summary>
-	internal class AddressListViewModel : BaseViewModel
+	public class AddressListViewModel : BaseViewModel
 	{
 		private string filter = "";
 
 		public AddressListViewModel()
 		{
+			MessagePump.OnMessage += MessagePump_OnMessage;
+
 			AddressListItemViewModels = new ObservableCollection<AddressListItemViewModel>();
 			AddressListItemViewModelsUnfiltered = new ObservableCollection<AddressListItemViewModel>();
 		}
@@ -58,7 +60,7 @@ namespace Mailer.ViewModels
 		///     Remove the specified AddressListItemViewModel from this AddressListViewModel.
 		/// </summary>
 		/// <param name="alivm">The AddressListItemViewModel to remove.</param>
-		public void RemoveAddressListItemViewModels(AddressListItemViewModel alivm)
+		public void RemoveAddressListItemViewModel(AddressListItemViewModel alivm)
 		{
 			AddressListItemViewModelsUnfiltered.Remove(alivm);
 			UpdateFilter();
@@ -96,14 +98,10 @@ namespace Mailer.ViewModels
 
 
 		/// <summary>
-		///     Command the ViewModel to listen to appropriate events in order to keep itself updated from
-		///     MailerEntities.
+		///     Command the ViewModel to load all the addresses from MailerEntities.
 		/// </summary>
-		public void StartAutoUpdating()
+		public void LoadFromDatabase()
 		{
-			MessagePump.OnMessage -= MessagePump_OnMessage;
-			MessagePump.OnMessage += MessagePump_OnMessage;
-
 			using (var db = new MailerEntities())
 			{
 				foreach (var address in db.Addresses)
@@ -124,7 +122,7 @@ namespace Mailer.ViewModels
 				if (alivm == null)
 					throw new NullReferenceException("Expected AddressListItemViewModel from message AddressDeleted");
 
-				RemoveAddressListItemViewModels(alivm);
+				RemoveAddressListItemViewModel(alivm);
 			}
 		}
 

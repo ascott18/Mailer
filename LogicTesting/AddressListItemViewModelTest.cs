@@ -23,11 +23,11 @@ namespace LogicTesting
 			var alivm = new AddressListItemViewModel(addr);
 
 
-			Assert.AreEqual(alivm.FirstName, "Bob");
-			Assert.AreEqual(alivm.LastName, "Newbie");
-			Assert.AreEqual(alivm.Email, "bob@gmail.com");
-			Assert.AreSame(alivm.Address, addr);
-			Assert.AreSame(alivm.Recipient, addr);
+			Assert.AreEqual("Bob", alivm.FirstName);
+			Assert.AreEqual("Newbie", alivm.LastName);
+			Assert.AreEqual("bob@gmail.com", alivm.Email);
+			Assert.AreSame(addr, alivm.Address);
+			Assert.AreSame(addr, alivm.Recipient);
 		}
 
 
@@ -46,8 +46,8 @@ namespace LogicTesting
 				Email = "bob@gmail.com",
 				ReceivedMails = new Collection<ReceivedMail>
 				{
-					new ReceivedMail{Year = 2015},
-					new ReceivedMail{Year = 2016},
+					new ReceivedMail{Year = 2013},
+					new ReceivedMail{Year = 2014},
 				}
 			};
 
@@ -59,19 +59,13 @@ namespace LogicTesting
 
 			using (var db = new MailerEntities())
 			{
-				// ensure that the database is empty
-				Assert.IsFalse(db.Addresses.Any());
-				Assert.IsFalse(db.MailingLists.Any());
-				Assert.IsFalse(db.MailingListLines.Any());
-				Assert.IsFalse(db.ReceivedMails.Any());
-
 				db.Addresses.Add(newAddress);
 				db.MailingLists.Add(ml);
 				db.MailingListLines.Add(mll);
 				db.SaveChanges();
 
 				// check that the two receievedmails were added
-				Assert.AreEqual(db.ReceivedMails.Count(), 2);
+				Assert.AreEqual(2, db.ReceivedMails.Count(rm => rm.AddressID == newAddress.AddressID));
 			}
 
 			var alivm = new AddressListItemViewModel(newAddress);
@@ -86,21 +80,19 @@ namespace LogicTesting
 
 			alivm.Delete();
 
-			Assert.AreEqual(pumpFired, 1);
+			Assert.AreEqual(1, pumpFired);
 
 			using (var db = new MailerEntities())
 			{
 				// ensure that the database is empty once again
-				Assert.IsFalse(db.Addresses.Any());
-				Assert.IsFalse(db.MailingListLines.Any());
-				Assert.IsFalse(db.ReceivedMails.Any());
+				Assert.IsFalse(db.Addresses.Any(addr => addr.AddressID == newAddress.AddressID));
+				Assert.IsFalse(db.MailingListLines.Any(line => line.AddressID == newAddress.AddressID));
+				Assert.IsFalse(db.ReceivedMails.Any(rm => rm.AddressID == newAddress.AddressID));
 
 				// delete the mailing list
 				db.MailingLists.Attach(ml);
 				db.MailingLists.Remove(ml);
 				db.SaveChanges();
-
-				Assert.IsFalse(db.MailingLists.Any());
 			}
 		}
 	}

@@ -94,9 +94,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CloneTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddressListItemViewModelTest.cs" />
+    <Compile Include="AddressListViewModelTest.cs" />
+    <Compile Include="EditAddressViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mailer\Mailer.csproj">

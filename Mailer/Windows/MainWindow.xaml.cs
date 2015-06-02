@@ -39,7 +39,7 @@ namespace Mailer.Windows
 
 
 			var alvm = new AddressListViewModel();
-			alvm.StartAutoUpdating();
+			alvm.LoadFromDatabase();
 			AddressDockPanel.DataContext = alvm;
 
 
