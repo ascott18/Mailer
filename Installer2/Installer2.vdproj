@@ -21,14 +21,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3376D694B48A4A86B92A9CEE4D0C29E2"
+        "MsmKey" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
+        "MsmKey" = "8:_3E3CE471CC04466E83CD087308DC2D33"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5AF7A684CEEF31178B08DE64150EC436"
+        "OwnerKey" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -81,6 +87,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9BDE2E75F0E2441EDAC92DB6F9A672A9"
+        "OwnerKey" = "8:_5AF7A684CEEF31178B08DE64150EC436"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9BDE2E75F0E2441EDAC92DB6F9A672A9"
+        "OwnerKey" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A708AA577D9CDE61B0AC5DDBC22A0F06"
         "OwnerKey" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
         "MsmSig" = "8:_UNDEFINED"
@@ -127,6 +145,18 @@
         "OwnerKey" = "8:_7195D681E28409F977E3EF469C06E7A6"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5AF7A684CEEF31178B08DE64150EC436"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9BDE2E75F0E2441EDAC92DB6F9A672A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -152,6 +182,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -245,10 +283,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3376D694B48A4A86B92A9CEE4D0C29E2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E3CE471CC04466E83CD087308DC2D33"
             {
-            "SourcePath" = "8:..\\mailer.db"
-            "TargetName" = "8:mailer.db"
+            "SourcePath" = "8:..\\Mailer\\mail.ico"
+            "TargetName" = "8:mail.ico"
             "Tag" = "8:"
             "Folder" = "8:_9293A9572F3F44759A2006FE589C2942"
             "Condition" = "8:"
@@ -263,6 +301,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5AF7A684CEEF31178B08DE64150EC436"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CalcBinding, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5AF7A684CEEF31178B08DE64150EC436"
+                    {
+                    "Name" = "8:CalcBinding.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:CalcBinding.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9293A9572F3F44759A2006FE589C2942"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D08AAF910A746E986554894DEA9B3E0"
@@ -365,6 +434,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9BDE2E75F0E2441EDAC92DB6F9A672A9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DynamicExpresso.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9BDE2E75F0E2441EDAC92DB6F9A672A9"
+                    {
+                    "Name" = "8:DynamicExpresso.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DynamicExpresso.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9293A9572F3F44759A2006FE589C2942"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A708AA577D9CDE61B0AC5DDBC22A0F06"
@@ -500,6 +600,28 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_EF91EB4FFD804908BACC034623A0AE25"
+                    {
+                    "Name" = "8:0xDEADC0DE"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FB419261A8B8405D962A787B3FF036FB"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_F793E407990445E3B29CEAB17442D496"
+                            {
+                            "Name" = "8:Mailer"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_130F792C6BB94B6097F3D817746292C3"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -519,7 +641,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mailer"
         "ProductCode" = "8:{BF1FE3F1-8B6D-49CC-B52C-F7061FADAB4B}"
-        "PackageCode" = "8:{463107F7-13A9-42E8-AA78-4A2C1912EE07}"
+        "PackageCode" = "8:{B31DF128-1C73-4841-8682-E30C29D1CADA}"
         "UpgradeCode" = "8:{DBFFDF83-4CD6-4D10-98DE-7508979CD6DB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -536,7 +658,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_3E3CE471CC04466E83CD087308DC2D33"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -639,6 +761,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7F96086B3DBB4036A3D5800B41C966BB"
+            {
+            "Name" = "8:Mailer"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
+            "Folder" = "8:_7FA186505FF4482B95325E5E86848D9D"
+            "WorkingFolder" = "8:_9293A9572F3F44759A2006FE589C2942"
+            "Icon" = "8:_3E3CE471CC04466E83CD087308DC2D33"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8A330B8027DF472A8635CAB367299F4D"
+            {
+            "Name" = "8:Mailer"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_343FF105DE5C41DBB89CD6AE1487CA9B"
+            "Folder" = "8:_F793E407990445E3B29CEAB17442D496"
+            "WorkingFolder" = "8:_9293A9572F3F44759A2006FE589C2942"
+            "Icon" = "8:_3E3CE471CC04466E83CD087308DC2D33"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
