@@ -8,6 +8,7 @@
         xmlns:designData="clr-namespace:Mailer.DesignData"
         xmlns:controls="clr-namespace:Mailer.Controls"
         Title="Edit Mailing List"
+		Icon="../Images/mail.ico"
         Height="374"
         Width="414">
     <Grid Margin="10">
@@ -40,6 +41,7 @@
                  HorizontalContentAlignment="Stretch"
                  Grid.Row="3"
                  Grid.Column="0"
+				 SelectionMode="Multiple"
                  ItemsSource="{Binding CurrAddresses}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
@@ -92,6 +94,7 @@
                  HorizontalContentAlignment="Stretch"
                  Grid.Row="3"
                  Grid.Column="2"
+				 SelectionMode="Multiple"
                  ItemsSource="{Binding AvailAddresses}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

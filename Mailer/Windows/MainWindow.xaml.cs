@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
+using System.Windows.Controls;
 using Mailer.DesignData;
 using Mailer.ViewModels;
 using Microsoft.Win32;
@@ -58,7 +59,8 @@ namespace Mailer.Windows
 
                 if (mvm != null)
                 {
-                    mvm.Send();
+					mvm.Send(Properties.Settings.Default["FromName"] as string,
+						Properties.Settings.Default["FromEmail"] as string);
                 }
             }
             catch (Exception ex)

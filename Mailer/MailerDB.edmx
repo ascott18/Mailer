@@ -29,14 +29,6 @@
           <Property Name="listID" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Messages">
-          <Key>
-            <PropertyRef Name="mailID" />
-          </Key>
-          <Property Name="body" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="subject" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="mailID" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="ReceivedMails">
           <Key>
             <PropertyRef Name="addressID" />
@@ -73,7 +65,6 @@
           <EntitySet Name="Addresses" EntityType="Self.Addresses" store:Type="Tables" />
           <EntitySet Name="MailingListLines" EntityType="Self.MailingListLines" store:Type="Tables" />
           <EntitySet Name="MailingLists" EntityType="Self.MailingLists" store:Type="Tables" />
-          <EntitySet Name="Messages" EntityType="Self.Messages" store:Type="Tables" />
           <EntitySet Name="ReceivedMails" EntityType="Self.ReceivedMails" store:Type="Tables" />
           <AssociationSet Name="FK_MailingListLines_0_0" Association="Self.FK_MailingListLines_0_0">
             <End Role="MailingLists" EntitySet="MailingLists" />
@@ -92,7 +83,6 @@
           <EntitySet Name="Addresses" EntityType="MailerModel.Address" />
           <EntitySet Name="MailingListLines" EntityType="MailerModel.MailingListLine" />
           <EntitySet Name="MailingLists" EntityType="MailerModel.MailingList" />
-          <EntitySet Name="Messages" EntityType="MailerModel.Message" />
           <EntitySet Name="ReceivedMails" EntityType="MailerModel.ReceivedMail" />
           <AssociationSet Name="FK_ReceivedMails_0_0" Association="MailerModel.FK_ReceivedMails_0_0">
             <End Role="Address" EntitySet="Addresses" />
@@ -174,25 +164,6 @@
               <Summary>A collection of MailingListLines representing the Address entities that are included in this MailingList.</Summary>
             </Documentation>
           </NavigationProperty>
-        </EntityType>
-        <EntityType Name="Message">
-          <Documentation>
-            <Summary>Represents an email message template that the user may send to one or more Address.</Summary>
-          </Documentation>
-          <Key>
-            <PropertyRef Name="MailID" />
-          </Key>
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" >
-            <Documentation>
-              <Summary>The body of the email message.</Summary>
-            </Documentation>
-          </Property>
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" >
-            <Documentation>
-              <Summary>The subject of the email message.</Summary>
-            </Documentation>
-          </Property>
-          <Property Name="MailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="ReceivedMail">
           <Documentation>
@@ -279,15 +250,6 @@
               <MappingFragment StoreEntitySet="MailingLists">
                 <ScalarProperty Name="Name" ColumnName="name" />
                 <ScalarProperty Name="ListID" ColumnName="listID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="MailerModel.Message">
-              <MappingFragment StoreEntitySet="Messages">
-                <ScalarProperty Name="MailID" ColumnName="mailID" />
-                <ScalarProperty Name="Subject" ColumnName="subject" />
-                <ScalarProperty Name="Body" ColumnName="body" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

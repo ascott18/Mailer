@@ -4,7 +4,9 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using Mailer.Mail;
 using System.IO;
 
@@ -21,6 +23,9 @@ namespace Mailer.ViewModels
 			Attachments = new ObservableCollection<AttachmentViewModel>();
 			Attachments.CollectionChanged += Attachments_CollectionChanged;
 			Recipients.CollectionChanged += Recipients_CollectionChanged;
+
+			Subject = "";
+			Body = "";
 		}
 
 		/// <summary>
@@ -32,12 +37,6 @@ namespace Mailer.ViewModels
 		///     The body text of the email message.
 		/// </summary>
 		public String Body { get; set; }
-
-
-		/// <summary>
-		///     The email address to put at the sender of the message.
-		/// </summary>
-		public String From { get; set; }
 
 		/// <summary>
 		///     Returns whether the Attachments collection is empty or not. Functions with
@@ -126,10 +125,14 @@ namespace Mailer.ViewModels
 			Recipients.Add(new MailingListRecipientViewModel(this, list));
 		}
 
-		public void Send()
+		public void Send(string fromName, string fromEmail)
 		{
-			if (From == "")
-				throw new ArgumentException("Must input a From address.");
+
+			if (fromName == "")
+				throw new ArgumentException("Must input a From name.");
+
+			if (fromEmail == "")
+				throw new ArgumentException("Must input a From email.");
 
 			if (Subject == "")
 				throw new ArgumentException("Subject cannot be empty.");
@@ -140,7 +143,7 @@ namespace Mailer.ViewModels
 			MailAddress fromAddress;
 			try
 			{
-				fromAddress = new MailAddress(From);
+				fromAddress = new MailAddress(fromEmail, fromName);
 			}
 			catch (Exception)
 			{
@@ -182,9 +185,17 @@ namespace Mailer.ViewModels
 				message.AddAttachment(attachment.FullPath);
 			}
 
-			message.Send();
-			MessageBox.Show("Sent!");
-			MessagePump.Dispatch(this, "MessageSent");
+			Task.Run(() =>
+			{
+				message.Send();
+				MessageBox.Show("Sent!");
+
+
+				Application.Current.Dispatcher.BeginInvoke(
+					new Action(() => MessagePump.Dispatch(this, "MessageSent")),
+					new object[0]
+				);
+			});
 		}
 	}
 }

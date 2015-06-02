@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mail.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalcBinding">
       <HintPath>..\packages\CalcBinding.2.2.2.0\lib\net45\CalcBinding.dll</HintPath>
@@ -147,9 +150,6 @@
     </Compile>
     <Compile Include="Mail\Client.cs" />
     <Compile Include="Mail\Message.cs" />
-    <Compile Include="Message.cs">
-      <DependentUpon>MailerDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ReceivedMail.cs">
       <DependentUpon>MailerDB.tt</DependentUpon>
@@ -247,6 +247,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\mailer.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -268,9 +269,16 @@
   <ItemGroup>
     <Resource Include="Images\ic_cancel_16px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mail.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mail.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>echo F|xcopy /y /d "$(SolutionDir)*.db" "$(TargetDir)"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.96.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.96.0\build\net45\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
