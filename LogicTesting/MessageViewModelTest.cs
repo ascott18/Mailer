@@ -63,7 +63,7 @@ namespace LogicTesting
             }
             catch (ArgumentException exc)
             {
-                StringAssert.Contains(exc.Message, "Must input a From name.");
+				StringAssert.Contains("Must input a From name.", exc.Message);
             }
 
             //check if there is an email
@@ -74,18 +74,18 @@ namespace LogicTesting
             }
             catch (ArgumentException exc)
             {
-                StringAssert.Contains(exc.Message, "Must input a From email.");
+				StringAssert.Contains("Must input a From email.", exc.Message);
             }
 
             //check the subject
             try
-            {
-                fromEmail = "invalidemail";
+			{
+				fromEmail = "invalidemail";
                 mvm.Send(fromName, fromEmail);
             }
             catch (ArgumentException exc)
             {
-                StringAssert.Contains(exc.Message, "Subject cannot be empty.");
+				StringAssert.Contains("Subject cannot be empty.", exc.Message);
             }
 
             //check if the body is empty.
@@ -96,30 +96,34 @@ namespace LogicTesting
             }
             catch (ArgumentException exc)
             {
-                StringAssert.Contains(exc.Message, "Body cannot be empty.");
-            }
+				StringAssert.Contains("Body cannot be empty.", exc.Message);
+			}
+
+			// check for missing recipients
+			try
+			{
+				mvm.Body = "Hello, friend!";
+				mvm.Send(fromName, fromEmail);
+			}
+			catch (ArgumentException exc)
+			{
+				StringAssert.Contains("Must specify recipients.", exc.Message);
+			}
 
             //check if the from address is valid
             try
             {
-                mvm.Body = "Hello, friend!";
+	            mvm.AddRecipient(new Address());
+				fromEmail = "invalidemail";
                 mvm.Send(fromName, fromEmail);
             }
             catch (ArgumentException exc)
             {
-                StringAssert.Contains(exc.Message, "From address is not valid.");
+				StringAssert.Contains("From address is not valid.", exc.Message);
             }
 
-            try
-            {
-                fromEmail = "bnewbie@google.com";
-                mvm.Send(fromName, fromEmail);
-            }
-            catch (ArgumentException exc)
-            {
-                StringAssert.Contains(exc.Message, "Must specify recipients.");
-            }
-
+			// Should succeed (recipient address is an empty address at this point).
+			fromEmail = "nobody@google.com";
             mvm.Send(fromName, fromEmail);                
         }
 
