@@ -135,5 +135,62 @@ namespace LogicTesting
 				db.SaveChanges();
 			}
 		}
+
+		[TestMethod]
+		public void TestSave()
+		{
+			var addr = MakeDatabaseAddress();
+
+			var eavm = new EditAddressViewModel(addr);
+
+
+			eavm.Address.FirstName = "";
+			try
+			{
+				eavm.Save();
+			}
+			catch (Exception)
+			{
+				// expected
+			}
+
+
+			eavm.Address.FirstName = "Bob";
+
+
+			foreach (var s in new[]
+			{
+				"",
+				"bob",
+				"@",
+				".@",
+				"123123",
+			})
+			{
+				eavm.Address.Email = s;
+				try
+				{
+					eavm.Save();
+				}
+				catch (Exception)
+				{
+					// expected
+				}
+			}
+
+			eavm.Address.Email = "bob@gmail.com";
+
+			eavm.Save();
+
+			using (var db = new MailerEntities())
+			{
+				var addrFromDb = db.Addresses.Find(addr.AddressID);
+				Assert.AreEqual("Bob", addrFromDb.FirstName);
+				Assert.AreEqual("bob@gmail.com", addrFromDb.Email);
+
+				db.Addresses.Remove(addrFromDb);
+				db.SaveChanges();
+			}
+		}
 	}
 }
