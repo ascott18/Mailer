@@ -24,7 +24,9 @@ namespace Mailer.ViewModels
 
         public MailingListViewModel()
         {
-           MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
+            MessagePump.OnMessage += MessagePump_OnMessage;
+
+            MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
         }
 
 		/// <summary>
@@ -58,16 +60,6 @@ namespace Mailer.ViewModels
         }
 
 
-		/// <summary>
-		/// Command the MailingListViewModel to listen to appropriate events in order to keep itself updated from MailerEntities.
-		/// </summary>
-		public void StartAutoUpdating()
-		{
-			MessagePump.OnMessage -= MessagePump_OnMessage;
-			MessagePump.OnMessage += MessagePump_OnMessage;
-
-			UpdateMailingLists();
-		}
 
 		/// <summary>
 		/// Handle messages from the message pump and trigger updates when appropriate
@@ -76,14 +68,14 @@ namespace Mailer.ViewModels
 		{
 			if (msg.StartsWith("Address") || msg.StartsWith("MailingList"))
 			{
-				UpdateMailingLists();
+				LoadFromDatabase();
 			}
 		}
 
 		/// <summary>
 		/// Update the ViewModel with data from MailerEntities.
 		/// </summary>
-		private void UpdateMailingLists()
+		public void LoadFromDatabase()
 		{
 			using (var db = new MailerEntities())
 			{

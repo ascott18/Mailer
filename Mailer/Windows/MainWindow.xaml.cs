@@ -34,7 +34,7 @@ namespace Mailer.Windows
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
 			var mlvm = new MailingListViewModel();
-			mlvm.StartAutoUpdating();
+			mlvm.LoadFromDatabase();
 			MailingListDockPanel.DataContext = mlvm;
 
 
