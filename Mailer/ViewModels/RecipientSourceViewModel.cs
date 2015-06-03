@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mailer.ViewModels
 {
-	public class RecipientSourceViewModel : BaseViewModel
+	public abstract class RecipientSourceViewModel : BaseViewModel
 	{
 		public virtual object Recipient
 		{

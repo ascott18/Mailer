@@ -16,7 +16,7 @@ namespace LogicTesting
             
             mvm.AddRecipient(new MailingList());
 
-            Assert.AreEqual(mvm.Recipients.Count, 1);
+            Assert.AreEqual(1, mvm.Recipients.Count);
 
         }
 
@@ -27,7 +27,7 @@ namespace LogicTesting
 
             mvm.AddRecipient(new Address());
 
-            Assert.AreEqual(mvm.Recipients.Count, 1);
+            Assert.AreEqual(1, mvm.Recipients.Count);
 
         }
 
@@ -41,6 +41,8 @@ namespace LogicTesting
             RecipientViewModel rvm = mvm.AddRecipient(addr);
 
             mvm.RemoveRecipient(rvm);
+
+			Assert.AreEqual(0, mvm.Recipients.Count);
         }
 
         [TestMethod]

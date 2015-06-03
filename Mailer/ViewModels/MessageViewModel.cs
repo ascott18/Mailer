@@ -77,16 +77,20 @@ namespace Mailer.ViewModels
 		}
 
 		/// <summary>
-		///     Add an attachment with the specified fileName to the message.
+		///     Add an attachment with the specified path to the message.
 		/// </summary>
-		/// <param name="fileName"></param>
-		public void AddAttachment(string fileName)
+		/// <param name="path"></param>
+		public AttachmentViewModel AddAttachment(string path)
 		{
-			Attachments.Add(new AttachmentViewModel(this)
+			var avm = new AttachmentViewModel(this)
 			{
-				FileName = Path.GetFileName(fileName),
-				FullPath = fileName
-			});
+				FileName = Path.GetFileName(path),
+				FullPath = path
+			};
+
+			Attachments.Add(avm);
+
+			return avm;
 		}
 
 		/// <summary>
