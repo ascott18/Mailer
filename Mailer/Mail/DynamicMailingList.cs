@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mailer.Mail
 {
-	class DynamicMailingList : MailingList
+	public class DynamicMailingList : MailingList
 	{
 	}
 }
