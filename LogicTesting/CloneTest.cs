@@ -15,6 +15,7 @@ namespace LogicTesting
         [TestMethod]
         public void TestMethod1()
         {
+            /*
             int id = 1;
 
             MailingListViewModel testClone = new MailingListViewModel();
@@ -27,7 +28,7 @@ namespace LogicTesting
                 var ids = db.MailingLists.Where(ml => ml.Name.Equals(name));
 
             }
-
+            */
         }
     }
 }

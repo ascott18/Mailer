@@ -7,7 +7,7 @@ namespace Mailer.ViewModels
 	///     An abstract base for ViewModels that represent a recipient of a message that the user is
 	///     composing.
 	/// </summary>
-	internal abstract class RecipientViewModel : BaseViewModel
+	public abstract class RecipientViewModel : BaseViewModel
 	{
 		/// <summary>
 		///     Create a new RecipientViewModel with the given owner.

@@ -7,7 +7,7 @@ namespace Mailer.ViewModels
 	/// <summary>
 	///     A ViewModel that represents an email attachment belonging to a MessageViewModel.
 	/// </summary>
-	internal class AttachmentViewModel : BaseViewModel
+	public class AttachmentViewModel : BaseViewModel
 	{
 		public AttachmentViewModel()
 		{

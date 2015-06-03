@@ -15,7 +15,7 @@ namespace Mailer.ViewModels
 	/// <summary>
 	///     A ViewModel that represents an email message.
 	/// </summary>
-	internal class MessageViewModel : BaseViewModel
+	public class MessageViewModel : BaseViewModel
 	{
 		public MessageViewModel()
 		{
@@ -111,18 +111,22 @@ namespace Mailer.ViewModels
 		///     Add the specified Address entity as a recpient of this message.
 		/// </summary>
 		/// <param name="address">The Address entity to add as a recpient.</param>
-		public void AddRecipient(Address address)
+		public RecipientViewModel AddRecipient(Address address)
 		{
-			Recipients.Add(new AddressRecipientViewModel(this, address));
+            RecipientViewModel vm = new AddressRecipientViewModel(this, address);
+			Recipients.Add(vm);
+            return vm;
 		}
 
 		/// <summary>
 		///     Add the specified MailingList entity as a recipient of this message.
 		/// </summary>
 		/// <param name="list">The MailingList entity to add as a recipient.</param>
-		public void AddRecipient(MailingList list)
+		public RecipientViewModel AddRecipient(MailingList list)
 		{
-			Recipients.Add(new MailingListRecipientViewModel(this, list));
+            RecipientViewModel vm = new MailingListRecipientViewModel(this, list);
+			Recipients.Add(vm);
+            return vm;
 		}
 
 		public void Send(string fromName, string fromEmail)
@@ -132,13 +136,17 @@ namespace Mailer.ViewModels
 				throw new ArgumentException("Must input a From name.");
 
 			if (fromEmail == "")
-				throw new ArgumentException("Must input a From email.");
+                throw new ArgumentException("Must input a From email.");
 
 			if (Subject == "")
 				throw new ArgumentException("Subject cannot be empty.");
 
 			if (Body == "")
 				throw new ArgumentException("Body cannot be empty.");
+            if (Recipients.Count == 0)
+            {
+                throw new ArgumentException("Must specify recipients.");
+            }
 
 			MailAddress fromAddress;
 			try
