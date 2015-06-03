@@ -11,16 +11,6 @@
              d:DataContext="{d:DesignInstance designData:MockAddress, IsDesignTimeCreatable=True}"
 			 Padding="1">
 
-	<UserControl.Resources>
-		<BooleanToVisibilityConverter x:Key="BoolToVis" />
-
-		<mailer:ValueConverterGroup x:Key="InverseBoolToVis">
-			<mailer:InverseBooleanConverter />
-			<BooleanToVisibilityConverter />
-		</mailer:ValueConverterGroup>
-
-	</UserControl.Resources>
-
 	<Grid Margin="0,3">
 		<Grid.RowDefinitions>
 			<RowDefinition />

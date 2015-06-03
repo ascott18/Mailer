@@ -10,10 +10,8 @@ namespace Mailer
 {
 	public static class MailerEntitiesYearMailingLists
 	{
-		public static ReadOnlyCollection<MailingList> GetYearMailingLists(this MailerEntities db)
+		public static IEnumerable<DynamicMailingList> GetYearMailingLists(this MailerEntities db)
 		{
-			var ymls = new Collection<MailingList>();
-
 			foreach (var receivedMailsInYear in db.ReceivedMails.GroupBy(rm => rm.Year))
 			{
 				var mailingList = new DynamicMailingList
@@ -31,10 +29,8 @@ namespace Mailer
 						AddressID = receivedMail.AddressID
 					}).ToArray());
 
-				ymls.Add(mailingList);
+				yield return mailingList;
 			}
-
-			return new ReadOnlyCollection<MailingList>(ymls);
 		}
 	}
 }

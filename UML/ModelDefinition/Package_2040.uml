@@ -1,0 +1,1864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="2d8b7a88-5b9e-4d10-a20f-22491fc563a4"
+  name="Mail"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="0fb6dd48-4b3f-4e45-82f1-f3a10d7dd433"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMailer.Mail"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="1ae16a66-c022-4fca-80ae-af42e130258c"
+        name="Client"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8b48bbfe-0e11-4c5c-8977-d15bd9861faa"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="773678f7-abbb-4bda-878b-596175832d45"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="88f670dd-5d95-4608-b4bc-a6e1837a87ac">
+                <propertyInstance
+                  Id="480a359b-e9f6-4244-9162-150ff58ee604"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="17d09673-8298-449a-becb-acc801af6f81">
+                <propertyInstance
+                  Id="117d51ec-c519-4e0f-9fa5-4facd2733b6a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c2cb33b3-7f52-422c-9cd8-230365ebd355">
+                <propertyInstance
+                  Id="3c582f13-679f-46f3-acc2-d27b59554c9c"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8ada99b-eba2-4f41-a164-e9682a7e86cb">
+                <propertyInstance
+                  Id="9ad45286-32fc-4352-9e7d-8cb9f977a029"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="22f39c1a-1a02-4ae4-b96d-44393188f6e3">
+                <propertyInstance
+                  Id="8be8237d-459d-43f4-9c37-2c25651b7fda"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="6b3a245b-c013-4127-ba97-f6b43dd4fa81"
+            isDerived="false"
+            sourceEndRoleName="Client"
+            targetEndRoleName="Mailer"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c403e98c-6b60-4227-8dcf-a3a0797ecede"
+              LastKnownName="SmtpClient"
+              LastKnownLocation="Package2_2040.uml" />
+            <description>Property Mailer references type SmtpClient.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f3f3197e-d856-4882-b8ed-c21afe6886cd"
+                  name="Client"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1b3c59d8-8d2b-42d7-b7e0-66adfc85f51f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="baae253a-4e0b-45ff-9e74-66e7d1e79ac6"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8e10fa13-8e3b-44ba-a991-f9a972992b01"
+                  name="Mailer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d83f1366-2ba5-4031-b891-a381f0a60c30"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="14b31ef5-738f-4e5c-bf67-14b9f16c9f31"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="452fd60a-2e7b-481a-9cc4-4f9173148e2f"
+            name="Mailer"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0954b6c8-e927-4589-92a9-2bba63097b71"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3DMailer"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bbae9ddc-37fb-435f-9f71-acc8c8f5e4c8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65130679-9ee9-4799-bf80-b24450c2bd77">
+                    <propertyInstance
+                      Id="77ae2e02-89c6-45e1-b162-be00f56d3012"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4ad47fe3-656b-4d33-b02b-c5f3b7827eef">
+                    <propertyInstance
+                      Id="832b0f5f-696c-43cd-b08f-e878e038a4de"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="853e9642-5fd3-49e1-a8e7-d6b76cedf277">
+                    <propertyInstance
+                      Id="424c9762-918e-43a9-9c68-60e755730ff2"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="320f0e70-8848-470b-b068-63c79cc08029">
+                    <propertyInstance
+                      Id="f4cbf67f-9c16-4306-ab82-6ec7c7d3ad60"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bc1a2c5-d981-40ad-80c5-d3d423348667">
+                    <propertyInstance
+                      Id="9b4a0e75-3d02-43d8-bc0f-8aceed141ccb"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c276e2f3-0d27-4f40-9dba-d8cf4bacfb7d">
+                    <propertyInstance
+                      Id="01670abd-6ffc-4bfb-a874-32a4f7d8eec0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="001324b5-cb45-4697-a5eb-7765a7f92e6b">
+                    <propertyInstance
+                      Id="c4eecbd7-0838-4b51-ae5b-2f99ba0814e5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="c403e98c-6b60-4227-8dcf-a3a0797ecede"
+                LastKnownName="SmtpClient"
+                LastKnownLocation="Package2_2040.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="916452b6-b641-4e0f-afda-9fa669d4f33f"
+            name="Password"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="29288436-f27c-4a29-8e71-ad41f173e409"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3DPassword"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b01ec45a-27fe-415b-83d1-7d795d07ec6f"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6d681761-ce11-49e0-83a9-11131f51e84b">
+                    <propertyInstance
+                      Id="c1541f99-2347-473c-8491-59970c30e0bc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2de16da3-00db-414e-b38a-b71332a959c5">
+                    <propertyInstance
+                      Id="16ec3b8b-28a1-4d2b-a44c-ad12231c03b9"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="76735a03-34d4-4323-a1fd-c1f4035c65f6">
+                    <propertyInstance
+                      Id="df83d2eb-aff4-48fa-9325-327674da869e"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e3542cf8-d783-4760-aa3e-ced3e94f079d">
+                    <propertyInstance
+                      Id="79e31bc4-c60e-4101-a232-942f8b518718"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="903e1eb8-da38-44fc-b8df-20487a3dcfbd">
+                    <propertyInstance
+                      Id="8160e6f9-aa47-40d2-a612-0a560d0d1222"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a774cf91-161e-42f0-b162-199096f3c85a">
+                    <propertyInstance
+                      Id="382a1b72-bcae-4c90-a8f5-531f8938c8d0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7aa4c844-16fa-4365-a615-fea1a419353f">
+                    <propertyInstance
+                      Id="65528ceb-b3d1-4dd9-99e6-c9e2a38a4443"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="42e7d65c-70fc-43a0-8b46-f499e201ffdc"
+            name="UserName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="351d7336-8c97-48b9-867e-07036bbb5fb2"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3DUserName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bb23a3b8-4cdf-4b69-b637-f5d9018ef143"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d37ec247-e949-4c67-b3d8-38b3ab9e1af6">
+                    <propertyInstance
+                      Id="8149d52c-8f9a-495f-9a8c-09203e956272"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="af522507-7731-4356-8314-b2fe127bb1d6">
+                    <propertyInstance
+                      Id="d951fcf9-7aca-4665-b6df-566caadecc59"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85b32085-cc47-432b-ba9b-69664d0a9459">
+                    <propertyInstance
+                      Id="b1795036-4749-4964-9f44-bde79cff91ac"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62338e50-1e92-4d24-8fff-2816bd48805a">
+                    <propertyInstance
+                      Id="d1f9582b-fc01-44e9-84a4-bfacf7a9ebcf"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b3efee6-ddf1-4325-92d9-5859fdc8e0d8">
+                    <propertyInstance
+                      Id="ead50db1-222a-4728-ad2f-45f7eb964679"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a465b7e2-29d8-4ed1-a1f8-de94bb3d4db2">
+                    <propertyInstance
+                      Id="041c3743-09b5-49f3-b144-a78a34c8919f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6fd3981f-6a42-422a-8b18-32b539ac6965">
+                    <propertyInstance
+                      Id="79b3c9ce-8dda-4000-a344-43259fe111cb"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ba1d6b3b-540e-460d-9ff8-2ee848225860"
+            name="credentials"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="fea8eb0b-e1b7-41e3-9888-3884cfb10952"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3Dcredentials"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9c03a644-2a92-49e6-ae46-88de65e751e4"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38b05ebf-ff52-4e52-abbf-ad102a24034c">
+                    <propertyInstance
+                      Id="b0a9366e-424b-49a0-889d-84910992cc49"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a46b1cd1-ea41-46c9-9370-50454dc961d5">
+                    <propertyInstance
+                      Id="a57b2737-b19b-48d6-8018-6ce773eba59c"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9659e3b3-ecbf-4c5f-9cd3-0da9bbdb6b4c">
+                    <propertyInstance
+                      Id="10a7ea07-0c63-4fc2-8684-1c093c3fd6d0"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e6d7ce27-2bce-41b6-999d-e84917ee9093">
+                    <propertyInstance
+                      Id="c94fafa2-68c0-4ae6-8d50-0e792b6a15c6"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a78c024e-c374-449f-b2f4-ba3ae13fb289">
+                    <propertyInstance
+                      Id="7ed18156-58c8-4f9d-b01f-adf8569050fd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="b933327d-443c-4a24-a508-85b7178520ca"
+                LastKnownName="NetworkCredential"
+                LastKnownLocation="Package1_2040.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="ab8c40a1-ba98-4949-9cd9-e74974231033"
+            name="Client"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="46a56259-6c4f-405c-8eaa-e461641593d5"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2610065e-90df-4ae9-8e1d-ad708c44d9f6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d574cd0f-1135-44c0-9705-5071333f8aae">
+                    <propertyInstance
+                      Id="b273359f-fcd8-414b-9fd1-77c0eb439e5a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56ef1c4e-4034-4ec3-b44b-e2320dcbe075">
+                    <propertyInstance
+                      Id="b89a4b40-8656-4380-9a6c-b43667b0cc97"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d7e5a22d-0cb9-4839-9e7b-f981cf250787">
+                    <propertyInstance
+                      Id="cfc29b6e-0e5c-48be-9a2e-b4215a951d65"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d63abe32-b84a-4ecb-a564-c2aed72d62cc">
+                    <propertyInstance
+                      Id="78d6df1d-5caa-4a45-9feb-99bd97871d2e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c4e40ca-a514-4684-8fad-cc1ec1d3c40a">
+                    <propertyInstance
+                      Id="864f5326-495d-4359-807a-74a3e8ff975e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="408dbfbe-eb83-46ad-8606-ab92f91b2f3e">
+                    <propertyInstance
+                      Id="309c8136-d000-4692-98a8-11011f8f53e1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="163a5892-bb1f-4122-98a3-d44df7a3bd78"
+                  name="host"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="70d03109-eec2-4656-a13d-f9dd3ed7162e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dhost"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="79b23cba-4f6a-458f-a075-62a9197ccf3b"
+                  name="port"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="7295fa6c-cb25-4015-81af-1df9d9e690fe"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dport"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="87b66c97-2c24-48a8-9f1b-fded23e78699"
+            name="Dispose"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="65f5bfeb-ad56-46fd-b209-2bd3f3e4160a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient Member%3DDispose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8f6e1d3c-2ef2-4725-92fc-8bf550d79acb"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2da90a67-330d-4f5e-bd6e-a6cb51d4eb87">
+                    <propertyInstance
+                      Id="4a99d96a-8eb3-484d-b524-74b44a2e99d8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a9eed85-64f6-4c69-9aed-aecfe2ded677">
+                    <propertyInstance
+                      Id="b3f13d00-45d1-4430-b020-61ad21b049dc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f32e98f-f8cb-46a7-9f6b-8e6b128fbbb0">
+                    <propertyInstance
+                      Id="2a67a236-5f31-4a2e-b875-a22b24cc8aee"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="98ce4d68-5121-4417-85bf-02c55467f9a5">
+                    <propertyInstance
+                      Id="e5b21661-5ad9-418f-94ec-78f6a28ad6ff"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4ba8a5b-6f62-4e6c-a453-89a9bdc206c5">
+                    <propertyInstance
+                      Id="ae990b89-6017-43aa-a365-6c30cdca164a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3cd2197a-6512-45f5-8c9d-744c750c037d">
+                    <propertyInstance
+                      Id="be396ce8-4bf7-4adc-a1c5-c0678208a827"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="84c06dfc-1fc4-4f9b-823f-b86120750934"
+        name="Message"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="deba9a46-dc69-451f-bfff-790d08f8b59e"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="18458ae6-e693-403e-b835-0e6be0f48eae"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1cfb430e-d9bd-4c7a-b6c3-bc8ef4400bc8">
+                <propertyInstance
+                  Id="683e9e09-597c-40a8-a5c3-b471be4b65cd"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8378dd16-3fc6-463e-ad14-823f0b256f93">
+                <propertyInstance
+                  Id="98a13051-101d-4430-8cdb-5975af377819"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4570d5dc-13ae-483f-b064-6db15e79b4d9">
+                <propertyInstance
+                  Id="cc1c2d4e-ecee-40a2-9b03-0b99d1acc97f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0858b76e-786c-4cbd-903f-4e62cbe984ad">
+                <propertyInstance
+                  Id="62df71d6-4f04-4ffc-a571-7a9d0d25ad96"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c6d92b49-40c6-473a-92c9-e094e389d42b">
+                <propertyInstance
+                  Id="c121f0e6-63fe-4ebd-bce8-93809caba038"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="2da3239d-c2ac-414d-9cbc-9fa8103a0214"
+            isDerived="false"
+            sourceEndRoleName="Message"
+            targetEndRoleName="From"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="cb6125de-9aa4-45cf-bde0-095c69188000"
+              LastKnownName="MailAddress"
+              LastKnownLocation="Package2_2040.uml" />
+            <description>Property From references type MailAddress.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7eca6b21-6cd0-41c6-a1fd-632fdcd2bfb9"
+                  name="Message"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="273905e6-583e-4df4-b47f-ce51f8d5f681"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4c70e3cb-85a9-4686-9398-c07a8da5aa0d"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fe719f3c-f872-49cd-bff9-df7fb48a166d"
+                  name="From"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="17b6fe1c-8c85-4910-8917-223851a84a7b"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="db059edc-9268-4ced-a0c5-b7e748b443ec"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ea1f3cd7-9e17-4b78-a451-077dc9a9ecf8"
+            isDerived="false"
+            sourceEndRoleName="Message"
+            targetEndRoleName="Client"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1ae16a66-c022-4fca-80ae-af42e130258c"
+              LastKnownName="Client"
+              LastKnownLocation="Package_2040.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b6a3a383-4787-41e8-990e-9005e7cac17a"
+                  name="Message"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fc49c596-4f24-4ab2-aa38-ac04f39e7e61"
+                  name="Client"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="e44d47af-2c88-4053-a21d-e7cbeecf703b"
+            name="Body"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ce979075-7d74-4c25-99dc-34601d6a8d84"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3DBody"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2388ea80-3d56-4424-adb6-d5fbd63ec1f5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2e8aef20-b195-43e6-9630-9d4307df1ad6">
+                    <propertyInstance
+                      Id="b680a522-41ac-40f3-a5ed-1eb2f4a118bb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a0a1e51-0de6-41c1-9fb4-2cb46083c0e9">
+                    <propertyInstance
+                      Id="a16b7bce-8ecc-40e6-b6a3-46a5a92de712"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51127c53-06fc-4f7c-97ac-68940fc9de04">
+                    <propertyInstance
+                      Id="e5a7809b-dfdc-42c3-9c30-ce40738cf403"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ece4989-86fd-4585-b24b-a22d11740a5e">
+                    <propertyInstance
+                      Id="b1f3323a-c078-4ff5-9018-d6f840ac9b5d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57067079-0d3b-47ff-aead-3d854b151e5b">
+                    <propertyInstance
+                      Id="3f60a827-deb8-4209-b05d-dc9e06618803"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38283fd1-75ce-40a3-8838-cdc9894b67d6">
+                    <propertyInstance
+                      Id="f4876d79-de70-48ac-b67c-12566bccf2df"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7807813e-c656-44c3-a4b0-729f3f9ab61b">
+                    <propertyInstance
+                      Id="1db5fef3-853b-4be7-acae-0bf641f138d0"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="653bfa0e-78ad-4e2a-b99d-21656b653f25"
+            name="From"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b674ecb6-55ba-43ca-b9af-09270b087cd8"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3DFrom"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1e0316dd-4ef8-4514-811b-ccecd7447846"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="381dde3b-10e4-4f38-a2db-e50e69024f1d">
+                    <propertyInstance
+                      Id="07746ee7-b5ca-41f1-bb65-3f333315fded"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c67df21b-eafc-4d9a-8068-172897728aa2">
+                    <propertyInstance
+                      Id="62d59d68-7ebf-48af-ab5d-8b15b40a2d7e"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50bce7f5-4c0b-49ba-bdf8-afc532e03626">
+                    <propertyInstance
+                      Id="4053d6ac-975e-4198-86f9-2799034ad138"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4383e2fa-d7e4-45e4-8df2-f862f5c9c3ba">
+                    <propertyInstance
+                      Id="3e117f91-79d8-4a70-b630-14f40cd9a9fd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b82c2da-fbea-4f03-bb4f-2f01f4b9e78a">
+                    <propertyInstance
+                      Id="65fc3b6e-79a9-4fcf-968a-4c417ee03c68"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="347ce1a2-9e18-41a0-afd9-69187a327a1f">
+                    <propertyInstance
+                      Id="9bb8650f-284c-44da-8b2c-31b460ddf19f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4c228e9-408f-4fd5-92d9-7fd18a9e128d">
+                    <propertyInstance
+                      Id="fc52fd97-156d-4b23-87a5-1b1465ae439c"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="cb6125de-9aa4-45cf-bde0-095c69188000"
+                LastKnownName="MailAddress"
+                LastKnownLocation="Package2_2040.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="480009b4-4147-426b-823e-92e45cb8ca28"
+            name="Subject"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="809e059e-3223-4f29-9e3b-641ea7e4eb3b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3DSubject"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ad6d7977-19bd-43c2-8b32-250f9d1a4ca5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="98604b1c-6460-472a-ad29-3c47c8229621">
+                    <propertyInstance
+                      Id="4d7aad87-99a3-4191-b7e4-9902e8703276"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a3a18658-3382-4f3d-9f56-a789849aa841">
+                    <propertyInstance
+                      Id="3e3dca38-d5d6-4ec9-8ecf-670511f714e6"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="33ab034c-4b71-491e-a1e8-f62093c5f17c">
+                    <propertyInstance
+                      Id="e804833d-596c-478a-9e0d-e948b244801f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2dd1a02b-8e3f-4705-b1c1-7491ab7f5503">
+                    <propertyInstance
+                      Id="6932de96-1b9d-44eb-81e9-7f06e40de574"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="683a982b-9afa-4b80-8ee9-e7dbddd122d7">
+                    <propertyInstance
+                      Id="fe782d68-5268-4b21-9bff-2d18d57b312c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0ad502f-1863-4a9a-a62f-418d943448bb">
+                    <propertyInstance
+                      Id="98f4f7eb-2c46-4ce9-a6a3-67183e059cf5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b78332c-fa83-475c-ac5f-7ee2bd2ed318">
+                    <propertyInstance
+                      Id="3fd0d255-2152-4e8c-9dbb-ab55423dd8a1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="be307b59-bc51-4c61-a513-75e4d2908408"
+            name="client"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="72eb72ed-a7aa-4b83-8272-db1c921e927e"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3Dclient"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5d0994a4-c242-4f84-a72f-8a1a1d182fee"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7eb95b19-352d-4482-9322-4cd778707ff5">
+                    <propertyInstance
+                      Id="e91ecf72-b830-4f49-bd9a-e643a504674e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5591dc4-4d04-4ff2-9e5e-8cfbe76b6cae">
+                    <propertyInstance
+                      Id="dcceb0a9-a6b6-4920-8fe0-bf540d7c4950"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0c612bd7-9786-48b5-bd70-9520923af431">
+                    <propertyInstance
+                      Id="3d6f56a9-50ca-4558-be07-fdd2ae62cd09"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd70cfe4-f863-48d2-b1d0-75940e8e860d">
+                    <propertyInstance
+                      Id="1f8e5228-b986-4924-bcb5-1676d38c15a4"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fb642928-fe61-4853-af01-bbb244a4adde">
+                    <propertyInstance
+                      Id="c4a0849b-ad39-48ef-bbb8-b030106108c7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1ae16a66-c022-4fca-80ae-af42e130258c"
+                LastKnownName="Client"
+                LastKnownLocation="Package_2040.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5f626621-a32e-4f5e-bc63-d032cabae674"
+            name="message"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3f33ca15-0223-4548-af4d-3c4ca336cd98"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3Dmessage"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e67e4ba7-cc1e-4239-8506-06f230b116e5"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4a01b1c6-2e70-46b8-a8a5-f7246b540de4">
+                    <propertyInstance
+                      Id="26622352-9541-4729-84e9-c464f701bfc0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d7d8a924-8ec7-4b4a-ab28-f14a43774c98">
+                    <propertyInstance
+                      Id="16340a23-2a99-441b-b30d-a30dded0eb5f"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92575a20-1701-4ec0-8026-4ef816e20711">
+                    <propertyInstance
+                      Id="3b70dc46-43fe-4795-b3ee-210c55254814"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b38f22f3-229e-4ffb-8f4d-868611aab96d">
+                    <propertyInstance
+                      Id="79c828bd-2d3f-4467-a610-35272a0be0a2"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="196a164b-a2fc-4417-9523-eb990b74e1c9">
+                    <propertyInstance
+                      Id="a7f7d67a-227b-4592-bb2d-0f9af6678fb4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="b094d805-7e93-4dbf-afb7-f665031e8d48"
+                LastKnownName="MailMessage"
+                LastKnownLocation="Package2_2040.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1e631ce1-843c-405b-94cd-9970c51da79e"
+            name="recipients"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="95abfc14-d664-4afd-8e07-20ff6c114879"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3Drecipients"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="803ee305-5b6c-4057-b8e4-ad7471ae5641"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7528feb5-ea36-494e-9c1e-67feaa18e9fa">
+                    <propertyInstance
+                      Id="4ddc4c37-60dd-4489-bdd9-5f110dc17ad3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12ac4f31-010b-4d53-9df1-301479c77980">
+                    <propertyInstance
+                      Id="c82c2505-d250-4bb7-bcf1-51b01ee7e61d"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db70421c-eb2c-4a59-a7a3-79d4974aa3b1">
+                    <propertyInstance
+                      Id="2d5eac3b-efc5-4fa7-a054-2db0613fa980"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1bb8036-4e59-48c9-8635-0b85b537d46e">
+                    <propertyInstance
+                      Id="69bfad8f-33c9-48a3-a891-120dcac1b3f6"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="acd4dac3-262f-42d7-adfd-2f816eb3c59f">
+                    <propertyInstance
+                      Id="f0d2490a-6895-4f80-976b-2a4e58a0e4a5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="84e1f9c1-15dc-40a5-9b63-8818e66aaebf"
+                LastKnownName="List&lt;Address‎&gt;"
+                LastKnownLocation="Package3_2040.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="96b8b6d5-0423-43e8-b6bd-f541f29fe506"
+            name="Message"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="c070c28f-5309-4966-b865-76328ad053fc"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b72e677a-baa9-43eb-9d05-4ee34577da5a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d9027cf-d90f-4c65-a578-2a295271c353">
+                    <propertyInstance
+                      Id="f32d0a56-b01c-45aa-b0f4-dc1444126232"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b18c60cb-b997-4f3e-ad39-d6fb53206df0">
+                    <propertyInstance
+                      Id="f56e560e-09dd-478b-8e7d-87164dc058d6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6969741d-34be-4c71-aa15-a70ea65fb1da">
+                    <propertyInstance
+                      Id="1226776c-50e7-44b7-83cb-2278703a89a9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b57228e5-bda3-40a5-9c2b-b99ee9cfc4b6">
+                    <propertyInstance
+                      Id="db0d587f-17c7-406c-a32f-793d9409d9ea"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="786fbde6-9fe3-4a2f-b064-2b89b17b94a9">
+                    <propertyInstance
+                      Id="b08b2999-981e-423a-af11-1880e6da9acd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="091f241d-c12f-4d1d-aeed-498e5285e3af">
+                    <propertyInstance
+                      Id="b9d006eb-3896-477a-9338-77806529ede1"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="db2a9b0a-7c73-48ec-8bc4-636af098e80a"
+                  name="client"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="41e300ca-4a2b-40a9-aece-a5acc1fed157"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DClient)]) ParameterIdentifier%3Dclient"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1ae16a66-c022-4fca-80ae-af42e130258c"
+                      LastKnownName="Client"
+                      LastKnownLocation="Package_2040.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="116b0373-8920-4454-bdee-f0d9574d35de"
+            name="AddAttachment"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1851046a-d4f3-4675-b25a-59546034fa3f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddAttachment OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="86f063d0-6497-436d-98a1-ee476d56ea41"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2402a674-6601-4a8e-83ce-a7b5740179ca">
+                    <propertyInstance
+                      Id="9b585c1d-882e-4626-ae52-fc61e1a96360"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04a82b7f-12f4-4e25-ae10-eb4685e25950">
+                    <propertyInstance
+                      Id="8ae43be5-e043-492b-afe7-a79f9cfd58a9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65384fb6-0901-4805-b769-56707f43f169">
+                    <propertyInstance
+                      Id="62917ab7-4587-43c7-b821-b462c88a3417"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ee75c6ba-8856-4cc5-a808-1b58d1b36a38">
+                    <propertyInstance
+                      Id="3dd49823-0a47-4b2d-8f6a-b36670c8443d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0eac2c1d-21f1-405d-baba-139ffa88d83b">
+                    <propertyInstance
+                      Id="0cedafd4-78c4-4df1-8d25-00a81c79d3f5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="71b7549e-45c1-42b0-9c4f-8b6e4cfbb691">
+                    <propertyInstance
+                      Id="4832d57b-a930-44f2-ba91-6e7ed46a7ac5"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d7b0eab3-5b3f-483f-85d7-f3d20fcac846"
+                  name="attachmentFilename"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="be40564b-40fd-45e9-bf7f-7da42586bc09"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddAttachment OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DattachmentFilename"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e6188388-89e5-4921-bf46-723e284720bf"
+            name="AddRecipient"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="56021eb2-d311-4c7d-bd20-c69da7bc4360"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DDynamicMailingList)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6f0bb81b-223c-47eb-ae3c-dc8449973e8a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c48dfd6-2154-434e-8e39-3e207451174f">
+                    <propertyInstance
+                      Id="3a26a091-85a0-478a-90f9-32185eee7c86"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84d6f7bf-2f79-4ea0-923f-6701e63ce4ea">
+                    <propertyInstance
+                      Id="ca23c090-cda5-49d9-8095-711d5f71a837"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd1274a4-534b-43eb-ba6e-e45506ee45dc">
+                    <propertyInstance
+                      Id="b97a6ac6-e85e-4dd2-949c-8daf34dd8967"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5d44e35a-f364-4be8-b740-e9b02b403f0e">
+                    <propertyInstance
+                      Id="e7e46ca6-5606-49bf-889b-1a260aa23450"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57350636-d4df-4a68-86e5-5a9fff0978ac">
+                    <propertyInstance
+                      Id="5ae023c5-b32e-446a-b779-b3b1e3475d87"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="71f4ec40-0bcf-4703-9ee4-89cf4e28707b">
+                    <propertyInstance
+                      Id="962b546e-408c-4faf-8e8b-b40e285d2980"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="561d4cde-b97d-4de4-9325-cfee2d66a9cc"
+                  name="list"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a8dabf82-abdb-4d08-a709-bc7dcd3f9039"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DDynamicMailingList)]) ParameterIdentifier%3Dlist"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="422db2a1-a48f-4235-9cd5-7a9846ebca10"
+                      LastKnownName="DynamicMailingList"
+                      LastKnownLocation="Package_2040.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="10850fa5-2cd5-45d4-9d6d-30a4d59e7a22"
+            name="AddRecipient"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="aa3e9688-634d-4b31-8447-23e2411d3375"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer Type%3DAddress)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9285ca23-ee57-4a22-bf74-3b0b512a4648"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91d120bb-8328-4ed6-b9f7-d95edb823ab4">
+                    <propertyInstance
+                      Id="79ecee2f-62d8-4b92-a5f9-6468a074fa78"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b43a3f75-eef0-435f-a0d2-befdec529e51">
+                    <propertyInstance
+                      Id="b8c1890f-2555-473e-a53c-1e5fb98316aa"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d3a91954-46ce-4b0d-84ae-fe12e9762700">
+                    <propertyInstance
+                      Id="342c06ad-2621-4a4d-95a3-df8144609bde"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2e970d5-7030-47e8-8749-52d45fa60e3b">
+                    <propertyInstance
+                      Id="e93db250-b5e4-41a7-8af2-e274df528e9e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="78cb5046-d112-46b9-81fb-d51dd141a9b0">
+                    <propertyInstance
+                      Id="0a684827-c4cf-4fb1-89eb-624871f5b2d0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="343329c1-8871-45e6-b686-8cae7e80788c">
+                    <propertyInstance
+                      Id="de517bdc-40be-4533-8d2a-8b44de8005b9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="94637e29-c612-432d-a396-a00a2040c023"
+                  name="address"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="ce028a4c-b776-4d56-bdaf-5be11873d2a8"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer Type%3DAddress)]) ParameterIdentifier%3Daddress"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="c9d66491-2d6a-4fb8-a35e-e1398631edfb"
+                      LastKnownName="Address"
+                      LastKnownLocation="Package_2015.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="65f65d47-b875-4a51-b2c4-fc404f047307"
+            name="AddRecipient"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a439b489-c3a2-41d0-a020-5b448edaf89c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer Type%3DMailingList)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="54c52d5a-6d71-4336-b57a-b6d651405929"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66eaafcd-655a-40f8-97ac-cc296afade46">
+                    <propertyInstance
+                      Id="56c6573c-eddb-4b67-b157-4b4e3355a46a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5e594ec-6eea-453c-8256-592e79527a65">
+                    <propertyInstance
+                      Id="4dc7a30e-d26d-4478-ac74-32c3394cac72"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="374c4893-d845-4834-919f-b586dffcab4c">
+                    <propertyInstance
+                      Id="ed6b44e4-488c-4baa-8874-f54e896b9cfe"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66701c24-ed36-481c-8c41-61c767230df6">
+                    <propertyInstance
+                      Id="8af295f3-d878-46f3-989c-81383205e65d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e548c1a-2e02-4eac-ae87-4a0912f8a458">
+                    <propertyInstance
+                      Id="0f745adb-7bf0-4ebc-85d3-a22d0ef0d677"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f5f48e2-fe86-4819-966d-1e994e458ae7">
+                    <propertyInstance
+                      Id="983910c7-b9fe-443c-802d-8bdfee257bd7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2ccd105f-7353-4c82-892b-a413477ba465"
+                  name="list"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="2261f721-d2c6-493a-ab85-26a1a969b143"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3D(Name%3DAddRecipient OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer Type%3DMailingList)]) ParameterIdentifier%3Dlist"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="e362bb32-fa6c-4600-ad21-e238f653f8ba"
+                      LastKnownName="MailingList"
+                      LastKnownLocation="Package_2015.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d3b4e802-6b58-4629-bcf9-2953ce736d54"
+            name="Send"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="01666204-b867-46d2-a79a-198354341a15"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DMessage Member%3DSend"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4c9f426b-4575-4f36-8348-d0dd4ed9dbd5"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c00e7c46-db12-404c-b502-c079da709f9d">
+                    <propertyInstance
+                      Id="c861f56a-d9f6-4b79-b545-3eda707744b1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23a9b278-6a71-4ac9-8414-167fa885b3be">
+                    <propertyInstance
+                      Id="33ee514e-6116-48fa-a690-507ca8e09cbd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1021d95e-cb15-413c-9fc8-1274397b7c65">
+                    <propertyInstance
+                      Id="b673b621-2ae1-4b04-ad82-ae4a08ba6eb3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d3c911c6-8ee1-472e-baea-2dfea2b9cf97">
+                    <propertyInstance
+                      Id="e36a6a1c-38bd-4c60-8d74-48f87bc4807b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5dafadfd-ce57-4a45-9c07-597635285b03">
+                    <propertyInstance
+                      Id="d77bb312-0a70-48ed-92c3-9c8fa833acde"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2eeaa69-c8ab-43a1-9e54-5e3ce1855497">
+                    <propertyInstance
+                      Id="3ffd4b65-f228-4874-9374-38916717b7a7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="422db2a1-a48f-4235-9cd5-7a9846ebca10"
+        name="DynamicMailingList"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8f1e5f0f-2c7e-41d4-b4c7-92cba9bde7b3"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DDynamicMailingList"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9a7c16d4-4eb2-4d88-929d-0ec324d8b6f7"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="efaf3077-745c-4318-85e0-f84db16221c0">
+                <propertyInstance
+                  Id="5dfa8232-e235-4dff-92ba-283f48897466"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b980f05a-916f-4fba-9917-05ebb925dd07">
+                <propertyInstance
+                  Id="fee1a57c-9c39-4c14-8c47-a6e6013d0c42"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="931c5d09-5025-4383-8f94-3295d44ade2a">
+                <propertyInstance
+                  Id="2a6548b3-76d1-4c92-9912-13a348f2114f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="edcbbee7-53fc-4af9-b3b2-4d7763075eab">
+                <propertyInstance
+                  Id="9edb8604-5ac8-451f-94a0-852d71aa703c"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="03fbbf06-4aba-40bf-bc45-0af329cf29e7">
+                <propertyInstance
+                  Id="4fc32dd7-9296-4357-9945-5dafaf594dc4"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="f986b1fa-0c29-407c-80ae-096395c9f5d4"
+            isSubstitutable="false">
+            <classMoniker
+              Id="e362bb32-fa6c-4600-ad21-e238f653f8ba"
+              LastKnownName="MailingList"
+              LastKnownLocation="Package_2015.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="fbe26fbe-c9c5-4edd-8810-40a86ce7ca48"
+            name="DynamicMailingList"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9eed5256-661f-463f-ba63-82e443816483"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrew%2FDesktop%2FMailer%2FMailer%2Fbin%2FRelease%2FMailer.exe Namespace%3DMailer.Mail Type%3DDynamicMailingList Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9900275b-8307-43e2-a40f-dbc420e6622c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44651cf1-9248-4711-a3f8-4baf90a25faf">
+                    <propertyInstance
+                      Id="873e8683-a605-4db2-bd0e-31a7f2bb6149"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="abbc2678-96dd-4396-9393-29b1e639b30d">
+                    <propertyInstance
+                      Id="41939ae9-1c4a-4de1-a1dc-9c938ccb3dc8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f1d34a1e-8be5-4855-9a96-46658afc4cab">
+                    <propertyInstance
+                      Id="ce0efb54-12d6-4ce8-a8a4-0ae55bac20b3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="48292c3c-f019-4128-b61e-4161b2ff6dd7">
+                    <propertyInstance
+                      Id="0eaa7c9d-d30a-42d7-8789-935a222e8968"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="325b7dcd-c7c8-41b5-9852-849baec6af53">
+                    <propertyInstance
+                      Id="d5192f56-9363-4557-b109-6d53dffd489c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2bb9de8d-42ea-4def-a20e-f39c93f5e0e1">
+                    <propertyInstance
+                      Id="b5106fa2-eec0-4c09-8ca3-6805f327b434"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

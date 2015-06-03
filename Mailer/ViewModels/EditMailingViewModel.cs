@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mailer.ViewModels
 {
-	public class EditMailingViewModel
+	public class EditMailingViewModel : BaseViewModel
     {
         public EditMailingViewModel(MailingList mlist)
 		{
