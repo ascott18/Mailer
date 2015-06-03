@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="73b2018e-6518-4b0b-acb2-f229c668548b" name="ClassDiagram" linkedPackageId="be8bba80-fcbd-49a3-b77d-ad402f0ad73a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="73b2018e-6518-4b0b-acb2-f229c668548b" name="Mailer Class Diagram" linkedPackageId="be8bba80-fcbd-49a3-b77d-ad402f0ad73a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <profileInstances>
     <packageHasProfileInstances Id="cd54b16a-f735-43a1-8dd3-d9d075260b57">
       <profileInstance Id="1585bf4f-136a-489f-9437-7cdd08d5a49c" name="StandardProfileL2">
@@ -12059,6 +12059,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="e13938f2-1c22-4a4c-9970-b6871d4cfae9" name="Address" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="35832118-b2e9-4d60-b5be-65dcfa5bbfd0" name="Lower" value="*">
+                      <elementDefinition Id="604b6394-2418-4069-b86c-97698bd83c76" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="fcf569d4-4ebf-489d-9fda-ba15294778ae" name="Upper" value="*">
+                      <elementDefinition Id="c8d4b10a-dcf1-4f52-a8da-818673c48172" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="802d9230-ed4b-4c13-bef9-a97f5cdec371" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -12075,6 +12085,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="63f82b91-8923-4448-9b6b-653fed214328" name="MailingListLine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="8dd26974-ee5d-461e-9227-c2afc80de131" name="Lower" value="*">
+                      <elementDefinition Id="c99dc453-bf87-4da3-87ce-a3bcb9496b2f" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="ab758d8a-1c9b-4230-a605-f2e77b1d4404" name="Upper" value="*">
+                      <elementDefinition Id="14fa445e-37fb-4130-a66b-b6319d2611af" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="84f87287-d00a-4865-8c87-d52ba9306075" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -12091,6 +12111,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="424ab30b-a01b-4f4c-87b4-5d434315925f" name="MailingList" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="8f5af567-c836-4b6f-ad1b-3771bbd6deb6" name="Lower" value="*">
+                      <elementDefinition Id="467222fd-67b1-4ea0-ab1f-41c2d83e5518" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="0f557c50-b2f3-4836-8f36-5cdac7368be7" name="Upper" value="*">
+                      <elementDefinition Id="1281d4d2-a0c0-4a8f-9363-dd3b6f523cbc" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="753fc5f4-8fa1-4a40-b302-72398b23ff4c" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -12107,6 +12137,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="f6aa6a9f-bb71-4021-aa64-013ccc080837" name="ReceivedMail" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="37c8762c-833b-470c-80fc-1337b4a86c78" name="Lower" value="*">
+                      <elementDefinition Id="9f4697e4-4028-4f00-af64-58267a47c209" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="95970865-72df-4fa9-8aaf-16984583867f" name="Upper" value="*">
+                      <elementDefinition Id="e283931c-4768-4ef2-b2f1-85a677d94a8f" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="ad57f249-134d-43ce-954b-962212413ef1" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -14802,16 +14842,36 @@
         </appliedStereotypesInternal>
         <elementDefinition Id="45420d05-7106-4ab8-adb5-a5683f2ab0fd" />
         <targetEnds>
-          <association Id="05ec52c0-a1a3-42d0-9855-69de5323cf98" isDerived="false" sourceEndRoleName="MailerEntitiesYearMailingLists" targetEndRoleName="MailerEntities" isLeaf="false" isAbstract="false">
+          <association Id="05ec52c0-a1a3-42d0-9855-69de5323cf98" isDerived="false" sourceEndRoleName="" targetEndRoleName="Extends" isLeaf="false" isAbstract="false">
             <classMoniker Id="d984df68-570b-468e-9c0d-0637e2d5f11d" LastKnownName="MailerEntities" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="8d8e82b4-1d6f-461b-ba57-b6a66154fda3" name="MailerEntitiesYearMailingLists" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="8d8e82b4-1d6f-461b-ba57-b6a66154fda3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="46121837-aeb4-4dd2-9ed7-41bb75ef6ae7" name="Lower">
+                      <elementDefinition Id="a34873da-acee-42a0-b2e2-00c6fd234861" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="03f0e736-299c-4b20-879d-72361f3b7c12" name="Upper">
+                      <elementDefinition Id="e92e26d1-ceb8-4651-b666-8dc700225f65" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="6f77aef7-11be-4a37-a459-9bfe1bbcd74a" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="75882cbc-41aa-40c1-b9e8-98cfc9dba27e" name="MailerEntities" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="75882cbc-41aa-40c1-b9e8-98cfc9dba27e" name="Extends" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="24a0c93b-5950-499f-bdaf-09319197f921" name="Lower">
+                      <elementDefinition Id="d1cc49c4-b50f-4fa5-8919-e5de17f841c8" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a4cff2c7-9883-4b41-bb44-6eb7004daf9e" name="Upper">
+                      <elementDefinition Id="956bede7-713b-4cb7-aee3-5026f1e0926e" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="54f7e9bb-69e6-4d28-b62f-2ecd6545ccf3" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -14828,6 +14888,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="474f8aa9-1849-49a3-8504-6aeebb2393d7" name="DynamicMailingList" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="070f590f-2645-4727-9ddd-4e510566cb4b" name="Lower" value="*">
+                      <elementDefinition Id="46b36570-0be2-420e-976c-0339cf8e2836" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="27a4eceb-5832-47a7-97c3-ff9bd8a5c2e0" name="Upper" value="*">
+                      <elementDefinition Id="e97b63a9-67c0-437c-8ec5-0952d70770eb" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="05714a3e-a745-4406-bc1a-fc1226e7b432" />
                 </memberEnd>
               </associationHasOwnedEnds>
