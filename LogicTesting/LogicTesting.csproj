@@ -101,6 +101,9 @@
     <Compile Include="AttachmentViewModelTest.cs" />
     <Compile Include="MessageViewModelTest.cs" />
     <Compile Include="RecipientViewModelTest.cs" />
+    <Compile Include="MailingListItemViewModelTest.cs" />
+    <Compile Include="MailingListViewModelTest.cs" />
+    <Compile Include="EditMailingViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mailer\Mailer.csproj">
