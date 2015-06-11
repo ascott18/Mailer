@@ -7,7 +7,7 @@ using Mailer.ViewModels;
 namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for AddressControl.xaml
+	///     Interaction logic for AddressControl.xaml
 	/// </summary>
 	public partial class AddressControl : AbstractRecipientSourceControl
 	{

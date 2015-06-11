@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using Mailer.Windows;
 
@@ -28,7 +27,10 @@ namespace Mailer.ViewModels
 		/// </summary>
 		public Address Address { get; private set; }
 
-		public override object Recipient { get { return Address; } }
+		public override object Recipient
+		{
+			get { return Address; }
+		}
 
 		/// <summary>
 		///     A mirror of the FirstName property on the address. Works with INotifyPropertyChanged.

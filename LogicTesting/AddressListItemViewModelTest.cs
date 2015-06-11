@@ -46,12 +46,19 @@ namespace LogicTesting
 				Email = "bob@gmail.com",
 				ReceivedMails = new Collection<ReceivedMail>
 				{
-					new ReceivedMail{Year = 2013},
-					new ReceivedMail{Year = 2014},
+					new ReceivedMail
+					{
+						Year = 2013
+					},
+					new ReceivedMail
+					{
+						Year = 2014
+					},
 				}
 			};
 
-			var mll = new MailingListLine {
+			var mll = new MailingListLine
+			{
 				Address = newAddress,
 				MailingList = ml
 			};

@@ -7,7 +7,7 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class MockRecipientViewModel : RecipientViewModel
+	internal class MockRecipientViewModel : RecipientViewModel
 	{
 		public MockRecipientViewModel() : base(null)
 		{

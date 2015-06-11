@@ -17,7 +17,7 @@ using Mailer.ViewModels;
 namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for MailingListControl.xaml
+	///     Interaction logic for MailingListControl.xaml
 	/// </summary>
 	public partial class MailingListControl : AbstractRecipientSourceControl
 	{
@@ -26,25 +26,25 @@ namespace Mailer.Controls
 			InitializeComponent();
 		}
 
-        private void Edit_OnClick(object sender, RoutedEventArgs e)
-        {
-            var vm = (MailingListItemViewModel)DataContext;
-            vm.Edit();
-        }
+		private void Edit_OnClick(object sender, RoutedEventArgs e)
+		{
+			var vm = (MailingListItemViewModel)DataContext;
+			vm.Edit();
+		}
 
-        private void Delete_OnClick(object sender, RoutedEventArgs e)
-        {
-            var vm = (MailingListItemViewModel)DataContext;
+		private void Delete_OnClick(object sender, RoutedEventArgs e)
+		{
+			var vm = (MailingListItemViewModel)DataContext;
 
-            var res = MessageBox.Show(
-                "Are you sure you wish to delete the mailing list " + vm.Name + "?",
-                "Are you sure?",
-                MessageBoxButton.YesNo);
+			var res = MessageBox.Show(
+				"Are you sure you wish to delete the mailing list " + vm.Name + "?",
+				"Are you sure?",
+				MessageBoxButton.YesNo);
 
-            if (res != MessageBoxResult.Yes)
-                return;
+			if (res != MessageBoxResult.Yes)
+				return;
 
-            vm.Delete();
-        }
+			vm.Delete();
+		}
 	}
 }

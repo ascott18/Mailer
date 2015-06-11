@@ -12,8 +12,8 @@
         Title="Mailer"
         Height="600"
         Width="800"
-		MinHeight="457"
-		MinWidth="485"
+        MinHeight="457"
+        MinWidth="485"
         Icon="../Images/mail.ico"
         SnapsToDevicePixels="True"
         UseLayoutRounding="True">
@@ -62,25 +62,25 @@
 					</Grid.RowDefinitions>
 
 					<TextBlock DockPanel.Dock="Top"
-				           Margin="0,5,0,0">
-					From Name:
+					           Margin="0,5,0,0">
+						From Name:
 					</TextBlock>
 
 					<TextBlock Grid.Row="0"
 					           Grid.Column="1"
 					           DockPanel.Dock="Top"
-				           Margin="5,5,0,0">
-					From Email:
+					           Margin="5,5,0,0">
+						From Email:
 					</TextBlock>
 					<TextBox Grid.Row="1"
 					         Grid.Column="0"
 					         DockPanel.Dock="Left"
-				         Text="{Binding Source={StaticResource Settings}, Path=Default.FromName}" />
+					         Text="{Binding Source={StaticResource Settings}, Path=Default.FromName}" />
 					<TextBox Grid.Row="1"
 					         Grid.Column="1"
 					         DockPanel.Dock="Right"
-							 Margin="5,0,0,0"
-				         Text="{Binding Source={StaticResource Settings}, Path=Default.FromEmail}" />
+					         Margin="5,0,0,0"
+					         Text="{Binding Source={StaticResource Settings}, Path=Default.FromEmail}" />
 				</Grid>
 
 
@@ -98,7 +98,7 @@
 				<ScrollViewer DockPanel.Dock="Top"
 				              IsTabStop="False"
 				              VerticalScrollBarVisibility="Auto"
-							  MaxHeight="83">
+				              MaxHeight="83">
 					<ItemsControl ItemsSource="{Binding Recipients}">
 						<ItemsControl.ItemsPanel>
 							<ItemsPanelTemplate>
@@ -108,9 +108,9 @@
 						<ItemsControl.ItemTemplate>
 							<DataTemplate DataType="viewModels:AttachmentViewModel">
 								<controls:RecipientControl Margin="1,1,5,1"
-														   Background="#FFE6E6E6"
-														   BorderBrush="#FFA2A2A2"
-														   BorderThickness="1" />
+								                           Background="#FFE6E6E6"
+								                           BorderBrush="#FFA2A2A2"
+								                           BorderThickness="1" />
 							</DataTemplate>
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>
@@ -133,7 +133,7 @@
 				<ScrollViewer DockPanel.Dock="Top"
 				              IsTabStop="False"
 				              VerticalScrollBarVisibility="Auto"
-							  MaxHeight="55">
+				              MaxHeight="55">
 					<ItemsControl ItemsSource="{Binding Attachments}"
 					              Visibility="{Binding HasAttachments, Converter={StaticResource BoolToVis}}">
 						<ItemsControl.ItemsPanel>

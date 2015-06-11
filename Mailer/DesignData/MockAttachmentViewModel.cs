@@ -7,7 +7,7 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class MockAttachmentViewModel : AttachmentViewModel
+	internal class MockAttachmentViewModel : AttachmentViewModel
 	{
 		public MockAttachmentViewModel()
 		{

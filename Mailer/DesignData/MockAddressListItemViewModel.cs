@@ -7,7 +7,7 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-	class MockAddressListItemViewModel : AddressListItemViewModel
+	internal class MockAddressListItemViewModel : AddressListItemViewModel
 	{
 		public MockAddressListItemViewModel()
 			: base(new Address
@@ -17,7 +17,6 @@ namespace Mailer.DesignData
 				LastName = "Scott",
 			})
 		{
-
 		}
 	}
 }

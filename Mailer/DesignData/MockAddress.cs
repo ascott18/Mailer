@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Mailer.DesignData
 {
-    class MockAddress : Address
-    {
-        
-        public MockAddress()
-        {
-            FirstName = "Frank";
-            LastName = "Sinatra";
-            Email = "franksinatra@dawg.net";
-
-        }
-    }
+	internal class MockAddress : Address
+	{
+		public MockAddress()
+		{
+			FirstName = "Frank";
+			LastName = "Sinatra";
+			Email = "franksinatra@dawg.net";
+		}
+	}
 }

@@ -14,7 +14,7 @@ using System.IO;
 namespace Mailer.Windows
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	///     Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window
 	{
@@ -25,7 +25,7 @@ namespace Mailer.Windows
 			MessagePump.OnMessage += MessagePump_OnMessage;
 		}
 
-		void MessagePump_OnMessage(object sender, string msg)
+		private void MessagePump_OnMessage(object sender, string msg)
 		{
 			if (msg == "MessageSent")
 				ComposePanel.DataContext = new MessageViewModel();
@@ -53,52 +53,49 @@ namespace Mailer.Windows
 
 		private void Send_OnClick(object sender, RoutedEventArgs e)
 		{
-            try
-            {
-                var mvm = ComposePanel.DataContext as MessageViewModel;
+			try
+			{
+				var mvm = ComposePanel.DataContext as MessageViewModel;
 
-                if (mvm != null)
-                {
+				if (mvm != null)
+				{
 					mvm.Send(Properties.Settings.Default["FromName"] as string,
-						Properties.Settings.Default["FromEmail"] as string);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+					         Properties.Settings.Default["FromEmail"] as string);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
 
-	    private void AddMailingListButton_OnClick(object sender, RoutedEventArgs e)
-	    {
-            ((MailingListViewModel)MailingListDockPanel.DataContext).Add();
-	    }
+		private void AddMailingListButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			((MailingListViewModel)MailingListDockPanel.DataContext).Add();
+		}
 
 
-        private void AddAttachment_OnClick(object sender, RoutedEventArgs e)
-        {
-            
-            try
-            {
-                var mvm = ComposePanel.DataContext as MessageViewModel;
+		private void AddAttachment_OnClick(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				var mvm = ComposePanel.DataContext as MessageViewModel;
 
-                if (mvm != null)
-                {
-                    var ofd = new OpenFileDialog();
+				if (mvm != null)
+				{
+					var ofd = new OpenFileDialog();
 
-                    if (ofd.ShowDialog() == true)
-                    {
-                        mvm.AddAttachment(ofd.FileName);
-                    }
-                }
-                    
-            }
-            catch (Exception ex) 
-            {
-                MessageBox.Show(ex.Message);
-            }
-             
-        }
+					if (ofd.ShowDialog() == true)
+					{
+						mvm.AddAttachment(ofd.FileName);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
 
 		private void ComposePanel_OnDragOver(object sender, DragEventArgs e)
 		{

@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 namespace Mailer
 {
 	/// <summary>
-	/// A very rudimentary message pump for sending messages throughout the application.
+	///     A very rudimentary message pump for sending messages throughout the application.
 	/// </summary>
 	public static class MessagePump
 	{
+		public delegate void Message(object sender, string msg);
+
 		/// <summary>
-		/// Dispatch a message to interested listner.
+		///     Dispatch a message to interested listner.
 		/// </summary>
 		/// <param name="sender">The sender of the message.</param>
 		/// <param name="message">The message to be sent.</param>
@@ -24,10 +26,8 @@ namespace Mailer
 		}
 
 		/// <summary>
-		/// Occurs when a message is dispatched through the MessagePump.
+		///     Occurs when a message is dispatched through the MessagePump.
 		/// </summary>
 		public static event Message OnMessage;
-
-		public delegate void Message(object sender, string msg);
 	}
 }

@@ -8,15 +8,14 @@ using Mailer.ViewModels;
 
 namespace Mailer.DesignData
 {
-    class MockMailingListItemViewModel : MailingListItemViewModel
-    {
-        public MockMailingListItemViewModel()
-            : base(new MailingList()
-            {
-                Name = "Test MailingList"
-            }, true)
-        {
-
-        }
-    }
+	internal class MockMailingListItemViewModel : MailingListItemViewModel
+	{
+		public MockMailingListItemViewModel()
+			: base(new MailingList
+			{
+				Name = "Test MailingList"
+			}, true)
+		{
+		}
+	}
 }

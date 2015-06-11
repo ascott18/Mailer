@@ -8,7 +8,7 @@ using Mailer.ViewModels;
 namespace Mailer.Windows
 {
 	/// <summary>
-	/// Interaction logic for EditAddress.xaml
+	///     Interaction logic for EditAddress.xaml
 	/// </summary>
 	public partial class EditAddress : Window
 	{
@@ -24,7 +24,7 @@ namespace Mailer.Windows
 			YearsListBox.SelectionChanged += YearsListBox_SelectionChanged;
 		}
 
-		void YearsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void YearsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			RemoveButton.IsEnabled = YearsListBox.SelectedIndex >= 0;
 		}
@@ -54,17 +54,16 @@ namespace Mailer.Windows
 
 		private void Okay_OnClick(object sender, RoutedEventArgs e)
 		{
-            try
-            {
-                viewModel.Save();
-	            DialogResult = true;
-                Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-			
+			try
+			{
+				viewModel.Save();
+				DialogResult = true;
+				Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void AddYearTextBox_OnKeyDown(object sender, KeyEventArgs e)

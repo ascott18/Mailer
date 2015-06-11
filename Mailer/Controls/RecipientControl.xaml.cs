@@ -17,9 +17,8 @@ using Mailer.ViewModels;
 namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for RecipientControl.xaml
-	/// 
-	/// DataContext should be a subclass of RecipientViewModel
+	///     Interaction logic for RecipientControl.xaml
+	///     DataContext should be a subclass of RecipientViewModel
 	/// </summary>
 	public partial class RecipientControl : UserControl
 	{

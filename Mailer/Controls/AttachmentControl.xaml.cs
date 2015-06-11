@@ -7,7 +7,7 @@ using Mailer.ViewModels;
 namespace Mailer.Controls
 {
 	/// <summary>
-	/// Interaction logic for AttachmentControl.xaml
+	///     Interaction logic for AttachmentControl.xaml
 	/// </summary>
 	public partial class AttachmentControl : UserControl
 	{

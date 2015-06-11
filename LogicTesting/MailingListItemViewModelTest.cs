@@ -9,39 +9,39 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicTesting
 {
-    [TestClass]
-    public class MailingListItemViewModelTest
-    {
-        [TestMethod]
-        public void TestDelete()
-        {
-            var testList = new MailingList
-            {
-                Name = "a",
-                MailingListLines = new Collection<MailingListLine>
-                   {
-                        new MailingListLine
-                        {
-                            Address = new Address
-                            {
-                                Email = "asdf@test.com",
-                                FirstName = "yay",
-                                LastName = "demmetasdfadsf",
-                                ReceivedMails = new List<ReceivedMail>()
-                            }
-                        }
-                    }
-            };
-            using (var db = new MailerEntities())
-            {
-                db.MailingLists.Add(testList);
-                db.SaveChanges();
-                var mlivmTest = new MailingListItemViewModel(testList, true);
+	[TestClass]
+	public class MailingListItemViewModelTest
+	{
+		[TestMethod]
+		public void TestDelete()
+		{
+			var testList = new MailingList
+			{
+				Name = "a",
+				MailingListLines = new Collection<MailingListLine>
+				{
+					new MailingListLine
+					{
+						Address = new Address
+						{
+							Email = "asdf@test.com",
+							FirstName = "yay",
+							LastName = "demmetasdfadsf",
+							ReceivedMails = new List<ReceivedMail>()
+						}
+					}
+				}
+			};
+			using (var db = new MailerEntities())
+			{
+				db.MailingLists.Add(testList);
+				db.SaveChanges();
+				var mlivmTest = new MailingListItemViewModel(testList, true);
 
-                mlivmTest.Delete();
+				mlivmTest.Delete();
 
-                Assert.IsFalse(db.MailingLists.Any(ml => ml.ListID == testList.ListID));
-            }
-        }
-    }
+				Assert.IsFalse(db.MailingLists.Any(ml => ml.ListID == testList.ListID));
+			}
+		}
+	}
 }

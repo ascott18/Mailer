@@ -14,7 +14,7 @@ namespace LogicTesting
 		{
 			var alvm = new AddressListViewModel();
 
-			
+
 			var alivm1 = new AddressListItemViewModel(new Address
 			{
 				FirstName = "Bob",
@@ -104,8 +104,8 @@ namespace LogicTesting
 				addressListItemViewModel.Delete();
 			}
 		}
-		
-		
+
+
 		[TestMethod]
 		public void TestExternalDeletion()
 		{
@@ -157,7 +157,7 @@ namespace LogicTesting
 
 			alvm.AddAddressListItemViewModel(alivm1);
 			Assert.AreEqual(1, alvm.AddressListItemViewModels.Count);
-			
+
 			alvm.RemoveAddressListItemViewModel(alivm1);
 			Assert.AreEqual(0, alvm.AddressListItemViewModels.Count);
 		}

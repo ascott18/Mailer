@@ -117,9 +117,9 @@ namespace Mailer.ViewModels
 		/// <param name="address">The Address entity to add as a recpient.</param>
 		public RecipientViewModel AddRecipient(Address address)
 		{
-            RecipientViewModel vm = new AddressRecipientViewModel(this, address);
+			RecipientViewModel vm = new AddressRecipientViewModel(this, address);
 			Recipients.Add(vm);
-            return vm;
+			return vm;
 		}
 
 		/// <summary>
@@ -128,29 +128,28 @@ namespace Mailer.ViewModels
 		/// <param name="list">The MailingList entity to add as a recipient.</param>
 		public RecipientViewModel AddRecipient(MailingList list)
 		{
-            RecipientViewModel vm = new MailingListRecipientViewModel(this, list);
+			RecipientViewModel vm = new MailingListRecipientViewModel(this, list);
 			Recipients.Add(vm);
-            return vm;
+			return vm;
 		}
 
 		public void Send(string fromName, string fromEmail)
 		{
-
 			if (fromName == "")
 				throw new ArgumentException("Must input a From name.");
 
 			if (fromEmail == "")
-                throw new ArgumentException("Must input a From email.");
+				throw new ArgumentException("Must input a From email.");
 
 			if (Subject == "")
 				throw new ArgumentException("Subject cannot be empty.");
 
 			if (Body == "")
 				throw new ArgumentException("Body cannot be empty.");
-            if (Recipients.Count == 0)
-            {
-                throw new ArgumentException("Must specify recipients.");
-            }
+			if (Recipients.Count == 0)
+			{
+				throw new ArgumentException("Must specify recipients.");
+			}
 
 			MailAddress fromAddress;
 			try
@@ -206,7 +205,7 @@ namespace Mailer.ViewModels
 				Application.Current.Dispatcher.BeginInvoke(
 					new Action(() => MessagePump.Dispatch(this, "MessageSent")),
 					new object[0]
-				);
+					);
 			});
 		}
 	}

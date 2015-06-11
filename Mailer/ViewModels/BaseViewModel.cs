@@ -5,7 +5,7 @@ using System.Linq;
 namespace Mailer.ViewModels
 {
 	/// <summary>
-	/// The base class for all ViewModels for the Mailer project. Implements INotifyPropertyChanged.
+	///     The base class for all ViewModels for the Mailer project. Implements INotifyPropertyChanged.
 	/// </summary>
 	public class BaseViewModel : INotifyPropertyChanged
 	{

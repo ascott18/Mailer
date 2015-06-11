@@ -11,7 +11,6 @@ namespace Mailer.ViewModels
 	/// </summary>
 	public class EditAddressViewModel : BaseViewModel
 	{
-		 
 		/// <summary>
 		///     Create a new EditAddressViewModel for the given Address entity. A database connection will be
 		///     established to retrieve any missing data.
@@ -93,10 +92,10 @@ namespace Mailer.ViewModels
 		/// </summary>
 		public void Save()
 		{
-            if (Address.FirstName == "")
-                throw new ArgumentException("First name must not be empty");
-            if (Address.Email == "")
-                throw new ArgumentException("Email address must not be empty");
+			if (Address.FirstName == "")
+				throw new ArgumentException("First name must not be empty");
+			if (Address.Email == "")
+				throw new ArgumentException("Email address must not be empty");
 
 			try
 			{
@@ -112,8 +111,6 @@ namespace Mailer.ViewModels
 				db.Addresses.Attach(Address);
 				db.Entry(Address).State = EntityState.Modified;
 				db.SaveChanges();
-
-               
 			}
 		}
 	}

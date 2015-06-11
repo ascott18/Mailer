@@ -49,7 +49,7 @@ namespace LogicTesting
 			Assert.IsFalse(eavm.ReceivedMails.Any());
 		}
 
-		
+
 		[TestMethod]
 		public void TestAddYear()
 		{
@@ -108,7 +108,7 @@ namespace LogicTesting
 				db.Addresses.Remove(addrFromDb);
 				db.SaveChanges();
 			}
-			
+
 			eavm.RemoveYear(2000);
 			eavm.RemoveYear(2012);
 		}
@@ -164,7 +164,7 @@ namespace LogicTesting
 				"bob",
 				"@",
 				".@",
-				"123123",
+				"123123"
 			})
 			{
 				eavm.Address.Email = s;

@@ -5,6 +5,8 @@ namespace Mailer.ViewModels
 {
 	public class MailingListItemViewModel : RecipientSourceViewModel
 	{
+		private int countAddresses;
+
 		/// <summary>
 		///     Create a new MailingListItemViewModel
 		/// </summary>
@@ -22,7 +24,10 @@ namespace Mailer.ViewModels
 		/// </summary>
 		public MailingList MailingList { get; private set; }
 
-		public override object Recipient { get { return MailingList; }}
+		public override object Recipient
+		{
+			get { return MailingList; }
+		}
 
 		/// <summary>
 		///     Get whether or not the mailing list is able to be edited or deleted from the database.
@@ -36,8 +41,6 @@ namespace Mailer.ViewModels
 		{
 			get { return MailingList.Name; }
 		}
-
-		private int countAddresses;
 
 		/// <summary>
 		///     The subtext to be displayed underneath the name of the mailinglist.

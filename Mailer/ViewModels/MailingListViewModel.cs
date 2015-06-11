@@ -15,54 +15,52 @@ namespace Mailer.ViewModels
 	///     Provides behavior for creating new mailing lists.
 	/// </summary>
 	public class MailingListViewModel : BaseViewModel
-    {
+	{
+		public MailingListViewModel()
+		{
+			MessagePump.OnMessage += MessagePump_OnMessage;
+
+			MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
+		}
+
 		/// <summary>
-		/// The collection of MailingListItemViewModels that this MailingListViewModel represents
+		///     The collection of MailingListItemViewModels that this MailingListViewModel represents
 		/// </summary>
-        public ObservableCollection<MailingListItemViewModel> MailingListItemViewModels { get; protected set; }
-
-
-        public MailingListViewModel()
-        {
-            MessagePump.OnMessage += MessagePump_OnMessage;
-
-            MailingListItemViewModels = new ObservableCollection<MailingListItemViewModel>();
-        }
+		public ObservableCollection<MailingListItemViewModel> MailingListItemViewModels { get; protected set; }
 
 		/// <summary>
 		///     Add the specified MailingListItemViewModel to this MailingListViewModel.
 		/// </summary>
 		/// <param name="vm">The MailingListItemViewModel to add.</param>
-	    public void AddMailingListItemViewModel(MailingListItemViewModel vm)
-        {
-            MailingListItemViewModels.Add(vm);
-        }
+		public void AddMailingListItemViewModel(MailingListItemViewModel vm)
+		{
+			MailingListItemViewModels.Add(vm);
+		}
 
 		/// <summary>
 		///     Add a new MailingList to the database, and opens a dialog to edit it.
 		/// </summary>
-        public void Add()
-        {
-            using (var db = new MailerEntities())
-            {
-                var mlist = new MailingList
-                {
-                    Name = "New Mailing List"
-                };
-                db.MailingLists.Add(mlist);
-                db.SaveChangesAsync();
+		public void Add()
+		{
+			using (var db = new MailerEntities())
+			{
+				var mlist = new MailingList
+				{
+					Name = "New Mailing List"
+				};
+				db.MailingLists.Add(mlist);
+				db.SaveChangesAsync();
 
 
-                var vm = new MailingListItemViewModel(mlist, true);
-                AddMailingListItemViewModel(vm);
-                vm.Edit();
-            }
-        }
-
+				var vm = new MailingListItemViewModel(mlist, true);
+				AddMailingListItemViewModel(vm);
+				vm.Edit();
+			}
+		}
 
 
 		/// <summary>
-		/// Handle messages from the message pump and trigger updates when appropriate
+		///     Handle messages from the message pump and trigger updates when appropriate
 		/// </summary>
 		private void MessagePump_OnMessage(object sender, string msg)
 		{
@@ -73,7 +71,7 @@ namespace Mailer.ViewModels
 		}
 
 		/// <summary>
-		/// Update the ViewModel with data from MailerEntities.
+		///     Update the ViewModel with data from MailerEntities.
 		/// </summary>
 		public void LoadFromDatabase()
 		{
@@ -95,5 +93,5 @@ namespace Mailer.ViewModels
 				}
 			}
 		}
-    }
+	}
 }
