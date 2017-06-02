@@ -163,8 +163,15 @@ namespace Mailer.ViewModels
 
 			var client = new Client("smtp.mailgun.org", 587)
 			{
-				UserName = "mailer@mg.scotta.me",
-				Password = "rUvVxR7rvnzRQTT8q9jznHpgHcuMxx"
+				// Don't waste your time, spammers. This account has since been deleted
+				// after this repo was made public.
+				// (The PW had to be in source somewhere so our prof could run the app.
+				// Putting it here was the simplest solution, and this repo used to be private anyway).
+				// I'm still going to leave somewhat valid looking credentials here
+				// so you can waste a little bit of your time when your scraper comes across it.
+				// If you were scraping really hard, you could get the old (still invalid) creds from the history.
+				UserName = "postmaster@mail.scotta.me",
+				Password = "Y81AFHENh0t66B7WhvdksgvYfKEDZO"
 			};
 
 			var message = new Mail.Message(client)
